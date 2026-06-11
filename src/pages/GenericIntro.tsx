@@ -29,7 +29,7 @@ function WelcomeProgress({ currentPath }: { currentPath: string }) {
   const activeIndex = Math.max(welcomeSteps.findIndex((step) => step.path === currentPath), 0);
 
   return (
-    <div className="welcome-progress-line">
+    <div className="welcome-progress-line" aria-label="Progreso de bienvenida">
       {welcomeSteps.map((step, index) => (
         <Link
           key={step.path}
@@ -53,6 +53,7 @@ export default function GenericIntro() {
   const selected = modules[selectedModule];
   const isWhyPage = page.path === '/por-que-redisenar';
   const isWelcomeStage = ['/', '/por-que-redisenar', '/organizacion'].includes(page.path);
+  const isFirstPage = page.path === '/';
 
   return (
     <>
@@ -139,11 +140,9 @@ export default function GenericIntro() {
         </section>
       )}
 
-      <div className="page-actions">
-        {page.prev ? (
+      <div className={`page-actions ${isFirstPage ? 'only-next' : ''}`}>
+        {!isFirstPage && page.prev && (
           <ButtonLink to={page.prev} variant="ghost">Anterior</ButtonLink>
-        ) : (
-          <ButtonLink to="/herramientas" variant="ghost">Ir a herramientas</ButtonLink>
         )}
 
         <ButtonLink to={page.next}>{page.cta}</ButtonLink>
