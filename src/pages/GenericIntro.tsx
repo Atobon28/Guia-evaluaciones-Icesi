@@ -15,8 +15,33 @@ type IntroPage = {
   notice?: string;
 };
 
+const welcomeSteps = [
+  { label: 'Bienvenida', path: '/' },
+  { label: 'Por qué rediseñar', path: '/por-que-redisenar' },
+  { label: 'Organización', path: '/organizacion' },
+];
+
 function getPage(pathname: string): IntroPage {
   return (guidePages.find((page) => page.path === pathname) ?? guidePages[0]) as IntroPage;
+}
+
+function WelcomeProgress({ currentPath }: { currentPath: string }) {
+  const activeIndex = Math.max(welcomeSteps.findIndex((step) => step.path === currentPath), 0);
+
+  return (
+    <div className="welcome-progress-line">
+      {welcomeSteps.map((step, index) => (
+        <Link
+          key={step.path}
+          to={step.path}
+          className={`${index === activeIndex ? 'is-active' : ''} ${index < activeIndex ? 'is-done' : ''}`}
+        >
+          <span>{index + 1}</span>
+          <p>{step.label}</p>
+        </Link>
+      ))}
+    </div>
+  );
 }
 
 export default function GenericIntro() {
@@ -27,9 +52,12 @@ export default function GenericIntro() {
   const paragraphs = page.body.split('\n\n');
   const selected = modules[selectedModule];
   const isWhyPage = page.path === '/por-que-redisenar';
+  const isWelcomeStage = ['/', '/por-que-redisenar', '/organizacion'].includes(page.path);
 
   return (
     <>
+      {isWelcomeStage && <WelcomeProgress currentPath={page.path} />}
+
       {isWhyPage ? (
         <section className="why-page-card">
           <div className="why-page-copy">
@@ -75,7 +103,7 @@ export default function GenericIntro() {
       )}
 
       {page.path === '/organizacion' && (
-        <section className="intro-moments-layout">
+        <section className="intro-moments-layout compact">
           <div className="intro-moments-tabs">
             {modules.map((module, index) => (
               <button
@@ -94,7 +122,7 @@ export default function GenericIntro() {
             ))}
           </div>
 
-          <article className="intro-moment-detail">
+          <article className="intro-moment-detail wide">
             <div className="intro-moment-header">
               <span>
                 <AppIcon name={selected.icon} size={34} />
@@ -107,26 +135,7 @@ export default function GenericIntro() {
             </div>
 
             <p>{selected.text}</p>
-
-            <Link to={selected.to} className="btn btn-primary">
-              Explorar sección <span>→</span>
-            </Link>
           </article>
-
-          <aside className="intro-side-preview">
-            <h2>Tres niveles</h2>
-
-            <div className="intro-progress-list">
-              {modules.map((module, index) => (
-                <div key={module.title} className={selectedModule === index ? 'is-active' : ''}>
-                  <span>
-                    <AppIcon name={module.icon} size={18} />
-                  </span>
-                  <p>{module.title}</p>
-                </div>
-              ))}
-            </div>
-          </aside>
         </section>
       )}
 
