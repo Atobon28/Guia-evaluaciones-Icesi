@@ -25,7 +25,14 @@ export function Hero({ eyebrow='Guía interactiva', icon='✦', title, subtitle,
 }
 
 export function ButtonLink({ to, children, variant='primary' }: {to:string; children:ReactNode; variant?:'primary'|'ghost'}) {
-  return <Link to={to} className={`btn ${variant === 'ghost' ? 'btn-ghost' : 'btn-primary'}`}>{children}<span>→</span></Link>;
+  const isGhost = variant === 'ghost';
+  return (
+    <Link to={to} className={`btn ${isGhost ? 'btn-ghost' : 'btn-primary'}`}>
+      {isGhost && <span>←</span>}
+      {children}
+      {!isGhost && <span>→</span>}
+    </Link>
+  );
 }
 
 export function InteractiveCard({ icon, title, children, to, tag }: any) {
