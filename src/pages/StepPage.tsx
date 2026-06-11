@@ -5,34 +5,28 @@ import AppIcon from '../components/AppIcon';
 const steps = [
   {
     number: 1,
-    label: 'Definir',
-    title: 'Define el aprendizaje que quieres lograr',
+    label: 'Paso 1',
+    title: 'Define el aprendizaje que quieres que tus estudiantes logren',
     question: '¿Qué quiero que el estudiante sea capaz de pensar, comprender o hacer?',
-    text: 'Antes de diseñar la actividad, define con claridad qué aprendizaje quieres observar. Evita formular la evaluación únicamente desde contenidos o temas. En su lugar, piensa en las capacidades que el estudiante debe desarrollar: analizar, interpretar, argumentar, tomar decisiones, resolver problemas o crear.',
+    text: 'Antes de diseñar la actividad, define con claridad qué aprendizaje quieres observar. Evita formular la evaluación únicamente desde contenidos o temas. En su lugar, piensa en los procesos de pensamiento y en las capacidades que el estudiante debe desarrollar: analizar, interpretar, argumentar, tomar decisiones, resolver problemas, entre otros.',
     action: 'Reformula el resultado de aprendizaje en función de procesos de pensamiento y capacidades observables.',
-    alert: 'Si la IA puede resolver completamente la tarea sin que el estudiante piense, probablemente no estás evaluando aprendizaje.',
-    visualTitle: 'Ejemplo rápido',
-    visualSubtitle: 'De tarea genérica a tarea con pensamiento',
+    alert: 'Si la IA puede resolver completamente la tarea, no estás evaluando el aprendizaje.',
+    visualTitle: 'En lugar de pedir:',
+    visualSubtitle: 'Pide:',
     visualType: 'compare',
     icon: 'solar:target-linear',
     before: '“Haz un resumen del texto.”',
     after: '“Analiza la postura del autor, contrástala con un caso del curso y justifica tu interpretación con criterios propios.”',
-    checks: [
-      'El resultado de aprendizaje está centrado en el estudiante.',
-      'El aprendizaje esperado exige pensamiento.',
-      'La IA no puede resolver toda la tarea sin participación del estudiante.',
-    ],
   },
   {
     number: 2,
-    label: 'Pensar',
+    label: 'Paso 2',
     title: 'Reconstruye la ruta cognitiva del estudiante',
     question: '¿Qué tiene que pensar el estudiante para lograr la tarea?',
-    text: 'Toda evaluación implica una ruta mental. El estudiante debe comprender información, identificar relaciones, tomar decisiones, justificar criterios, producir una respuesta y revisar lo que hizo. Si esa ruta no está clara, la evaluación puede terminar valorando solo el producto final.',
-    action: 'Identifica los procesos de pensamiento que la tarea exige: comprender, analizar, interpretar, decidir, argumentar, producir, revisar o crear.',
-    alert: 'Si no sabes qué proceso cognitivo estás evaluando, será difícil saber si la IA está apoyando o reemplazando el aprendizaje.',
-    visualTitle: 'Ejemplo: análisis de caso',
-    visualSubtitle: 'Ruta mental posible',
+    text: 'Toda evaluación implica una ruta cognitiva. El estudiante debe comprender información, identificar relaciones, tomar decisiones, justificar criterios, producir una respuesta y revisar lo que hizo. Si esa ruta no está clara, la evaluación puede terminar valorando solo el producto final.',
+    action: 'Identifica los procesos de pensamiento que la tarea exige: comprender, analizar, interpretar, decidir, argumentar, producir, revisar, entre otros.',
+    visualTitle: 'Para una tarea de análisis de caso, la ruta podría ser:',
+    visualSubtitle: 'Ruta cognitiva',
     visualType: 'list',
     icon: 'solar:brain-linear',
     list: [
@@ -43,99 +37,73 @@ const steps = [
       'Tomar una decisión.',
       'Justificar la respuesta.',
     ],
-    checks: [
-      'La tarea tiene una ruta mental clara.',
-      'Se identifican procesos de pensamiento.',
-      'El producto final no es la única evidencia.',
-    ],
   },
   {
     number: 3,
-    label: 'Decidir IA',
-    title: 'Decide el papel de la IA',
-    question: '¿Qué debe aprender el estudiante por sí mismo y qué puede enriquecer con apoyo de IA?',
-    text: 'La IA puede ser una herramienta útil si su uso está definido con claridad. El profesor debe decidir qué procesos deben ser autónomos, cuáles pueden ser asistidos y cuáles requieren que el estudiante explique cómo usó la IA.',
-    action: 'Distingue entre aprendizajes esenciales, apoyos permitidos y usos que deben evitarse porque sustituyen el pensamiento del estudiante.',
-    alert: 'No basta con decir “se permite IA” o “no se permite IA”. El estudiante necesita saber para qué puede usarla, en qué momento y cómo debe declarar su uso.',
-    visualTitle: 'Decisiones clave',
-    visualSubtitle: 'Define límites claros',
-    visualType: 'decisions',
+    label: 'Paso 3',
+    title: 'Define qué aprendizajes deben desarrollarse autónomamente y cuáles pueden enriquecerse con apoyo de IA.',
+    question: '¿Qué es esencial que el estudiante aprenda por sí mismo?',
+    text: 'Distingue los aprendizajes y capacidades que requieren apropiación autónoma por parte del estudiante de aquellos en los que la IA puede funcionar como apoyo, mediación o herramienta para ampliar el aprendizaje. Para ello, define qué procesos, desempeños o capacidades debe evidenciar el estudiante.\n\nSi el objetivo es que el estudiante construya y argumente una postura propia frente a un problema, puedes decidir que todo el proceso se realice sin apoyo de IA. En cambio, si el propósito es que compare perspectivas o explore alternativas, podrías permitir su uso en momentos específicos. Lo importante es definir con claridad qué debe aprender el estudiante por sí mismo y qué apoyos resultan pertinentes para favorecer ese aprendizaje.',
+    visualTitle: 'Decisión pedagógica',
+    visualSubtitle: 'Define con claridad',
+    visualType: 'text',
     icon: 'solar:cpu-bolt-linear',
-    list: ['Permitir', 'Limitar', 'Prohibir', 'Declarar uso'],
-    checks: [
-      'Está definido qué puede hacer la IA.',
-      'Está definido qué debe hacer el estudiante.',
-      'El uso de IA debe declararse o justificarse.',
-    ],
   },
   {
     number: 4,
-    label: 'Contextualizar',
-    title: 'Diseña una situación con sentido formativo',
-    question: '¿La evaluación propone una situación con contexto, rol y propósito?',
-    text: 'Una evaluación tiene más valor cuando ubica al estudiante en una situación significativa. Esto le permite comprender para qué realiza la actividad, desde qué rol actúa y qué decisión o problema debe abordar.',
-    action: 'Diseña la evaluación a partir de tres elementos: contexto, rol y propósito.',
-    alert: 'Mientras más genérica sea la tarea, más fácil será que la IA la resuelva sin aprendizaje real.',
-    visualTitle: 'Tres elementos clave',
+    label: 'Paso 4',
+    title: 'Diseña una situación de evaluación con sentido formativo',
+    question: '¿La evaluación propone una situación con contexto, rol y propósito que movilice el pensamiento del estudiante?',
+    text: 'Una evaluación adquiere mayor sentido cuando ubica al estudiante en una situación significativa. Esto le permite comprender para qué realiza la actividad, desde qué rol actúa y qué decisión o problema debe abordar.',
+    action: 'Diseña la evaluación a partir de tres elementos: contexto, rol del estudiante y propósito.',
+    visualTitle: 'Tres elementos',
     visualSubtitle: 'Contexto, rol y propósito',
     visualType: 'cards',
     icon: 'solar:map-point-wave-linear',
     list: [
-      'Contexto: ¿en qué situación se enmarca la tarea?',
-      'Rol: ¿desde qué lugar actúa el estudiante?',
-      'Propósito: ¿para qué realiza esta actividad?',
+      'Contexto: ¿En qué situación se enmarca la tarea? Puede ser un contexto disciplinar, académico, cotidiano, profesional o social.',
+      'Rol: ¿Desde qué lugar actúa el estudiante? Puede actuar como analista, investigador, diseñador, consultor, intérprete, evaluador, mediador o profesional de su campo.',
+      'Propósito: ¿Para qué realiza esta actividad? La tarea debe responder a una decisión, problema, necesidad, caso o situación concreta.',
     ],
-    checks: [
-      'La tarea tiene contexto.',
-      'El estudiante asume un rol claro.',
-      'La actividad tiene un propósito significativo.',
-    ],
+    before: '“Escribe un ensayo sobre sostenibilidad.”',
+    after: '“Como consultor de una organización local, analiza un problema de sostenibilidad, compara dos alternativas y recomienda una decisión justificada.”',
   },
   {
     number: 5,
-    label: 'Evidenciar',
-    title: 'Evalúa el proceso, no solo el producto',
+    label: 'Paso 5',
+    title: 'Asegúrate de evaluar el proceso y no solamente el producto',
     question: '¿Cómo voy a hacer visible el proceso de aprendizaje del estudiante?',
-    text: 'Si solo se evalúa el producto final, es difícil saber qué hizo el estudiante, qué comprendió, qué decidió o cómo usó la IA. Por eso, la evaluación debe incluir evidencias del proceso.',
-    action: 'Define qué evidencias permitirán observar el pensamiento, las decisiones y los ajustes realizados durante la tarea.',
-    alert: 'No pidas más evidencias solo por controlar. Pide evidencias que ayuden a comprender el aprendizaje.',
-    visualTitle: 'Evidencias posibles',
-    visualSubtitle: 'Menos tareas, más seguimiento',
+    text: 'Para que la evaluación permita comprender cómo aprende el estudiante, es necesario diseñar evidencias que permitan reconocer sus procesos de pensamiento, las decisiones que toma y la manera en que desarrolla su trabajo, y no solo el resultado final.',
+    action: 'Incluye elementos como borradores, decisiones justificadas, bitácoras, registros del proceso o explicaciones sobre el uso de IA, entre otros.',
+    alert: 'Prioriza la profundidad del aprendizaje sobre la cantidad de actividades: diseña menos tareas, pero con mayor seguimiento y acompañamiento del proceso.',
+    visualTitle: 'Evidencias del proceso',
+    visualSubtitle: 'Opciones posibles',
     visualType: 'cards',
     icon: 'solar:document-add-linear',
     list: [
-      'Borradores.',
-      'Bitácora de proceso.',
-      'Justificación de decisiones.',
-      'Registro de uso de IA.',
-    ],
-    checks: [
-      'La evaluación permite ver cómo pensó el estudiante.',
-      'Hay evidencias del proceso.',
-      'El seguimiento no depende solo del producto final.',
+      'Borradores: Permiten ver la evolución del trabajo y los cambios realizados.',
+      'Bitácora de proceso: Ayuda a registrar decisiones, dificultades, avances y aprendizajes.',
+      'Justificación de decisiones: Permite comprender por qué el estudiante eligió una ruta, una fuente, una estrategia o una respuesta.',
+      'Registro de uso de IA: Hace visible cuándo, cómo y para qué se utilizó la IA durante la actividad.',
     ],
   },
   {
     number: 6,
-    label: 'Retroalimentar',
-    title: 'Integra la retroalimentación al proceso',
+    label: 'Paso 6',
+    title: 'Integra la retroalimentación al proceso de aprendizaje',
     question: '¿Cómo va a usar el estudiante la retroalimentación para mejorar?',
     text: 'La retroalimentación debe aparecer durante el proceso, no solo al final. Su propósito es ayudar al estudiante a comprender su desempeño, identificar oportunidades de mejora y tomar decisiones para avanzar.',
     action: 'Define cuándo se dará la retroalimentación, quién la ofrecerá y cómo podrá usarla el estudiante.',
-    alert: 'La IA puede apoyar la retroalimentación, pero no debe reemplazar el criterio pedagógico del docente.',
-    visualTitle: 'Ciclo de mejora',
-    visualSubtitle: 'Retroalimentar, ajustar y mejorar',
-    visualType: 'list',
+    alert: 'La IA puede apoyar la retroalimentación, pero no debe reemplazar el criterio pedagógico del docente.\n\nLa retroalimentación cumple su propósito cuando el estudiante comprende qué logró, qué debe mejorar y cómo puede avanzar.',
+    visualTitle: 'Dimensiones de la retroalimentación',
+    visualSubtitle: 'Momento, fuente, uso y claridad',
+    visualType: 'cards',
     icon: 'solar:chat-round-check-linear',
     list: [
-      'Retroalimentar.',
-      'Ajustar.',
-      'Mejorar.',
-    ],
-    checks: [
-      'La retroalimentación ocurre antes de la entrega final.',
-      'El estudiante puede usarla para mejorar.',
-      'La retroalimentación es clara, específica y útil.',
+      'Momento: ¿La retroalimentación ocurre antes de la entrega final?',
+      'Fuente: ¿La ofrece el profesor o los pares? ¿De qué manera la IA puede utilizarse como apoyo o mediación durante este proceso?',
+      'Uso: ¿El estudiante tiene oportunidad de ajustar, revisar o reentregar?',
+      'Claridad: ¿La retroalimentación es específica, comprensible y útil?',
     ],
   },
 ];
@@ -157,6 +125,7 @@ export default function StepPage() {
     step.number === 6 ? '/herramientas' : `/ruta-redisenio/paso-${step.number + 1}`;
 
   const nextLabel = step.number === 6 ? 'Ir a herramientas' : 'Siguiente paso';
+  const paragraphs = step.text.split('\n\n');
 
   return (
     <>
@@ -176,15 +145,19 @@ export default function StepPage() {
             <h2>{step.question}</h2>
           </div>
 
-          <p>{step.text}</p>
+          {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
 
-          <Notice type="success" title="Acción metodológica">
-            {step.action}
-          </Notice>
+          {step.action && (
+            <Notice type="success">
+              {step.action}
+            </Notice>
+          )}
 
-          <Notice type="danger" title="Alerta IA">
-            {step.alert}
-          </Notice>
+          {step.alert && (
+            <Notice type="danger">
+              {step.alert}
+            </Notice>
+          )}
         </article>
 
         <aside className="step-example-card">
@@ -199,7 +172,7 @@ export default function StepPage() {
           {step.visualType === 'compare' && (
             <div className="example-comparison">
               <div className="example-before">
-                <small>Antes</small>
+                <small>En lugar de pedir</small>
                 <p>{step.before}</p>
               </div>
 
@@ -208,7 +181,7 @@ export default function StepPage() {
               </div>
 
               <div className="example-after">
-                <small>Después</small>
+                <small>Pide</small>
                 <p>{step.after}</p>
               </div>
             </div>
@@ -222,17 +195,6 @@ export default function StepPage() {
             </ol>
           )}
 
-          {step.visualType === 'decisions' && (
-            <div className="decision-pills">
-              {step.list?.map((item) => (
-                <span key={item}>
-                  <AppIcon name="solar:check-circle-linear" size={20} />
-                  {item}
-                </span>
-              ))}
-            </div>
-          )}
-
           {step.visualType === 'cards' && (
             <div className="step-mini-cards">
               {step.list?.map((item) => (
@@ -244,24 +206,20 @@ export default function StepPage() {
             </div>
           )}
 
-          <div className="mini-progress-card">
-            <span>Resultado esperado</span>
-            <p>
-              Una evaluación más clara, formativa y alineada con el aprendizaje que quieres evidenciar.
-            </p>
-          </div>
+          {step.number === 4 && (
+            <div className="example-comparison">
+              <div className="example-before">
+                <small>En lugar de pedir</small>
+                <p>{step.before}</p>
+              </div>
+
+              <div className="example-after">
+                <small>Pide</small>
+                <p>{step.after}</p>
+              </div>
+            </div>
+          )}
         </aside>
-      </section>
-
-      <section className="step-bottom-checklist">
-        <strong>Checklist del paso {step.number}</strong>
-
-        {step.checks.map((check) => (
-          <label key={check}>
-            <input type="checkbox" />
-            <span>{check}</span>
-          </label>
-        ))}
       </section>
 
       <div className="page-actions">
