@@ -9,8 +9,8 @@ export default function PedagogicalKeys() {
   return (
     <>
       <Hero
-        eyebrow="Antes de rediseñar"
-        icon="⚿"
+        eyebrow="Claves pedagógicas"
+        icon="solar:lightbulb-bolt-linear"
         title="Claves pedagógicas"
         subtitle="Seis claves para pensar la evaluación antes de rediseñarla."
         body="Antes de cambiar una actividad evaluativa, es necesario revisar qué aprendizaje se quiere promover, qué procesos de pensamiento se buscan activar y qué papel puede tener la IA sin reemplazar el trabajo intelectual del estudiante."
@@ -26,7 +26,6 @@ export default function PedagogicalKeys() {
             >
               <span>{key.id}</span>
               <strong>{key.title}</strong>
-              <small>Ver clave</small>
             </button>
           ))}
         </div>
@@ -35,7 +34,7 @@ export default function PedagogicalKeys() {
           <div className="key-detail-top">
             <span>{selected.id}</span>
             <div>
-              <small>Clave pedagógica seleccionada</small>
+              <small>Clave pedagógica</small>
               <h2>{selected.title}</h2>
             </div>
           </div>
@@ -43,11 +42,11 @@ export default function PedagogicalKeys() {
           <p>{selected.description}</p>
 
           <div className="key-detail-grid">
-            <Notice type="info" title="Pregunta guía">
+            <Notice type="info">
               {selected.question}
             </Notice>
 
-            <Notice type="success" title="Acción recomendada">
+            <Notice type="success">
               {selected.action}
             </Notice>
           </div>
