@@ -2,7 +2,24 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink, Notice, RouteStepper } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
-const steps = [
+type StepContent = {
+  number: number;
+  label: string;
+  title: string;
+  question: string;
+  text: string;
+  action?: string;
+  alert?: string;
+  visualTitle: string;
+  visualSubtitle: string;
+  visualType: 'compare' | 'list' | 'cards' | 'text';
+  icon: string;
+  before?: string;
+  after?: string;
+  list?: string[];
+};
+
+const steps: StepContent[] = [
   {
     number: 1,
     label: 'Paso 1',
