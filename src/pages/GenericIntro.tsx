@@ -30,35 +30,48 @@ export default function GenericIntro() {
 
   return (
     <>
-      <Hero
-        eyebrow={page.path === '/' ? 'Bienvenida' : isWhyPage ? 'Comprender el reto' : page.title}
-        icon={page.path === '/' ? 'solar:cpu-bolt-linear' : isWhyPage ? 'solar:danger-triangle-linear' : 'solar:widget-5-linear'}
-        title={isWhyPage ? 'La IA cambió las evidencias de aprendizaje' : page.title}
-        subtitle={isWhyPage ? undefined : page.subtitle}
-        body={page.path === '/' ? page.body : undefined}
-      >
-        {page.path === '/' && page.notice && (
-          <p className="hero-note">{page.notice}</p>
-        )}
-      </Hero>
+      {isWhyPage ? (
+        <section className="why-page-card">
+          <div className="why-page-copy">
+            <span className="eyebrow">{page.title}</span>
+            <div className="why-title-row">
+              <span>
+                <AppIcon name="solar:danger-triangle-linear" size={30} />
+              </span>
+              <div>
+                <h1>{page.title}</h1>
+                <h2>{page.subtitle}</h2>
+              </div>
+            </div>
+            <span className="green-line" />
 
-      {isWhyPage && (
-        <section className="why-one-page">
-          {paragraphs.map((paragraph) => (
-            paragraph === 'El reto no es vigilar más. El reto es diseñar mejor.' ? (
-              <article key={paragraph} className="why-focus-card">
-                <span>
-                  <AppIcon name="solar:lightbulb-bolt-linear" size={24} />
-                </span>
-                <h2>{paragraph}</h2>
-              </article>
-            ) : (
-              <article key={paragraph} className="why-text-card">
-                <p>{paragraph}</p>
-              </article>
-            )
-          ))}
+            <div className="why-paragraph-grid">
+              {paragraphs.map((paragraph) => (
+                paragraph === 'El reto no es vigilar más. El reto es diseñar mejor.' ? (
+                  <article key={paragraph} className="why-focus-card">
+                    <p>{paragraph}</p>
+                  </article>
+                ) : (
+                  <article key={paragraph} className="why-text-card">
+                    <p>{paragraph}</p>
+                  </article>
+                )
+              ))}
+            </div>
+          </div>
         </section>
+      ) : (
+        <Hero
+          eyebrow={page.path === '/' ? 'Bienvenida' : page.title}
+          icon={page.path === '/' ? 'solar:cpu-bolt-linear' : 'solar:widget-5-linear'}
+          title={page.title}
+          subtitle={page.subtitle}
+          body={page.path === '/' ? page.body : undefined}
+        >
+          {page.path === '/' && page.notice && (
+            <p className="hero-note">{page.notice}</p>
+          )}
+        </Hero>
       )}
 
       {page.path === '/organizacion' && (
