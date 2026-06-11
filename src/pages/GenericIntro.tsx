@@ -26,14 +26,15 @@ export default function GenericIntro() {
 
   const paragraphs = page.body.split('\n\n');
   const selected = modules[selectedModule];
+  const isWhyPage = page.path === '/por-que-redisenar';
 
   return (
     <>
       <Hero
-        eyebrow={page.path === '/' ? 'Bienvenida' : page.title}
-        icon={page.path === '/' ? 'solar:cpu-bolt-linear' : page.path === '/por-que-redisenar' ? 'solar:danger-triangle-linear' : 'solar:widget-5-linear'}
-        title={page.title}
-        subtitle={page.subtitle}
+        eyebrow={page.path === '/' ? 'Bienvenida' : isWhyPage ? 'Comprender el reto' : page.title}
+        icon={page.path === '/' ? 'solar:cpu-bolt-linear' : isWhyPage ? 'solar:danger-triangle-linear' : 'solar:widget-5-linear'}
+        title={isWhyPage ? 'La IA cambió las evidencias de aprendizaje' : page.title}
+        subtitle={isWhyPage ? undefined : page.subtitle}
         body={page.path === '/' ? page.body : undefined}
       >
         {page.path === '/' && page.notice && (
@@ -41,19 +42,22 @@ export default function GenericIntro() {
         )}
       </Hero>
 
-      {page.path === '/por-que-redisenar' && (
-        <section className="intro-moments-layout single">
-          <article className="intro-moment-detail">
-            {paragraphs.map((paragraph) => (
-              paragraph === 'El reto no es vigilar más. El reto es diseñar mejor.' ? (
-                <Notice key={paragraph} type="success">
-                  {paragraph}
-                </Notice>
-              ) : (
-                <p key={paragraph}>{paragraph}</p>
-              )
-            ))}
-          </article>
+      {isWhyPage && (
+        <section className="why-one-page">
+          {paragraphs.map((paragraph) => (
+            paragraph === 'El reto no es vigilar más. El reto es diseñar mejor.' ? (
+              <article key={paragraph} className="why-focus-card">
+                <span>
+                  <AppIcon name="solar:lightbulb-bolt-linear" size={24} />
+                </span>
+                <h2>{paragraph}</h2>
+              </article>
+            ) : (
+              <article key={paragraph} className="why-text-card">
+                <p>{paragraph}</p>
+              </article>
+            )
+          ))}
         </section>
       )}
 
