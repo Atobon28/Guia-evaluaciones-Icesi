@@ -1,0 +1,29 @@
+/* =========================================================
+   VARIABLES — Manual de marca Icesi
+========================================================= */
+
+:root {
+  --blue: #5454e9;
+  --blue-dark: #070b34;
+  --blue-soft: #edf0ff;
+
+  --green: #4cb979;
+  --green-soft: #ecf8f0;
+
+  --yellow: #e4eb60;
+  --orange: #e9683b;
+
+  --red: #e94235;
+  --red-soft: #fff1ef;
+
+  --gray-1: #88898c;
+  --gray-2: #cecfd4;
+
+  --bg: #f6f7fb;
+  --white: #ffffff;
+
+  --line: #dfe3fb;
+  --radius: 28px;
+
+  --shadow: 0 24px 60px rgba(7, 11, 52, 0.1);
+}

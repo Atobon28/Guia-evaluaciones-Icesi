@@ -1,0 +1,15 @@
+@import './variables.css';
+@import './base.css';
+@import './layout.css';
+@import './components.css';
+
+@import './pages/genericIntro.css';
+@import './pages/principles.css';
+@import './pages/pedagogicalKeys.css';
+@import './pages/redesignRoute.css';
+@import './pages/stepPage.css';
+@import './pages/toolbox.css';
+@import './pages/trafficLightAI.css';
+@import './pages/aiasSelector.css';
+@import './pages/templates.css';
+@import './pages/closing.css';

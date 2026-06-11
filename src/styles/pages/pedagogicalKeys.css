@@ -1,0 +1,192 @@
+/* =========================================================
+   CLAVES PEDAGÓGICAS
+========================================================= */
+
+.keys-interactive-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.keys-tabs-panel {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.key-tab-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+  color: var(--blue-dark);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+  overflow: hidden;
+}
+
+.key-tab-card::after {
+  content: '';
+  position: absolute;
+  right: -38px;
+  top: -38px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+}
+
+.key-tab-card span,
+.key-tab-card strong,
+.key-tab-card small {
+  position: relative;
+  z-index: 1;
+}
+
+.key-tab-card span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.key-tab-card strong {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.key-tab-card small {
+  color: var(--gray-1);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.key-tab-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(84, 84, 233, 0.45);
+  box-shadow: 0 16px 35px rgba(84, 84, 233, 0.12);
+}
+
+.key-tab-card.is-active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: 0 18px 40px rgba(84, 84, 233, 0.22);
+}
+
+.key-tab-card.is-active span {
+  background: var(--white);
+  color: var(--blue);
+}
+
+.key-tab-card.is-active small {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.key-tab-card.is-active::after {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.key-detail-card {
+  position: relative;
+  min-height: 0;
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.key-detail-card::after {
+  content: '';
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(84, 84, 233, 0.13) 0 10deg,
+    transparent 10deg 22deg
+  );
+}
+
+.key-detail-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.key-detail-top {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.key-detail-top > span {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.key-detail-top small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gray-1);
+  font-weight: 700;
+}
+
+.key-detail-top h2 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 32px;
+  line-height: 1.08;
+}
+
+.key-detail-card > p {
+  max-width: 780px;
+  margin-bottom: 26px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.key-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.key-detail-grid .notice {
+  margin: 0;
+  height: 100%;
+}
+
+@media (max-width: 1100px) {
+  .keys-interactive-layout,
+  .key-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

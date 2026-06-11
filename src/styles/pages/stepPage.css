@@ -1,0 +1,320 @@
+/* =========================================================
+   STEP PAGE
+========================================================= */
+
+.learning-step-screen {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 18px;
+}
+
+.step-focus-card,
+.step-example-card,
+.step-bottom-checklist {
+  position: relative;
+  border-radius: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.step-focus-card {
+  padding: 30px;
+}
+
+.step-focus-card::after {
+  content: '';
+  position: absolute;
+  right: -130px;
+  bottom: -130px;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(84, 84, 233, 0.12) 0 10deg,
+    transparent 10deg 22deg
+  );
+}
+
+.step-focus-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.step-label-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.step-label-row span {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 42px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 800;
+}
+
+.step-label-row small {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-weight: 800;
+}
+
+.step-focus-card h1 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  color: var(--blue-dark);
+  font-size: clamp(32px, 3.5vw, 50px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.step-question-box {
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: var(--blue-soft);
+  border: 1px solid rgba(84, 84, 233, 0.18);
+}
+
+.step-question-box span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.step-question-box h2 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 21px;
+  line-height: 1.18;
+}
+
+.step-focus-card > p {
+  max-width: 780px;
+  margin-bottom: 14px;
+  font-size: 14.5px;
+  line-height: 1.48;
+}
+
+.step-example-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: linear-gradient(180deg, var(--white), var(--blue-soft));
+}
+
+.example-header {
+  margin-bottom: 16px;
+}
+
+.example-header span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.example-header strong {
+  display: block;
+  color: var(--blue-dark);
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+.example-comparison {
+  flex: 1;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 42px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.example-before,
+.example-after {
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.example-before small,
+.example-after small {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.example-before small {
+  color: var(--orange);
+  background: #fff1e9;
+}
+
+.example-after small {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.example-before p,
+.example-after p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.42;
+}
+
+.example-arrow {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.step-visual-list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.step-visual-list li {
+  position: relative;
+  padding: 14px 16px 14px 52px;
+  border-radius: 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.step-visual-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 800;
+}
+
+.decision-pills {
+  flex: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.decision-pills span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.step-mini-cards {
+  flex: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.step-mini-cards div {
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.mini-progress-card {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.mini-progress-card span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.mini-progress-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.step-bottom-checklist {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 210px repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  margin-top: 0;
+}
+
+.step-bottom-checklist strong {
+  color: var(--blue);
+}
+
+.step-bottom-checklist label {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.step-bottom-checklist input {
+  accent-color: var(--green);
+}
+
+@media (max-width: 1100px) {
+  .learning-step-screen,
+  .step-bottom-checklist {
+    grid-template-columns: 1fr;
+  }
+}

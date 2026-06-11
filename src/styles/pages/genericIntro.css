@@ -1,0 +1,220 @@
+/* =========================================================
+   GENERIC INTRO — momentos limpios e interactivos
+========================================================= */
+
+.intro-moments-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 300px;
+  gap: 18px;
+}
+
+.intro-moments-tabs,
+.intro-moment-detail,
+.intro-side-preview {
+  min-height: 0;
+  border-radius: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.intro-moments-tabs {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  align-content: start;
+}
+
+.intro-moment-tab {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: center;
+  min-height: 72px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg);
+  color: var(--blue-dark);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.intro-moment-tab:hover {
+  transform: translateY(-2px);
+  border-color: rgba(84, 84, 233, 0.45);
+  box-shadow: 0 12px 28px rgba(84, 84, 233, 0.12);
+}
+
+.intro-moment-tab.is-active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+.intro-moment-tab > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.intro-moment-tab.is-active > span {
+  background: var(--white);
+  color: var(--blue);
+}
+
+.intro-moment-tab strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+
+.intro-moment-tab p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.intro-moment-detail {
+  position: relative;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 90% 12%, rgba(84, 84, 233, 0.13), transparent 26%),
+    linear-gradient(180deg, var(--white), var(--blue-soft));
+}
+
+.intro-moment-detail::after {
+  content: '';
+  position: absolute;
+  right: -110px;
+  bottom: -120px;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(84, 84, 233, 0.14) 0 10deg,
+    transparent 10deg 22deg
+  );
+}
+
+.intro-moment-detail > * {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-moment-header {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.intro-moment-header > span {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: var(--blue);
+  color: var(--white);
+}
+
+.intro-moment-header small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gray-1);
+  font-weight: 800;
+}
+
+.intro-moment-header h2 {
+  margin: 0;
+  max-width: 720px;
+  color: var(--blue-dark);
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.intro-moment-detail > p {
+  max-width: 760px;
+  margin-bottom: 22px;
+  color: var(--blue-dark);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.intro-moment-detail .notice {
+  max-width: 760px;
+}
+
+.intro-side-preview {
+  padding: 24px;
+  background: var(--white);
+}
+
+.intro-side-preview h2 {
+  margin-bottom: 20px;
+  color: var(--blue-dark);
+  font-size: 24px;
+}
+
+.intro-progress-list {
+  display: grid;
+  gap: 10px;
+}
+
+.intro-progress-list div {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.intro-progress-list div.is-active {
+  background: var(--green-soft);
+  border-color: rgba(76, 185, 121, 0.38);
+}
+
+.intro-progress-list span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.intro-progress-list div.is-active span {
+  background: var(--green);
+  color: var(--white);
+}
+
+.intro-progress-list p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (max-width: 1100px) {
+  .intro-moments-layout {
+    grid-template-columns: 1fr;
+  }
+}
