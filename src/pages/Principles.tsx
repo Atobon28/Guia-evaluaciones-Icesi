@@ -24,10 +24,14 @@ export default function Principles() {
       <section className="principles-screen">
         <header className="principles-header">
           <div>
-            <span className="eyebrow">Marco institucional</span>
+            <span className="eyebrow">Principios institucionales</span>
             <h1>Principios institucionales</h1>
+            <p>Siete principios para orientar una evaluación que forma, acompaña y transforma.</p>
             <p>
-              Siete principios para orientar una evaluación que forma, acompaña y transforma.
+              En la Universidad Icesi, la evaluación se entiende como un proceso central para acompañar,
+              comprender y potenciar el aprendizaje. Estos principios ayudan a diseñar prácticas
+              evaluativas coherentes con el aprendizaje, las competencias, la retroalimentación y el uso
+              pedagógico de la IA.
             </p>
           </div>
 
@@ -73,11 +77,11 @@ export default function Principles() {
             <p className="principle-description">{selected.description}</p>
 
             <div className="principle-info-grid">
-              <Notice type="info" title="Pregunta guía">
+              <Notice type="info">
                 {selected.question}
               </Notice>
 
-              <Notice type="success" title="Acción para el profesor">
+              <Notice type="success">
                 {selected.action}
               </Notice>
             </div>
@@ -91,23 +95,6 @@ export default function Principles() {
             <AppIcon name="solar:arrow-right-linear" size={24} />
           </button>
         </main>
-
-        <section className="principles-helper-row">
-          <div>
-            <AppIcon name="solar:cursor-square-linear" size={20} />
-            <span>Selecciona un principio</span>
-          </div>
-
-          <div>
-            <AppIcon name="solar:question-circle-linear" size={20} />
-            <span>Lee la pregunta guía</span>
-          </div>
-
-          <div>
-            <AppIcon name="solar:check-circle-linear" size={20} />
-            <span>Aplica la acción sugerida</span>
-          </div>
-        </section>
       </section>
 
       <div className="page-actions">
