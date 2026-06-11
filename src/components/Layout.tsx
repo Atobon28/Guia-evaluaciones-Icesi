@@ -45,10 +45,6 @@ export default function Layout() {
       </aside>
 
       <main className="main-area">
-        <header className="topbar">
-          <button onClick={() => navigate('/')} className="top-title">Evaluación + IA</button>
-          <div className="top-actions"><button>☰</button><span /><button>⌕</button></div>
-        </header>
         <section className="page-wrap"><Outlet /></section>
       </main>
     </div>
