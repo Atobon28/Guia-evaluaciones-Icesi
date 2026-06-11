@@ -35,32 +35,13 @@ export default function GenericIntro() {
         title={page.title}
         subtitle={page.subtitle}
         body={page.path === '/' ? page.body : undefined}
-      />
-
-      {page.path === '/' && (
-        <section className="intro-moments-layout single">
-          <article className="intro-moment-detail">
-            <div className="intro-moment-header">
-              <span>
-                <AppIcon name="solar:home-2-linear" size={34} />
-              </span>
-
-              <div>
-                <small>Bienvenida</small>
-                <h2>{page.subtitle}</h2>
-              </div>
-            </div>
-
-            <p>{page.body}</p>
-
-            {page.notice && (
-              <Notice type="success">
-                {page.notice}
-              </Notice>
-            )}
-          </article>
-        </section>
-      )}
+      >
+        {page.path === '/' && page.notice && (
+          <Notice type="success">
+            {page.notice}
+          </Notice>
+        )}
+      </Hero>
 
       {page.path === '/por-que-redisenar' && (
         <section className="intro-moments-layout single">
