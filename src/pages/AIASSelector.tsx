@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ButtonLink, Hero, Notice } from '../components/Ui';
+import { ButtonLink, Hero } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
 const levels = [
@@ -7,55 +7,35 @@ const levels = [
     number: 1,
     title: 'Sin uso de IA',
     description:
-      'La actividad debe realizarse sin apoyo de herramientas de IA porque busca evidenciar aprendizajes esenciales que requieren desarrollo autónomo.',
-    useWhen:
-      'Necesitas observar comprensión básica, desempeño individual, memoria funcional, habilidades iniciales o procesos que aún no deben ser asistidos.',
-    instruction:
-      'Para esta actividad no está permitido el uso de herramientas de IA.',
+      'La producción académica se realiza íntegramente sin asistencia de IA. Se busca valorar las competencias propias del estudiante: pensamiento crítico, análisis, argumentación, escritura o creatividad, sin ningún tipo de mediación tecnológica que automatice estos procesos.',
     icon: 'solar:forbidden-circle-linear',
   },
   {
     number: 2,
-    title: 'Uso limitado',
+    title: 'Planificación e ideación asistida por IAG',
     description:
-      'La IA puede usarse solo en momentos específicos y bajo condiciones definidas por el profesor.',
-    useWhen:
-      'Quieres permitir apoyo puntual, pero necesitas proteger procesos centrales de pensamiento.',
-    instruction:
-      'Puedes usar IA únicamente para los aspectos indicados por el profesor. Debes declarar cómo la usaste.',
+      'Aquí se permite el uso de IA solo en etapas iniciales del proceso: generación de ideas, lluvias de ideas, estructura o títulos. El contenido generado por IA no se incluye directamente en el producto final. Este nivel ayuda a los estudiantes a organizar mejor su pensamiento, manteniendo su autoría.',
     icon: 'solar:shield-minimalistic-linear',
   },
   {
     number: 3,
-    title: 'Uso asistido',
+    title: 'Colaboración con IAG',
     description:
-      'La IA puede apoyar partes del proceso, pero el análisis, las decisiones y la respuesta final son responsabilidad del estudiante.',
-    useWhen:
-      'La IA puede ayudar a explorar ideas, organizar información, revisar claridad o generar preguntas de mejora.',
-    instruction:
-      'Puedes usar IA como apoyo, pero debes explicar qué decisiones tomaste tú y cómo verificaste la información.',
+      'En este nivel, el estudiante puede emplear IA para escribir borradores, corregir estilo, resumir o editar textos ya escritos. Se enfatiza la reflexión crítica: el estudiante debe revisar, evaluar y decidir cómo incorporar (o descartar) lo generado por la IA, manteniendo la coherencia con su voz y su razonamiento.',
     icon: 'solar:hand-heart-linear',
   },
   {
     number: 4,
-    title: 'Uso integrado',
+    title: 'Uso pleno y estratégico con IAG',
     description:
-      'La IA hace parte del proceso de trabajo y debe usarse de forma explícita, justificada y reflexiva.',
-    useWhen:
-      'La actividad busca que el estudiante aprenda a trabajar críticamente con IA dentro de una situación académica o profesional.',
-    instruction:
-      'Debes documentar cómo usaste IA, qué prompts empleaste, qué resultados aceptaste o descartaste y por qué.',
+      'Se autoriza el uso amplio de IA para resolver problemas, producir textos o materiales complejos, programar o diseñar, siempre que el estudiante mantenga control, criterio y responsabilidad sobre el proceso. Aquí, el objetivo pedagógico incluye aprender a seleccionar tecnologías de IAG, integrarlas de forma crítica y reflexionar sobre su aporte.',
     icon: 'solar:cpu-bolt-linear',
   },
   {
     number: 5,
-    title: 'Uso amplio y crítico',
+    title: 'Exploración e innovación con IAG',
     description:
-      'La IA puede utilizarse de manera amplia, siempre que el estudiante demuestre criterio, validación, reflexión ética y responsabilidad sobre el producto final.',
-    useWhen:
-      'El objetivo es evaluar pensamiento crítico, diseño de estrategias, criterio profesional, análisis comparativo o producción compleja apoyada en IA.',
-    instruction:
-      'Puedes usar IA ampliamente, pero debes justificar tus decisiones, validar la información y reflexionar sobre los límites de la herramienta.',
+      'El nivel más abierto: se fomenta que docentes y estudiantes co-creen soluciones, proyectos o formatos innovadores con IA, incluso explorando usos no convencionales o experimentales. Este nivel promueve creatividad avanzada, pensamiento crítico y diseño de nuevas prácticas pedagógicas o productos.',
     icon: 'solar:stars-linear',
   },
 ];
@@ -67,7 +47,7 @@ export default function AIASSelector() {
   return (
     <>
       <Hero
-        eyebrow="Herramienta de decisión"
+        eyebrow="Selector AIAS"
         icon="solar:settings-minimalistic-linear"
         title="Selector AIAS"
         subtitle="Define el nivel de uso de IA permitido en tu evaluación."
@@ -109,21 +89,6 @@ export default function AIASSelector() {
           </div>
 
           <p className="aias-description">{selected.description}</p>
-
-          <Notice type="info" title="Úsalo cuando">
-            {selected.useWhen}
-          </Notice>
-
-          <Notice type="success" title="Instrucción para estudiantes">
-            {selected.instruction}
-          </Notice>
-
-          <div className="aias-transparency-box">
-            <strong>Principio transversal</strong>
-            <p>
-              En todos los niveles, el estudiante debe saber qué está permitido, qué debe declarar y cuál es su responsabilidad sobre el trabajo final.
-            </p>
-          </div>
         </article>
       </section>
 
