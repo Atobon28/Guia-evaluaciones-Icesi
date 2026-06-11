@@ -2,7 +2,17 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink, FieldCard, Hero, InteractiveCard, Notice } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
-const templates = {
+type TemplatePage = {
+  type: 'menu' | 'form' | 'formLarge' | 'cognitive' | 'rubric' | 'checklist';
+  icon: string;
+  title: string;
+  subtitle: string;
+  body: string;
+  fields?: string[][];
+  results?: string[];
+};
+
+const templates: Record<string, TemplatePage> = {
   '/herramientas/plantillas': {
     type: 'menu',
     icon: 'solar:document-text-linear',
@@ -157,7 +167,7 @@ const cognitiveRows = [
 ];
 
 function getTemplate(pathname: string) {
-  return templates[pathname as keyof typeof templates] ?? templates['/herramientas/plantillas'];
+  return templates[pathname] ?? templates['/herramientas/plantillas'];
 }
 
 export default function Templates() {
@@ -184,10 +194,10 @@ export default function Templates() {
         </section>
       )}
 
-      {(page.type === 'form' || page.type === 'formLarge') && 'fields' in page && (
+      {(page.type === 'form' || page.type === 'formLarge') && page.fields && (
         <>
           <section className={`template-form-grid ${page.type === 'formLarge' ? 'large' : ''}`}>
-            {(page as any).fields.map((field: string[]) => (
+            {page.fields.map((field) => (
               <FieldCard
                 key={field[0]}
                 number={field[0]}
@@ -197,9 +207,9 @@ export default function Templates() {
             ))}
           </section>
 
-          {'results' in page && (
+          {page.results && (
             <section className="checklist-results-row">
-              {(page as any).results.map((result: string) => (
+              {page.results.map((result) => (
                 <Notice key={result} type="info">{result}</Notice>
               ))}
             </section>
