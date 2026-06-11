@@ -37,9 +37,7 @@ export default function GenericIntro() {
         body={page.path === '/' ? page.body : undefined}
       >
         {page.path === '/' && page.notice && (
-          <Notice type="success">
-            {page.notice}
-          </Notice>
+          <p className="hero-note">{page.notice}</p>
         )}
       </Hero>
 
