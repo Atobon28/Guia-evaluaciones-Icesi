@@ -4,8 +4,19 @@ import { ButtonLink, Hero, Notice } from '../components/Ui';
 import { guidePages, modules } from '../data/content';
 import AppIcon from '../components/AppIcon';
 
-function getPage(pathname: string) {
-  return guidePages.find((page) => page.path === pathname) ?? guidePages[0];
+type IntroPage = {
+  path: string;
+  title: string;
+  subtitle: string;
+  body: string;
+  cta: string;
+  next: string;
+  prev?: string;
+  notice?: string;
+};
+
+function getPage(pathname: string): IntroPage {
+  return (guidePages.find((page) => page.path === pathname) ?? guidePages[0]) as IntroPage;
 }
 
 export default function GenericIntro() {
@@ -42,7 +53,7 @@ export default function GenericIntro() {
 
             <p>{page.body}</p>
 
-            {'notice' in page && page.notice && (
+            {page.notice && (
               <Notice type="success">
                 {page.notice}
               </Notice>
