@@ -5,11 +5,11 @@ const trafficItems = [
   {
     status: 'Potencia',
     title: 'La IA apoya el aprendizaje',
-    intro: 'La actividad sigue exigiendo pensamiento propio, toma de decisiones, análisis, argumentación o reflexión.',
+    intro: 'La actividad sigue exigiendo pensamiento propio, toma de decisiones, análisis, argumentación o reflexión. La IA puede ayudar, pero no resuelve lo esencial.',
     color: 'green',
     icon: 'solar:check-circle-linear',
     points: [
-      'El estudiante justifica sus decisiones.',
+      'El estudiante debe justificar sus decisiones.',
       'La tarea tiene contexto específico.',
       'Hay evidencias del proceso.',
       'El uso de IA se declara y se analiza.',
@@ -19,8 +19,8 @@ const trafficItems = [
   },
   {
     status: 'Revisar',
-    title: 'La IA puede afectar la evidencia',
-    intro: 'La actividad tiene valor pedagógico, pero algunas partes pueden ser resueltas fácilmente por IA.',
+    title: 'La IA puede afectar la evidencia de aprendizaje',
+    intro: 'La actividad tiene valor pedagógico, pero algunas partes pueden ser resueltas fácilmente por IA. Se necesita ajustar el diseño o pedir evidencias adicionales.',
     color: 'yellow',
     icon: 'solar:danger-circle-linear',
     points: [
@@ -35,7 +35,7 @@ const trafficItems = [
   {
     status: 'Sustituye',
     title: 'La IA puede resolver la tarea completa',
-    intro: 'La actividad puede ser realizada por IA sin que el estudiante demuestre comprensión, pensamiento o criterio propio.',
+    intro: 'La actividad puede ser realizada por IA sin que el estudiante demuestre comprensión, pensamiento, criterio o aprendizaje propio.',
     color: 'red',
     icon: 'solar:danger-triangle-linear',
     points: [
@@ -45,7 +45,7 @@ const trafficItems = [
       'No se pide proceso.',
       'No hay reflexión sobre el uso de IA.',
     ],
-    recommendation: 'No apliques la actividad así. Rediseña la evaluación.',
+    recommendation: 'No apliques la actividad así. Rediseña la situación y las evidencias, teniendo en cuenta qué tipos de pensamiento quieres movilizar en el estudiante.',
   },
 ];
 
@@ -53,7 +53,7 @@ export default function TrafficLightAI() {
   return (
     <>
       <Hero
-        eyebrow="Herramienta de decisión"
+        eyebrow="Semáforo IA"
         icon="solar:traffic-linear"
         title="Semáforo IA"
         subtitle="Evalúa el riesgo pedagógico de tu actividad frente al uso de IA."
@@ -79,7 +79,7 @@ export default function TrafficLightAI() {
             <p className="traffic-intro">{item.intro}</p>
 
             <div className="traffic-signals">
-              <strong>Señales</strong>
+              <strong>Señales:</strong>
 
               {item.points.map((point) => (
                 <p key={point}>
@@ -92,7 +92,7 @@ export default function TrafficLightAI() {
             </div>
 
             <div className="traffic-recommendation">
-              <strong>Recomendación</strong>
+              <strong>Recomendación:</strong>
               <p>{item.recommendation}</p>
             </div>
           </article>
