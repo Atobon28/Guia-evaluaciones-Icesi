@@ -26,6 +26,60 @@
   background: var(--green);
 }
 
+.why-one-page {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.why-text-card,
+.why-focus-card {
+  min-height: 0;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  overflow: hidden;
+}
+
+.why-text-card p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.55;
+}
+
+.why-focus-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  background: linear-gradient(135deg, var(--green-soft), var(--white));
+  border-color: rgba(76, 185, 121, 0.35);
+}
+
+.why-focus-card span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--green);
+  background: var(--white);
+}
+
+.why-focus-card h2 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
 .intro-moments-layout {
   flex: 1;
   min-height: 0;
@@ -238,7 +292,8 @@
 }
 
 @media (max-width: 1100px) {
-  .intro-moments-layout {
+  .intro-moments-layout,
+  .why-one-page {
     grid-template-columns: 1fr;
   }
 }
