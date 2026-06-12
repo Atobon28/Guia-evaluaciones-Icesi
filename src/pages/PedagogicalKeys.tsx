@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ButtonLink, Notice } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
@@ -48,7 +49,8 @@ const pedagogicalKeys = [
 ];
 
 export default function PedagogicalKeys() {
-  const [showIntro, setShowIntro] = useState(true);
+  const location = useLocation();
+  const showIntro = location.search !== '?view=conocer';
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = pedagogicalKeys[selectedIndex];
 
@@ -91,9 +93,7 @@ export default function PedagogicalKeys() {
         </section>
 
         <div className="page-actions only-next">
-          <button className="btn btn-primary" onClick={() => setShowIntro(false)}>
-            Ir a conocer las claves <span>→</span>
-          </button>
+          <ButtonLink to="/claves-pedagogicas?view=conocer">Ir a conocer las claves</ButtonLink>
         </div>
       </>
     );
