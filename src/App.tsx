@@ -20,6 +20,7 @@ export default function App() {
         <Route path="/por-que-redisenar" element={<GenericIntro />} />
         <Route path="/organizacion" element={<GenericIntro />} />
         <Route path="/principios" element={<Principles />} />
+        <Route path="/principios/conocer" element={<Principles />} />
         <Route path="/claves-pedagogicas" element={<PedagogicalKeys />} />
         <Route path="/ruta-redisenio" element={<RedesignRoute />} />
         <Route path="/ruta-redisenio/paso-1" element={<StepPage />} />
