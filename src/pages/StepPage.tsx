@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ButtonLink, Notice, RouteStepper } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
@@ -17,6 +18,12 @@ type StepContent = {
   before?: string;
   after?: string;
   list?: string[];
+};
+
+type StepMoment = {
+  label: string;
+  title: string;
+  kind: 'understand' | 'decide' | 'apply';
 };
 
 const steps: StepContent[] = [
@@ -131,9 +138,29 @@ function getStepFromPath(pathname: string) {
   return steps.find((step) => step.number === number) ?? steps[0];
 }
 
+function getMoments(step: StepContent): StepMoment[] {
+  if (step.number === 3) {
+    return [
+      { label: 'Comprender', title: 'Aprendizaje autónomo', kind: 'understand' },
+      { label: 'Decidir', title: 'Uso pedagógico de IA', kind: 'decide' },
+    ];
+  }
+
+  return [
+    { label: 'Comprender', title: 'Pregunta y sentido', kind: 'understand' },
+    { label: 'Diseñar', title: step.number === 6 ? 'Retroalimentación' : 'Decisión de diseño', kind: 'decide' },
+    { label: 'Aplicar', title: step.visualTitle, kind: 'apply' },
+  ];
+}
+
 export default function StepPage() {
   const location = useLocation();
   const step = getStepFromPath(location.pathname);
+  const [momentIndex, setMomentIndex] = useState(0);
+
+  useEffect(() => {
+    setMomentIndex(0);
+  }, [location.pathname]);
 
   const previousPath =
     step.number === 1 ? '/ruta-redisenio' : `/ruta-redisenio/paso-${step.number - 1}`;
@@ -142,14 +169,16 @@ export default function StepPage() {
     step.number === 6 ? '/herramientas' : `/ruta-redisenio/paso-${step.number + 1}`;
 
   const nextLabel = step.number === 6 ? 'Ir a herramientas' : 'Siguiente paso';
+  const moments = useMemo(() => getMoments(step), [step]);
+  const activeMoment = moments[momentIndex] ?? moments[0];
   const paragraphs = step.text.split('\n\n');
 
   return (
     <>
       <RouteStepper active={step.number} />
 
-      <section className="learning-step-screen">
-        <article className="step-focus-card">
+      <section className="learning-step-screen compact-moments">
+        <article className="step-focus-card moment-card">
           <div className="step-label-row">
             <span>Paso {step.number}</span>
             <small>{step.label}</small>
@@ -157,85 +186,95 @@ export default function StepPage() {
 
           <h1>{step.title}</h1>
 
-          <div className="step-question-box">
-            <span>Pregunta clave</span>
-            <h2>{step.question}</h2>
-          </div>
+          <nav className="step-moment-tabs" aria-label="Momentos del paso">
+            {moments.map((moment, index) => (
+              <button
+                key={moment.label}
+                className={index === momentIndex ? 'is-active' : ''}
+                onClick={() => setMomentIndex(index)}
+              >
+                <span>{index + 1}</span>
+                {moment.label}
+              </button>
+            ))}
+          </nav>
 
-          {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {activeMoment.kind === 'understand' && (
+            <div className="step-moment-panel">
+              <div className="step-question-box">
+                <span>Pregunta clave</span>
+                <h2>{step.question}</h2>
+              </div>
 
-          {step.action && (
-            <Notice type="success">
-              {step.action}
-            </Notice>
+              {(step.number === 3 ? [paragraphs[0]] : paragraphs).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           )}
 
-          {step.alert && (
-            <Notice type="danger">
-              {step.alert}
-            </Notice>
+          {activeMoment.kind === 'decide' && (
+            <div className="step-moment-panel">
+              <h2>{activeMoment.title}</h2>
+
+              {step.number === 3 && paragraphs[1] && <p>{paragraphs[1]}</p>}
+
+              {step.action && (
+                <Notice type="success">
+                  {step.action}
+                </Notice>
+              )}
+
+              {step.number === 4 && step.list && <StepCards items={step.list} />}
+              {step.number === 5 && step.list && <StepCards items={step.list} />}
+              {step.number === 6 && step.list && <StepCards items={step.list} />}
+
+              {activeMoment.kind === 'decide' && step.alert && step.number !== 1 && (
+                <Notice type="danger">
+                  {step.alert}
+                </Notice>
+              )}
+            </div>
+          )}
+
+          {activeMoment.kind === 'apply' && (
+            <div className="step-moment-panel">
+              <h2>{activeMoment.title}</h2>
+              <VisualContent step={step} />
+
+              {step.alert && step.number === 1 && (
+                <Notice type="danger">
+                  {step.alert}
+                </Notice>
+              )}
+            </div>
           )}
         </article>
 
-        <aside className="step-example-card">
+        <aside className="step-example-card moment-side-card">
           <div className="example-header">
             <span>
               <AppIcon name={step.icon} size={20} />
-              {step.visualTitle}
+              {activeMoment.label}
             </span>
-            <strong>{step.visualSubtitle}</strong>
+            <strong>{activeMoment.title}</strong>
           </div>
 
-          {step.visualType === 'compare' && (
-            <div className="example-comparison">
-              <div className="example-before">
-                <small>En lugar de pedir</small>
-                <p>{step.before}</p>
-              </div>
+          <p>
+            Estás en el momento {momentIndex + 1} de {moments.length} del paso {step.number}. Avanza dentro del paso para revisar toda la información sin saturar la pantalla.
+          </p>
 
-              <div className="example-arrow">
-                <AppIcon name="solar:arrow-down-linear" size={22} />
-              </div>
-
-              <div className="example-after">
-                <small>Pide</small>
-                <p>{step.after}</p>
-              </div>
-            </div>
-          )}
-
-          {step.visualType === 'list' && (
-            <ol className="step-visual-list">
-              {step.list?.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
-          )}
-
-          {step.visualType === 'cards' && (
-            <div className="step-mini-cards">
-              {step.list?.map((item) => (
-                <div key={item}>
-                  <AppIcon name="solar:checklist-minimalistic-linear" size={20} />
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {step.number === 4 && (
-            <div className="example-comparison">
-              <div className="example-before">
-                <small>En lugar de pedir</small>
-                <p>{step.before}</p>
-              </div>
-
-              <div className="example-after">
-                <small>Pide</small>
-                <p>{step.after}</p>
-              </div>
-            </div>
-          )}
+          <div className="moment-side-progress">
+            {moments.map((moment, index) => (
+              <button
+                key={moment.title}
+                className={index === momentIndex ? 'is-active' : ''}
+                onClick={() => setMomentIndex(index)}
+              >
+                <span>{index + 1}</span>
+                <p>{moment.title}</p>
+              </button>
+            ))}
+          </div>
         </aside>
       </section>
 
@@ -244,5 +283,56 @@ export default function StepPage() {
         <ButtonLink to={nextPath}>{nextLabel}</ButtonLink>
       </div>
     </>
+  );
+}
+
+function StepCards({ items }: { items: string[] }) {
+  return (
+    <div className="step-mini-cards compact">
+      {items.map((item) => (
+        <div key={item}>
+          <AppIcon name="solar:checklist-minimalistic-linear" size={20} />
+          <p>{item}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VisualContent({ step }: { step: StepContent }) {
+  if (step.visualType === 'compare') {
+    return (
+      <div className="example-comparison compact">
+        <div className="example-before">
+          <small>En lugar de pedir</small>
+          <p>{step.before}</p>
+        </div>
+
+        <div className="example-after">
+          <small>Pide</small>
+          <p>{step.after}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (step.visualType === 'list') {
+    return (
+      <ol className="step-visual-list compact">
+        {step.list?.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ol>
+    );
+  }
+
+  if (step.visualType === 'cards') {
+    return <StepCards items={step.list ?? []} />;
+  }
+
+  return (
+    <Notice type="info">
+      Define con claridad qué debe aprender el estudiante por sí mismo y qué apoyos resultan pertinentes para favorecer ese aprendizaje.
+    </Notice>
   );
 }
