@@ -1,192 +1,331 @@
 /* =========================================================
-   CLAVES PEDAGÓGICAS
+   CLAVES PEDAGÓGICAS — pantalla sin scroll, interactiva y limpia
 ========================================================= */
 
-.keys-interactive-layout {
+.pedagogical-intro-card {
   flex: 1;
   min-height: 0;
-  display: grid;
-  grid-template-columns: 420px minmax(0, 1fr);
-  gap: 18px;
-}
-
-.keys-tabs-panel {
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.key-tab-card {
   position: relative;
-  display: grid;
-  grid-template-columns: 48px 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 14px;
-  min-height: 72px;
-  padding: 14px 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--white);
-  color: var(--blue-dark);
-  text-align: left;
-  cursor: pointer;
-  transition: 0.2s ease;
-  overflow: hidden;
-}
-
-.key-tab-card::after {
-  content: '';
-  position: absolute;
-  right: -38px;
-  top: -38px;
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background: var(--blue-soft);
-}
-
-.key-tab-card span,
-.key-tab-card strong,
-.key-tab-card small {
-  position: relative;
-  z-index: 1;
-}
-
-.key-tab-card span {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--blue-soft);
-  color: var(--blue);
-  font-weight: 800;
-}
-
-.key-tab-card strong {
-  font-size: 14px;
-  line-height: 1.25;
-}
-
-.key-tab-card small {
-  color: var(--gray-1);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.key-tab-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(84, 84, 233, 0.45);
-  box-shadow: 0 16px 35px rgba(84, 84, 233, 0.12);
-}
-
-.key-tab-card.is-active {
-  background: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
-  box-shadow: 0 18px 40px rgba(84, 84, 233, 0.22);
-}
-
-.key-tab-card.is-active span {
-  background: var(--white);
-  color: var(--blue);
-}
-
-.key-tab-card.is-active small {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.key-tab-card.is-active::after {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.key-detail-card {
-  position: relative;
-  min-height: 0;
-  padding: 32px;
-  border-radius: 28px;
+  padding: 42px;
+  border-radius: var(--radius);
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
-.key-detail-card::after {
+.pedagogical-intro-card::after {
   content: '';
   position: absolute;
-  right: -120px;
+  right: -95px;
   bottom: -120px;
-  width: 310px;
-  height: 310px;
+  width: 330px;
+  height: 330px;
   border-radius: 50%;
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(84, 84, 233, 0.13) 0 10deg,
+    rgba(84, 84, 233, 0.16) 0 10deg,
+    transparent 10deg 22deg
+  );
+  opacity: 0.75;
+}
+
+.pedagogical-intro-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+}
+
+.pedagogical-intro-title {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.pedagogical-intro-title > span {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.pedagogical-intro-title h1 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+}
+
+.pedagogical-intro-title h2 {
+  max-width: 880px;
+  margin: 14px 0 0;
+  color: var(--blue);
+  font-size: clamp(24px, 2.7vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.pedagogical-intro-copy > p {
+  max-width: 970px;
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.55;
+}
+
+.pedagogical-screen {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 14px;
+}
+
+.pedagogical-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 26px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 94% 20%, rgba(84, 84, 233, 0.14), transparent 25%),
+    var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.pedagogical-header.compact {
+  padding: 18px 24px;
+}
+
+.pedagogical-header .eyebrow {
+  margin-bottom: 10px;
+}
+
+.pedagogical-header h1 {
+  margin-bottom: 6px;
+  font-size: clamp(32px, 3.8vw, 48px);
+  line-height: 0.95;
+}
+
+.pedagogical-header-icon {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: var(--blue);
+  color: var(--white);
+}
+
+.pedagogical-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pedagogical-tabs button {
+  min-height: 74px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+  color: var(--blue-dark);
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s ease;
+  overflow: hidden;
+}
+
+.pedagogical-tabs.only-numbers button {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.pedagogical-tabs button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(84, 84, 233, 0.45);
+  box-shadow: 0 12px 28px rgba(84, 84, 233, 0.12);
+}
+
+.pedagogical-tabs button.is-active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+.pedagogical-tabs span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 7px;
+  border-radius: 12px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.pedagogical-tabs.only-numbers span {
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.pedagogical-tabs button.is-active span {
+  background: var(--white);
+  color: var(--blue);
+}
+
+.pedagogical-stage {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 54px;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.pedagogical-stage-arrow {
+  align-self: center;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(7, 11, 52, 0.08);
+  transition: 0.2s ease;
+}
+
+.pedagogical-stage-arrow:hover {
+  transform: translateY(-2px);
+  background: var(--blue);
+  color: var(--white);
+}
+
+.pedagogical-feature-card {
+  position: relative;
+  min-height: 0;
+  padding: 30px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 92% 12%, rgba(84, 84, 233, 0.12), transparent 28%),
+    linear-gradient(180deg, var(--white), var(--blue-soft));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.pedagogical-feature-card::after {
+  content: '';
+  position: absolute;
+  right: -115px;
+  bottom: -125px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(84, 84, 233, 0.14) 0 10deg,
     transparent 10deg 22deg
   );
 }
 
-.key-detail-card > * {
+.pedagogical-feature-card > * {
   position: relative;
   z-index: 1;
 }
 
-.key-detail-top {
+.pedagogical-feature-top {
   display: grid;
   grid-template-columns: 76px 1fr;
   gap: 20px;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-.key-detail-top > span {
-  width: 68px;
-  height: 68px;
+.pedagogical-feature-top.clean {
+  margin-bottom: 26px;
+}
+
+.pedagogical-feature-top > span {
+  width: 70px;
+  height: 70px;
   display: grid;
   place-items: center;
-  border-radius: 22px;
-  background: var(--green);
+  border-radius: 24px;
+  background: var(--blue);
   color: var(--white);
-  font-size: 25px;
-  font-weight: 800;
 }
 
-.key-detail-top small {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--gray-1);
-  font-weight: 700;
-}
-
-.key-detail-top h2 {
+.pedagogical-feature-top h2 {
+  max-width: 900px;
   margin: 0;
   color: var(--blue-dark);
-  font-size: 32px;
-  line-height: 1.08;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.055em;
 }
 
-.key-detail-card > p {
-  max-width: 780px;
-  margin-bottom: 26px;
-  font-size: 17px;
-  line-height: 1.6;
+.pedagogical-description {
+  max-width: 920px;
+  margin-bottom: 22px;
+  color: var(--blue-dark);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-.key-detail-grid {
+.pedagogical-info-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 14px;
 }
 
-.key-detail-grid .notice {
-  margin: 0;
+.pedagogical-info-grid .notice {
   height: 100%;
+  margin: 0;
+}
+
+.pedagogical-info-grid.centered .notice {
+  align-items: center;
+  text-align: center;
+}
+
+.pedagogical-info-grid.centered .notice > span {
+  margin: 0 auto;
+}
+
+.pedagogical-info-grid.centered .notice p,
+.pedagogical-info-grid.centered .notice strong {
+  text-align: center;
 }
 
 @media (max-width: 1100px) {
-  .keys-interactive-layout,
-  .key-detail-grid {
+  .pedagogical-screen,
+  .pedagogical-header,
+  .pedagogical-stage,
+  .pedagogical-info-grid,
+  .pedagogical-intro-title {
     grid-template-columns: 1fr;
+  }
+
+  .pedagogical-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
