@@ -2,6 +2,84 @@
    PRINCIPIOS — pantalla sin scroll, interactiva y limpia
 ========================================================= */
 
+.principles-intro-card {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 42px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.principles-intro-card::after {
+  content: '';
+  position: absolute;
+  right: -95px;
+  bottom: -120px;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(84, 84, 233, 0.16) 0 10deg,
+    transparent 10deg 22deg
+  );
+  opacity: 0.75;
+}
+
+.principles-intro-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+}
+
+.principles-intro-title {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.principles-intro-title > span {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.principles-intro-title h1 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+}
+
+.principles-intro-title h2 {
+  max-width: 880px;
+  margin: 14px 0 0;
+  color: var(--blue);
+  font-size: clamp(24px, 2.7vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.principles-intro-copy > p {
+  max-width: 970px;
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.55;
+}
+
 .principles-screen {
   flex: 1;
   min-height: 0;
@@ -22,6 +100,10 @@
     var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+}
+
+.principles-header.compact {
+  padding: 18px 24px;
 }
 
 .principles-header .eyebrow {
@@ -252,7 +334,8 @@
   .principles-header,
   .principle-stage,
   .principle-info-grid,
-  .principles-helper-row {
+  .principles-helper-row,
+  .principles-intro-title {
     grid-template-columns: 1fr;
   }
 
