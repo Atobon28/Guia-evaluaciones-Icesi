@@ -58,7 +58,32 @@ export default function GenericIntro() {
     <>
       {isWelcomeStage && <WelcomeProgress currentPath={page.path} />}
 
-      {isWhyPage ? (
+      {isFirstPage ? (
+        <section className="welcome-intro-card">
+          <div className="welcome-intro-copy">
+            <span className="eyebrow">Bienvenida</span>
+
+            <div className="welcome-intro-title">
+              <span>
+                <AppIcon name="solar:cpu-bolt-linear" size={34} />
+              </span>
+
+              <div>
+                <h1>{page.title}</h1>
+                <h2>{page.subtitle}</h2>
+              </div>
+            </div>
+
+            <span className="green-line" />
+
+            <p>{page.body}</p>
+
+            {page.notice && (
+              <p className="hero-note">{page.notice}</p>
+            )}
+          </div>
+        </section>
+      ) : isWhyPage ? (
         <section className="why-page-card">
           <div className="why-page-copy">
             <span className="eyebrow">{page.title}</span>
@@ -90,16 +115,11 @@ export default function GenericIntro() {
         </section>
       ) : (
         <Hero
-          eyebrow={page.path === '/' ? 'Bienvenida' : page.title}
-          icon={page.path === '/' ? 'solar:cpu-bolt-linear' : 'solar:widget-5-linear'}
+          eyebrow={page.title}
+          icon="solar:widget-5-linear"
           title={page.title}
           subtitle={page.subtitle}
-          body={page.path === '/' ? page.body : undefined}
-        >
-          {page.path === '/' && page.notice && (
-            <p className="hero-note">{page.notice}</p>
-          )}
-        </Hero>
+        />
       )}
 
       {page.path === '/organizacion' && (
