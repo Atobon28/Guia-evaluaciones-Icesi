@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { ButtonLink, Notice } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
@@ -49,8 +48,7 @@ const pedagogicalKeys = [
 ];
 
 export default function PedagogicalKeys() {
-  const location = useLocation();
-  const isIntro = location.pathname === '/claves-pedagogicas';
+  const [showIntro, setShowIntro] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = pedagogicalKeys[selectedIndex];
 
@@ -66,7 +64,7 @@ export default function PedagogicalKeys() {
     );
   };
 
-  if (isIntro) {
+  if (showIntro) {
     return (
       <>
         <section className="pedagogical-intro-card">
@@ -93,7 +91,9 @@ export default function PedagogicalKeys() {
         </section>
 
         <div className="page-actions only-next">
-          <ButtonLink to="/claves-pedagogicas/conocer">Ir a conocer las claves</ButtonLink>
+          <button className="btn btn-primary" onClick={() => setShowIntro(false)}>
+            Ir a conocer las claves <span>→</span>
+          </button>
         </div>
       </>
     );
