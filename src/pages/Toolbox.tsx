@@ -67,6 +67,18 @@ const toolboxItems = [
 
 type ToolboxItem = (typeof toolboxItems)[number];
 
+function downloadText(title: string, text: string) {
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${title.toLowerCase().replaceAll(' ', '-')}.txt`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
 export default function Toolbox() {
   const location = useLocation();
   const showIntro = location.search !== '?view=explorar';
@@ -161,6 +173,9 @@ export default function Toolbox() {
 }
 
 function ToolVisual({ tool }: { tool: ToolboxItem }) {
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const checkedCount = checkedItems.length;
+
   if (tool.kind === 'traffic') {
     return (
       <div className="traffic-tool">
@@ -184,14 +199,25 @@ function ToolVisual({ tool }: { tool: ToolboxItem }) {
 
   if (tool.kind === 'scale') {
     return (
-      <div className="aias-scale">
-        {tool.items.map((item, index) => (
-          <div key={item.label}>
-            <span>{index + 1}</span>
-            <strong>{item.label}</strong>
-            <p>{item.text}</p>
+      <div className="aias-thermometer-wrap">
+        <div className="aias-thermometer" aria-hidden="true">
+          <div className="thermo-track">
+            {tool.items.map((item, index) => (
+              <span key={item.label} className={`thermo-dot dot-${index}`}>{index + 1}</span>
+            ))}
           </div>
-        ))}
+          <strong>Integración de IA</strong>
+        </div>
+
+        <div className="aias-thermo-levels">
+          {tool.items.map((item, index) => (
+            <div key={item.label}>
+              <span>Nivel {index + 1}</span>
+              <strong>{item.label.replace('Nivel ', '')}</strong>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -208,6 +234,13 @@ function ToolVisual({ tool }: { tool: ToolboxItem }) {
               <strong>{item.label}</strong>
               <p>{item.text}</p>
             </article>
+            <button
+              type="button"
+              className="template-download-btn"
+              onClick={() => downloadText(item.label, `${item.label}\n\n${item.text}\n\nCompleta esta plantilla con la información de tu actividad evaluativa.`)}
+            >
+              Descargar
+            </button>
           </div>
         ))}
       </div>
@@ -215,17 +248,38 @@ function ToolVisual({ tool }: { tool: ToolboxItem }) {
   }
 
   return (
-    <div className="checklist-preview">
-      {tool.items.map((item) => (
-        <label key={item.label}>
-          <input type="checkbox" aria-label={item.label} />
-          <span />
-          <p>
-            <strong>{item.label}</strong>
-            {item.text}
-          </p>
-        </label>
-      ))}
+    <div className="checklist-tool">
+      <div className="checklist-status">
+        <strong>{checkedCount} de {tool.items.length}</strong>
+        <span>criterios marcados</span>
+      </div>
+
+      <div className="checklist-preview functional">
+        {tool.items.map((item) => {
+          const checked = checkedItems.includes(item.label);
+
+          return (
+            <label key={item.label} className={checked ? 'is-checked' : ''}>
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={() => {
+                  setCheckedItems((current) =>
+                    checked
+                      ? current.filter((label) => label !== item.label)
+                      : [...current, item.label],
+                  );
+                }}
+              />
+              <span />
+              <p>
+                <strong>{item.label}</strong>
+                {item.text}
+              </p>
+            </label>
+          );
+        })}
+      </div>
     </div>
   );
 }
