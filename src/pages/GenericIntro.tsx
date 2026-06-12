@@ -31,14 +31,13 @@ function WelcomeProgress({ currentPath }: { currentPath: string }) {
   return (
     <div className="welcome-progress-line" aria-label="Progreso de bienvenida">
       {welcomeSteps.map((step, index) => (
-        <Link
+        <div
           key={step.path}
-          to={step.path}
           className={`${index === activeIndex ? 'is-active' : ''} ${index < activeIndex ? 'is-done' : ''}`}
         >
           <span>{index + 1}</span>
           <p>{step.label}</p>
-        </Link>
+        </div>
       ))}
     </div>
   );
