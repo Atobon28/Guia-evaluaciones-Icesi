@@ -3,6 +3,7 @@
 .welcome-progress-line {
   --dot-size: 32px;
   --line-y: 24px;
+  --progress: 0%;
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -15,6 +16,16 @@
   pointer-events: none;
 }
 
+.welcome-progress-line:has(> div:nth-child(2).is-active),
+.welcome-progress-line:has(> div:nth-child(2).is-done) {
+  --progress: 50%;
+}
+
+.welcome-progress-line:has(> div:nth-child(3).is-active),
+.welcome-progress-line:has(> div:nth-child(3).is-done) {
+  --progress: 100%;
+}
+
 .welcome-progress-line::before {
   content: '';
   position: absolute;
@@ -23,7 +34,13 @@
   top: var(--line-y);
   height: 2px;
   border-radius: 999px;
-  background: var(--line);
+  background: linear-gradient(
+    to right,
+    var(--green) 0%,
+    var(--green) var(--progress),
+    var(--line) var(--progress),
+    var(--line) 100%
+  );
 }
 
 .welcome-progress-line > div {
@@ -41,27 +58,6 @@
   color: var(--gray-1);
   background: transparent;
   overflow: visible;
-}
-
-.welcome-progress-line > div::before {
-  content: '';
-  position: absolute;
-  top: var(--line-y);
-  right: 50%;
-  width: 100%;
-  height: 2px;
-  border-radius: 999px;
-  background: transparent;
-  z-index: -1;
-}
-
-.welcome-progress-line > div.is-done::before,
-.welcome-progress-line > div.is-active::before {
-  background: var(--green);
-}
-
-.welcome-progress-line > div:first-child::before {
-  display: none;
 }
 
 .welcome-progress-line > div.is-active {
