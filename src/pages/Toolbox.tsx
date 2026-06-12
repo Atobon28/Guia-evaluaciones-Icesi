@@ -6,6 +6,7 @@ import AppIcon from '../components/AppIcon';
 const toolboxItems = [
   {
     id: '01',
+    kind: 'traffic',
     title: 'Semáforo IA',
     subtitle: 'Identifica si la IA potencia, exige revisión o sustituye el aprendizaje.',
     icon: 'solar:traffic-linear',
@@ -18,6 +19,7 @@ const toolboxItems = [
   },
   {
     id: '02',
+    kind: 'scale',
     title: 'Selector AIAS',
     subtitle: 'Define el nivel de integración de IA en tu evaluación.',
     icon: 'solar:settings-minimalistic-linear',
@@ -33,6 +35,7 @@ const toolboxItems = [
   },
   {
     id: '03',
+    kind: 'templates',
     title: 'Plantillas',
     subtitle: 'Formatos listos para acompañar el rediseño.',
     icon: 'solar:document-text-linear',
@@ -47,6 +50,7 @@ const toolboxItems = [
   },
   {
     id: '04',
+    kind: 'checklist',
     title: 'Checklist final',
     subtitle: 'Verifica si tu evaluación está lista.',
     icon: 'solar:checklist-minimalistic-linear',
@@ -60,6 +64,8 @@ const toolboxItems = [
     ],
   },
 ];
+
+type ToolboxItem = (typeof toolboxItems)[number];
 
 export default function Toolbox() {
   const location = useLocation();
@@ -128,7 +134,7 @@ export default function Toolbox() {
           ))}
         </nav>
 
-        <article className="toolbox-feature-card">
+        <article className={`toolbox-feature-card is-${selected.kind}`}>
           <div className="toolbox-feature-top">
             <span>
               <AppIcon name={selected.icon} size={32} />
@@ -142,14 +148,7 @@ export default function Toolbox() {
 
           {selected.intro && <p className="toolbox-feature-intro">{selected.intro}</p>}
 
-          <div className={`toolbox-info-grid ${selected.items.length > 4 ? 'dense' : ''}`}>
-            {selected.items.map((item) => (
-              <div key={item.label}>
-                <strong>{item.label}</strong>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </div>
+          <ToolVisual tool={selected} />
         </article>
       </section>
 
@@ -158,5 +157,75 @@ export default function Toolbox() {
         <ButtonLink to={selected.path}>Abrir {selected.title}</ButtonLink>
       </div>
     </>
+  );
+}
+
+function ToolVisual({ tool }: { tool: ToolboxItem }) {
+  if (tool.kind === 'traffic') {
+    return (
+      <div className="traffic-tool">
+        <div className="traffic-light" aria-hidden="true">
+          <span className="light green" />
+          <span className="light yellow" />
+          <span className="light red" />
+        </div>
+
+        <div className="traffic-info-list">
+          {tool.items.map((item, index) => (
+            <div key={item.label} className={`traffic-info-card tone-${index}`}>
+              <span>{item.label}</span>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (tool.kind === 'scale') {
+    return (
+      <div className="aias-scale">
+        {tool.items.map((item, index) => (
+          <div key={item.label}>
+            <span>{index + 1}</span>
+            <strong>{item.label}</strong>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (tool.kind === 'templates') {
+    return (
+      <div className="template-stack">
+        {tool.items.map((item) => (
+          <div key={item.label}>
+            <span>
+              <AppIcon name="solar:document-text-linear" size={20} />
+            </span>
+            <article>
+              <strong>{item.label}</strong>
+              <p>{item.text}</p>
+            </article>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="checklist-preview">
+      {tool.items.map((item) => (
+        <label key={item.label}>
+          <input type="checkbox" aria-label={item.label} />
+          <span />
+          <p>
+            <strong>{item.label}</strong>
+            {item.text}
+          </p>
+        </label>
+      ))}
+    </div>
   );
 }
