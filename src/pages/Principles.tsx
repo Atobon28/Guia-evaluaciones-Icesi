@@ -69,7 +69,7 @@ export default function Principles() {
           </span>
         </header>
 
-        <nav className="principles-tabs" aria-label="Principios institucionales">
+        <nav className="principles-tabs only-numbers" aria-label="Principios institucionales">
           {principles.map((principle, index) => (
             <button
               key={principle.id}
@@ -77,7 +77,6 @@ export default function Principles() {
               onClick={() => setSelectedIndex(index)}
             >
               <span>{principle.id}</span>
-              <small>{principle.title}</small>
             </button>
           ))}
         </nav>
@@ -92,20 +91,19 @@ export default function Principles() {
           </button>
 
           <article className="principle-feature-card">
-            <div className="principle-feature-top">
+            <div className="principle-feature-top clean">
               <span>
                 <AppIcon name="solar:book-bookmark-linear" size={32} />
               </span>
 
               <div>
-                <small>Principios institucionales</small>
-                <h2>{selected.id}. {selected.title}</h2>
+                <h2>{selected.title}</h2>
               </div>
             </div>
 
             <p className="principle-description">{selected.description}</p>
 
-            <div className="principle-info-grid">
+            <div className="principle-info-grid centered">
               <Notice type="info">
                 {selected.question}
               </Notice>
