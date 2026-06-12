@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ButtonLink, Notice, RouteStepper } from '../components/Ui';
+import { ButtonLink, RouteStepper } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
 type StepContent = {
@@ -181,7 +181,6 @@ export default function StepPage() {
         <article className="step-focus-card moment-card">
           <div className="step-label-row">
             <span>Paso {step.number}</span>
-            <small>{step.label}</small>
           </div>
 
           <h1>{step.title}</h1>
@@ -219,19 +218,21 @@ export default function StepPage() {
               {step.number === 3 && paragraphs[1] && <p>{paragraphs[1]}</p>}
 
               {step.action && (
-                <Notice type="success">
-                  {step.action}
-                </Notice>
+                <div className="step-neutral-note">
+                  <p>{step.action}</p>
+                </div>
               )}
 
               {step.number === 4 && step.list && <StepCards items={step.list} />}
               {step.number === 5 && step.list && <StepCards items={step.list} />}
               {step.number === 6 && step.list && <StepCards items={step.list} />}
 
-              {activeMoment.kind === 'decide' && step.alert && step.number !== 1 && (
-                <Notice type="danger">
-                  {step.alert}
-                </Notice>
+              {step.alert && step.number !== 1 && (
+                <div className="step-neutral-note soft">
+                  {step.alert.split('\n\n').map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
               )}
             </div>
           )}
@@ -242,26 +243,21 @@ export default function StepPage() {
               <VisualContent step={step} />
 
               {step.alert && step.number === 1 && (
-                <Notice type="danger">
-                  {step.alert}
-                </Notice>
+                <div className="step-neutral-note soft">
+                  <p>{step.alert}</p>
+                </div>
               )}
             </div>
           )}
         </article>
 
         <aside className="step-example-card moment-side-card">
-          <div className="example-header">
-            <span>
-              <AppIcon name={step.icon} size={20} />
-              {activeMoment.label}
-            </span>
-            <strong>{activeMoment.title}</strong>
+          <div className="example-header simple">
+            <span>Momento del paso</span>
+            <p>
+              Recorre este paso por partes para revisar toda la información sin saturar la pantalla.
+            </p>
           </div>
-
-          <p>
-            Estás en el momento {momentIndex + 1} de {moments.length} del paso {step.number}. Avanza dentro del paso para revisar toda la información sin saturar la pantalla.
-          </p>
 
           <div className="moment-side-progress">
             {moments.map((moment, index) => (
@@ -271,7 +267,7 @@ export default function StepPage() {
                 onClick={() => setMomentIndex(index)}
               >
                 <span>{index + 1}</span>
-                <p>{moment.title}</p>
+                <p>{moment.label}</p>
               </button>
             ))}
           </div>
@@ -291,7 +287,6 @@ function StepCards({ items }: { items: string[] }) {
     <div className="step-mini-cards compact">
       {items.map((item) => (
         <div key={item}>
-          <AppIcon name="solar:checklist-minimalistic-linear" size={20} />
           <p>{item}</p>
         </div>
       ))}
@@ -303,22 +298,22 @@ function VisualContent({ step }: { step: StepContent }) {
   if (step.visualType === 'compare') {
     return (
       <div className="example-comparison compact">
-        <div className="example-before">
+        <article className="example-before neutral-card">
           <small>En lugar de pedir</small>
           <p>{step.before}</p>
-        </div>
+        </article>
 
-        <div className="example-after">
+        <article className="example-after neutral-card">
           <small>Pide</small>
           <p>{step.after}</p>
-        </div>
+        </article>
       </div>
     );
   }
 
   if (step.visualType === 'list') {
     return (
-      <ol className="step-visual-list compact">
+      <ol className="step-visual-list compact neutral-list">
         {step.list?.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -331,8 +326,10 @@ function VisualContent({ step }: { step: StepContent }) {
   }
 
   return (
-    <Notice type="info">
-      Define con claridad qué debe aprender el estudiante por sí mismo y qué apoyos resultan pertinentes para favorecer ese aprendizaje.
-    </Notice>
+    <div className="step-neutral-note">
+      <p>
+        Define con claridad qué debe aprender el estudiante por sí mismo y qué apoyos resultan pertinentes para favorecer ese aprendizaje.
+      </p>
+    </div>
   );
 }
