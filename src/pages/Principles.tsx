@@ -27,7 +27,7 @@ export default function Principles() {
       <>
         <section className="principles-intro-card">
           <div className="principles-intro-copy">
-            <span className="eyebrow">4. Principios institucionales</span>
+            <span className="eyebrow">Principios institucionales</span>
 
             <div className="principles-intro-title">
               <span>
