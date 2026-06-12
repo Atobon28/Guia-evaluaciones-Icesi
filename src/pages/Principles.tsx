@@ -61,7 +61,7 @@ export default function Principles() {
         <header className="principles-header compact">
           <div>
             <span className="eyebrow">Principios institucionales</span>
-            <h1>Conoce los siete principios</h1>
+            <h1>Principios institucionales</h1>
           </div>
 
           <span className="principles-header-icon">
@@ -98,8 +98,8 @@ export default function Principles() {
               </span>
 
               <div>
-                <small>Principio {selected.id} de 07</small>
-                <h2>{selected.title}</h2>
+                <small>Principios institucionales</small>
+                <h2>{selected.id}. {selected.title}</h2>
               </div>
             </div>
 
