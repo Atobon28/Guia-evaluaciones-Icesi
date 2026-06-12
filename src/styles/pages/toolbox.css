@@ -16,13 +16,10 @@
   overflow: hidden;
 }
 
-.toolbox-intro-card::after {
+.toolbox-intro-card::after,
+.toolbox-feature-card::after {
   content: '';
   position: absolute;
-  right: -95px;
-  bottom: -120px;
-  width: 330px;
-  height: 330px;
   border-radius: 50%;
   background: repeating-conic-gradient(
     from 0deg,
@@ -30,6 +27,13 @@
     transparent 10deg 22deg
   );
   opacity: 0.75;
+}
+
+.toolbox-intro-card::after {
+  right: -95px;
+  bottom: -120px;
+  width: 330px;
+  height: 330px;
 }
 
 .toolbox-intro-copy {
@@ -196,18 +200,10 @@
 }
 
 .toolbox-feature-card::after {
-  content: '';
-  position: absolute;
   right: -115px;
   bottom: -125px;
   width: 320px;
   height: 320px;
-  border-radius: 50%;
-  background: repeating-conic-gradient(
-    from 0deg,
-    rgba(84, 84, 233, 0.14) 0 10deg,
-    transparent 10deg 22deg
-  );
 }
 
 .toolbox-feature-card > * {
@@ -251,9 +247,7 @@
   line-height: 1.45;
 }
 
-.toolbox-feature-intro {
-  margin-bottom: 14px;
-}
+.toolbox-feature-intro { margin-bottom: 14px; }
 
 .traffic-tool {
   display: grid;
@@ -284,10 +278,7 @@
 .traffic-light .yellow { background: #f2c15f; }
 .traffic-light .red { background: #ef6b6b; }
 
-.traffic-info-list {
-  display: grid;
-  gap: 12px;
-}
+.traffic-info-list { display: grid; gap: 12px; }
 
 .traffic-info-card {
   display: grid;
@@ -306,8 +297,6 @@
   min-height: 40px;
   border-radius: 999px;
   font-weight: 900;
-  color: var(--blue-dark);
-  background: #f4f6fb;
 }
 
 .traffic-info-card.tone-0 span { background: #e7f7ed; color: #2f8a4b; }
@@ -315,7 +304,7 @@
 .traffic-info-card.tone-2 span { background: #ffe7e7; color: #ac3434; }
 
 .traffic-info-card p,
-.aias-scale p,
+.aias-thermo-levels p,
 .template-stack p,
 .checklist-preview p {
   margin: 0;
@@ -324,15 +313,64 @@
   line-height: 1.35;
 }
 
-.aias-scale {
+.aias-thermometer-wrap {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 20px;
   align-items: stretch;
 }
 
-.aias-scale div {
+.aias-thermometer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.thermo-track {
   position: relative;
+  width: 34px;
+  height: 230px;
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
+  padding: 10px 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #5454e9 0%, #7778ee 35%, #9aa2f5 68%, #dfe4ff 100%);
+  box-shadow: inset 0 -10px 18px rgba(7, 11, 52, 0.16);
+}
+
+.thermo-dot {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow: 0 4px 10px rgba(7, 11, 52, 0.16);
+}
+
+.aias-thermometer strong {
+  color: var(--blue);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.aias-thermo-levels {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.aias-thermo-levels div {
   display: grid;
   align-content: start;
   gap: 8px;
@@ -343,31 +381,8 @@
   border: 1px solid var(--line);
 }
 
-.aias-scale div::before {
-  content: '';
-  position: absolute;
-  left: 38px;
-  right: -10px;
-  top: 35px;
-  height: 2px;
-  background: var(--line);
-  z-index: -1;
-}
-
-.aias-scale div:last-child::before { display: none; }
-
-.aias-scale span {
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--blue);
-  color: var(--white);
-  font-weight: 900;
-}
-
-.aias-scale strong,
+.aias-thermo-levels span,
+.aias-thermo-levels strong,
 .template-stack strong,
 .checklist-preview strong {
   display: block;
@@ -386,9 +401,9 @@
 .template-stack > div {
   position: relative;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 12px;
-  min-height: 170px;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  min-height: 190px;
   padding: 15px;
   border-radius: 18px 18px 28px 18px;
   background: var(--white);
@@ -417,10 +432,44 @@
   color: var(--blue);
 }
 
-.template-stack article {
-  display: grid;
-  gap: 7px;
+.template-stack article { display: grid; gap: 7px; }
+
+.template-download-btn {
+  position: relative;
+  z-index: 1;
+  justify-self: start;
+  min-height: 34px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
 }
+
+.template-download-btn:hover { transform: translateY(-1px); }
+
+.checklist-tool {
+  display: grid;
+  gap: 12px;
+}
+
+.checklist-status {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--blue-dark);
+}
+
+.checklist-status strong { color: var(--blue); }
+.checklist-status span { font-size: 13px; font-weight: 800; }
 
 .checklist-preview {
   display: grid;
@@ -439,6 +488,13 @@
   background: var(--white);
   border: 1px solid var(--line);
   cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.checklist-preview label.is-checked {
+  background: #f4f7ff;
+  border-color: rgba(84, 84, 233, 0.35);
+  box-shadow: 0 12px 28px rgba(84, 84, 233, 0.1);
 }
 
 .checklist-preview input {
@@ -461,13 +517,19 @@
   content: '✓';
   color: var(--blue);
   font-weight: 900;
-  opacity: 0.28;
+  opacity: 0;
 }
 
-.checklist-preview p {
-  display: grid;
-  gap: 7px;
+.checklist-preview label.is-checked > span {
+  background: var(--blue);
 }
+
+.checklist-preview label.is-checked > span::after {
+  color: var(--white);
+  opacity: 1;
+}
+
+.checklist-preview p { display: grid; gap: 7px; }
 
 @media (max-width: 1100px) {
   .toolbox-intro-title,
@@ -475,7 +537,8 @@
   .toolbox-feature-top,
   .toolbox-tabs,
   .traffic-tool,
-  .aias-scale,
+  .aias-thermometer-wrap,
+  .aias-thermo-levels,
   .template-stack,
   .checklist-preview {
     grid-template-columns: 1fr;
