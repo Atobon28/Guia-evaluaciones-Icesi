@@ -6,7 +6,7 @@
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
 }
 
@@ -82,6 +82,10 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 16px;
+}
+
+.step-moment-tabs:has(button:nth-child(2):last-child) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .step-moment-tabs button {
@@ -174,119 +178,6 @@
   line-height: 1.15;
 }
 
-.step-example-card {
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 22px;
-  background: linear-gradient(180deg, var(--white), var(--blue-soft));
-}
-
-.example-header {
-  margin-bottom: 16px;
-}
-
-.example-header span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  padding: 8px 13px;
-  border-radius: 999px;
-  background: var(--blue);
-  color: var(--white);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.example-header strong {
-  display: block;
-  color: var(--blue);
-  font-size: 15px;
-  line-height: 1.25;
-  font-weight: 800;
-}
-
-.example-header.simple {
-  margin-bottom: 16px;
-}
-
-.example-header.simple span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: var(--blue-soft);
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.example-header.simple p {
-  margin: 0;
-  color: var(--blue-dark);
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.moment-side-progress {
-  display: grid;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.moment-side-progress button {
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  align-items: center;
-  gap: 12px;
-  min-height: 62px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--white);
-  color: var(--blue-dark);
-  text-align: left;
-  cursor: pointer;
-  transition: 0.18s ease;
-}
-
-.moment-side-progress button:hover {
-  transform: translateY(-2px);
-  border-color: rgba(84, 84, 233, 0.45);
-}
-
-.moment-side-progress button.is-active {
-  color: var(--white);
-  background: var(--blue);
-  border-color: var(--blue);
-}
-
-.moment-side-progress span {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: var(--blue-soft);
-  color: var(--blue);
-  font-weight: 900;
-}
-
-.moment-side-progress button.is-active span {
-  background: var(--white);
-  color: var(--blue);
-}
-
-.moment-side-progress p {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
 .example-comparison {
   display: grid;
   gap: 12px;
@@ -305,18 +196,14 @@
 }
 
 .example-before small,
-.example-after small {
+.example-after small,
+.neutral-card small {
   display: inline-flex;
   margin-bottom: 10px;
   padding: 6px 10px;
   border-radius: 999px;
   font-weight: 800;
   font-size: 12px;
-}
-
-.example-before small,
-.example-after small,
-.neutral-card small {
   background: var(--blue-soft);
   color: var(--blue);
 }
@@ -410,28 +297,6 @@
 
 .step-mini-cards div p {
   margin: 0;
-}
-
-.mini-progress-card {
-  margin-top: 14px;
-  padding: 16px;
-  border-radius: 18px;
-  background: var(--white);
-  border: 1px solid var(--line);
-}
-
-.mini-progress-card span {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--blue);
-  font-weight: 800;
-  font-size: 13px;
-}
-
-.mini-progress-card p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.45;
 }
 
 .step-bottom-checklist {
