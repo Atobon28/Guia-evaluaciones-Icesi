@@ -1,67 +1,52 @@
-import { Link } from 'react-router-dom';
-import { ButtonLink, Hero } from '../components/Ui';
-import { routeSteps } from '../data/content';
+import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
-const stepIcons = [
-  'solar:target-linear',
-  'solar:brain-linear',
-  'solar:cpu-bolt-linear',
-  'solar:map-point-wave-linear',
-  'solar:document-add-linear',
-  'solar:chat-round-check-linear',
+const routeFlow = [
+  'Definir aprendizaje',
+  'Reconstruir ruta cognitiva',
+  'Decidir uso de IA',
+  'Diseñar situación de evaluación',
+  'Evaluar proceso',
+  'Retroalimentar',
 ];
 
 export default function RedesignRoute() {
   return (
     <>
-      <Hero
-        eyebrow="Ruta de rediseño"
-        icon="solar:route-linear"
-        title="Ruta de rediseño"
-        subtitle="Seis pasos para transformar una evaluación en tiempos de IA."
-        body="Esta ruta ayuda a pasar de la reflexión pedagógica a decisiones concretas de diseño. El objetivo es diseñar mejores evaluaciones: más claras, más auténticas, más formativas y más centradas en el proceso de aprendizaje."
-      />
+      <section className="route-intro-card">
+        <div className="route-intro-copy">
+          <span className="eyebrow">Ruta de rediseño</span>
 
-      <section className="route-map-layout">
-        <div className="route-map">
-          {routeSteps.map((step, index) => (
-            <Link
-              key={step.id}
-              to={step.path}
-              className="route-map-step"
-            >
-              <span>
-                <AppIcon name={stepIcons[index]} size={26} />
-              </span>
+          <div className="route-intro-title">
+            <span>
+              <AppIcon name="solar:route-linear" size={34} />
+            </span>
 
-              <div>
-                <small>Paso {step.id}</small>
-                <strong>{step.label}</strong>
-              </div>
+            <div>
+              <h1>Ruta de rediseño</h1>
+              <h2>Seis pasos para transformar una evaluación en tiempos de IA.</h2>
+            </div>
+          </div>
 
-              <b>
-                <AppIcon name="solar:arrow-right-linear" size={24} />
-              </b>
-            </Link>
-          ))}
-        </div>
-
-        <aside className="route-summary-panel">
-          <span className="route-summary-icon">
-            <AppIcon name="solar:map-arrow-right-linear" size={34} />
-          </span>
-
-          <h2>Ruta de rediseño</h2>
+          <span className="green-line" />
 
           <p>
-            Definir aprendizaje → Reconstruir ruta cognitiva → Decidir uso de IA → Diseñar situación de evaluación → Evaluar proceso → Retroalimentar
+            Esta ruta ayuda a pasar de la reflexión pedagógica a decisiones concretas de diseño. El objetivo es diseñar mejores evaluaciones: más claras, más auténticas, más formativas y más centradas en el proceso de aprendizaje.
           </p>
-        </aside>
+
+          <div className="route-flow-strip" aria-label="Ruta de rediseño">
+            {routeFlow.map((item, index) => (
+              <div key={item}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <div className="page-actions">
-        <ButtonLink to="/claves-pedagogicas" variant="ghost">Anterior</ButtonLink>
+        <ButtonLink to="/claves-pedagogicas?view=conocer" variant="ghost">Anterior</ButtonLink>
         <ButtonLink to="/ruta-redisenio/paso-1">Empezar paso 1</ButtonLink>
       </div>
     </>
