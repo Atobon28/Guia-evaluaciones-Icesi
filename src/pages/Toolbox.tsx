@@ -3,32 +3,69 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
+const trafficLevels = [
+  {
+    status: 'Potencia',
+    title: 'La IA apoya el aprendizaje',
+    intro: 'La actividad sigue exigiendo pensamiento propio, toma de decisiones, análisis, argumentación o reflexión. La IA puede ayudar, pero no resuelve lo esencial.',
+    color: 'green',
+    icon: 'solar:check-circle-linear',
+    points: [
+      'El estudiante debe justificar sus decisiones.',
+      'La tarea tiene contexto específico.',
+      'Hay evidencias del proceso.',
+      'El uso de IA se declara y se analiza.',
+      'La respuesta requiere criterio propio.',
+    ],
+    recommendation: 'Puedes permitir IA con orientaciones claras.',
+  },
+  {
+    status: 'Revisar',
+    title: 'La IA puede afectar la evidencia de aprendizaje',
+    intro: 'La actividad tiene valor pedagógico, pero algunas partes pueden ser resueltas fácilmente por IA. Se necesita ajustar el diseño o pedir evidencias adicionales.',
+    color: 'yellow',
+    icon: 'solar:danger-circle-linear',
+    points: [
+      'La tarea es parcialmente genérica.',
+      'El producto final pesa demasiado.',
+      'No hay suficientes evidencias del proceso.',
+      'El papel de la IA no está claro.',
+      'La retroalimentación aparece solo al final.',
+    ],
+    recommendation: 'Rediseña la actividad antes de aplicarla.',
+  },
+  {
+    status: 'Sustituye',
+    title: 'La IA puede resolver la tarea completa',
+    intro: 'La actividad puede ser realizada por IA sin que el estudiante demuestre comprensión, pensamiento, criterio o aprendizaje propio.',
+    color: 'red',
+    icon: 'solar:danger-triangle-linear',
+    points: [
+      'La tarea pide solo resumir, definir o describir.',
+      'No hay contexto específico.',
+      'No se exige argumentación propia.',
+      'No se pide proceso.',
+      'No hay reflexión sobre el uso de IA.',
+    ],
+    recommendation: 'No apliques la actividad así. Rediseña la situación y las evidencias, teniendo en cuenta qué tipos de pensamiento quieres movilizar en el estudiante.',
+  },
+];
+
 const toolboxSections = [
   {
     id: '01',
+    tabLabel: 'Semáforo IA',
     title: 'Semáforo IA',
     subtitle: 'Evalúa el riesgo pedagógico de una actividad frente al uso de IA.',
     icon: 'solar:traffic-linear',
     tone: 'traffic',
     question: '¿La IA potencia, exige revisión o sustituye el aprendizaje?',
-    action: 'Ubica tu actividad en una de estas tres zonas antes de aplicarla.',
-    items: [
-      {
-        label: 'Potencia',
-        text: 'La IA apoya el proceso, pero la tarea exige criterio propio, contexto, justificación y evidencias del proceso.',
-      },
-      {
-        label: 'Revisar',
-        text: 'La IA puede resolver partes de la actividad. Conviene ajustar límites, proceso, retroalimentación o evidencias.',
-      },
-      {
-        label: 'Sustituye',
-        text: 'La IA puede resolver la tarea completa. La evaluación debe rediseñarse antes de aplicarla.',
-      },
-    ],
+    action: 'Haz clic en cada luz del semáforo para revisar la información completa de cada nivel.',
+    items: trafficLevels.map((level) => ({ label: level.status, text: level.intro })),
   },
   {
     id: '02',
+    tabLabel: 'Selector AIAS',
     title: 'Selector AIAS',
     subtitle: 'Define con claridad qué nivel de uso de IA está permitido.',
     icon: 'solar:settings-minimalistic-linear',
@@ -45,12 +82,13 @@ const toolboxSections = [
   },
   {
     id: '03',
-    title: 'Plantillas',
-    subtitle: 'Formatos para acompañar el rediseño de la evaluación.',
-    icon: 'solar:document-text-linear',
+    tabLabel: 'Enlaces de interés',
+    title: 'Enlaces de interés',
+    subtitle: 'Recursos de apoyo para profundizar y acompañar el rediseño.',
+    icon: 'solar:link-round-angle-linear',
     tone: 'templates',
-    question: '¿Qué necesitas documentar para rediseñar la actividad?',
-    action: 'Elige la plantilla que corresponda al momento de diseño en el que estás.',
+    question: '¿Qué recurso puede ayudarte a tomar una mejor decisión pedagógica?',
+    action: 'Usa estos enlaces como apoyo complementario durante el proceso de rediseño.',
     items: [
       { label: 'Diagnóstico', text: 'Revisa qué evidencia realmente tu evaluación actual.' },
       { label: 'Ruta cognitiva', text: 'Identifica qué debe pensar el estudiante.' },
@@ -62,6 +100,7 @@ const toolboxSections = [
   },
   {
     id: '04',
+    tabLabel: 'Checklist final',
     title: 'Checklist final',
     subtitle: 'Una revisión rápida antes de publicar la actividad.',
     icon: 'solar:checklist-minimalistic-linear',
@@ -82,7 +121,9 @@ export default function Toolbox() {
   const location = useLocation();
   const showIntro = location.search !== '?view=explorar';
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedTrafficIndex, setSelectedTrafficIndex] = useState(0);
   const selected = toolboxSections[selectedIndex];
+  const selectedTraffic = trafficLevels[selectedTrafficIndex];
 
   const goToPrevious = () => {
     setSelectedIndex((current) => (current === 0 ? toolboxSections.length - 1 : current - 1));
@@ -140,16 +181,15 @@ export default function Toolbox() {
           </span>
         </header>
 
-        <nav className="toolbox-step-tabs" aria-label="Herramientas">
+        <nav className="toolbox-step-tabs named" aria-label="Herramientas">
           {toolboxSections.map((section, index) => (
             <button
               key={section.id}
               type="button"
               className={selectedIndex === index ? 'is-active' : ''}
               onClick={() => setSelectedIndex(index)}
-              aria-label={section.title}
             >
-              <span>{section.id}</span>
+              <span>{section.tabLabel}</span>
             </button>
           ))}
         </nav>
@@ -171,32 +211,77 @@ export default function Toolbox() {
               </div>
             </div>
 
-            <p className="toolbox-detail-intro">{selected.question}</p>
-
-            <div className={`toolbox-detail-list count-${selected.items.length}`}>
-              {selected.items.map((item) => (
-                <div key={item.label}>
-                  <strong>{item.label}</strong>
-                  <p>{item.text}</p>
+            {selected.tone === 'traffic' ? (
+              <div className="toolbox-traffic-layout">
+                <div className="toolbox-traffic-light" aria-label="Semáforo IA">
+                  {trafficLevels.map((level, index) => (
+                    <button
+                      key={level.status}
+                      type="button"
+                      className={`traffic-bulb ${level.color} ${selectedTrafficIndex === index ? 'is-active' : ''}`}
+                      onClick={() => setSelectedTrafficIndex(index)}
+                    >
+                      <span />
+                      <strong>{level.status}</strong>
+                    </button>
+                  ))}
                 </div>
-              ))}
-            </div>
 
-            <div className="toolbox-action-row">
-              <div>
-                <span>
-                  <AppIcon name="solar:info-circle-linear" size={24} />
-                </span>
-                <p>{selected.question}</p>
-              </div>
+                <div className={`traffic-full-info is-${selectedTraffic.color}`}>
+                  <div className="traffic-full-header">
+                    <small>{selectedTraffic.status}</small>
+                    <h3>{selectedTraffic.title}</h3>
+                    <p>{selectedTraffic.intro}</p>
+                  </div>
 
-              <div className="is-green">
-                <span>
-                  <AppIcon name="solar:check-circle-linear" size={24} />
-                </span>
-                <p>{selected.action}</p>
+                  <div className="traffic-signals-full">
+                    <strong>Señales:</strong>
+                    {selectedTraffic.points.map((point) => (
+                      <p key={point}>
+                        <span>
+                          <AppIcon name={selectedTraffic.icon} size={14} />
+                        </span>
+                        {point}
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className="traffic-recommendation-full">
+                    <strong>Recomendación:</strong>
+                    <p>{selectedTraffic.recommendation}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <>
+                <p className="toolbox-detail-intro">{selected.question}</p>
+
+                <div className={`toolbox-detail-list count-${selected.items.length}`}>
+                  {selected.items.map((item) => (
+                    <div key={item.label}>
+                      <strong>{item.label}</strong>
+                      <p>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="toolbox-action-row">
+                  <div>
+                    <span>
+                      <AppIcon name="solar:info-circle-linear" size={24} />
+                    </span>
+                    <p>{selected.question}</p>
+                  </div>
+
+                  <div className="is-green">
+                    <span>
+                      <AppIcon name="solar:check-circle-linear" size={24} />
+                    </span>
+                    <p>{selected.action}</p>
+                  </div>
+                </div>
+              </>
+            )}
           </article>
 
           <button type="button" className="toolbox-arrow right" onClick={goToNext} aria-label="Siguiente herramienta">
