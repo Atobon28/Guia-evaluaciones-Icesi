@@ -1,89 +1,77 @@
-import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 
-const toolboxItems = [
+const toolboxSections = [
   {
     id: '01',
-    kind: 'traffic',
     title: 'Semáforo IA',
-    subtitle: 'Identifica si la IA potencia, exige revisión o sustituye el aprendizaje.',
+    subtitle: 'Evalúa el riesgo pedagógico de una actividad frente al uso de IA.',
     icon: 'solar:traffic-linear',
-    path: '/herramientas/semaforo-ia',
+    tone: 'traffic',
     items: [
-      { label: 'Potencia', text: 'La IA apoya el proceso, amplía posibilidades, ayuda a explorar ideas o mejora la calidad del trabajo sin reemplazar el pensamiento del estudiante.' },
-      { label: 'Revisar', text: 'La IA puede ser útil, pero se necesita ajustar la actividad, aclarar límites o pedir evidencias del proceso.' },
-      { label: 'Sustituye', text: 'La IA puede resolver la tarea completa sin que el estudiante demuestre aprendizaje, pensamiento o criterio propio.' },
+      {
+        label: 'Potencia',
+        text: 'La IA apoya el proceso, pero la tarea exige criterio propio, contexto, justificación y evidencias del proceso.',
+      },
+      {
+        label: 'Revisar',
+        text: 'La IA puede resolver partes de la actividad. Conviene ajustar límites, proceso, retroalimentación o evidencias.',
+      },
+      {
+        label: 'Sustituye',
+        text: 'La IA puede resolver la tarea completa. La evaluación debe rediseñarse antes de aplicarla.',
+      },
     ],
   },
   {
     id: '02',
-    kind: 'scale',
     title: 'Selector AIAS',
-    subtitle: 'Define el nivel de integración de IA en tu evaluación.',
+    subtitle: 'Define con claridad qué nivel de uso de IA está permitido.',
     icon: 'solar:settings-minimalistic-linear',
-    path: '/herramientas/selector-aias',
-    intro: 'Usa esta herramienta para decidir si la IA estará prohibida, limitada, permitida como apoyo, integrada al proceso o usada de forma amplia con reflexión crítica.',
+    tone: 'aias',
     items: [
       { label: 'Nivel 1', text: 'Sin uso de IA.' },
-      { label: 'Nivel 2', text: 'Planificación e ideación asistida por IAG.' },
-      { label: 'Nivel 3', text: 'Colaboración con IAG.' },
-      { label: 'Nivel 4', text: 'Uso pleno y estratégico con IAG.' },
-      { label: 'Nivel 5', text: 'Exploración e innovación con IAG.' },
+      { label: 'Nivel 2', text: 'Ideación o planificación asistida.' },
+      { label: 'Nivel 3', text: 'Colaboración con IA y revisión crítica.' },
+      { label: 'Nivel 4', text: 'Uso amplio, estratégico y declarado.' },
+      { label: 'Nivel 5', text: 'Exploración e innovación con IA.' },
     ],
   },
   {
     id: '03',
-    kind: 'templates',
     title: 'Plantillas',
-    subtitle: 'Formatos listos para acompañar el rediseño.',
+    subtitle: 'Formatos para acompañar el rediseño de la evaluación.',
     icon: 'solar:document-text-linear',
-    path: '/herramientas/plantillas',
+    tone: 'templates',
     items: [
-      { label: 'Diagnóstico de evaluación actual', text: 'Revisa si tu evaluación actual permite evidenciar aprendizaje, pensamiento, proceso y uso adecuado de IA.' },
-      { label: 'Ruta cognitiva', text: 'Identifica los procesos de pensamiento que el estudiante debe recorrer para lograr la tarea.' },
-      { label: 'Rediseño de tarea', text: 'Transforma una actividad tradicional en una situación evaluativa con contexto, rol, propósito y evidencias del proceso.' },
-      { label: 'Rúbrica', text: 'Define criterios claros para valorar el aprendizaje, el proceso, la argumentación, el uso de IA y el desempeño final.' },
-      { label: 'Retroalimentación', text: 'Planea momentos, devoluciones específicas y usos de la retroalimentación durante la actividad.' },
+      { label: 'Diagnóstico', text: 'Revisa qué evidencia realmente tu evaluación actual.' },
+      { label: 'Ruta cognitiva', text: 'Identifica qué debe pensar el estudiante.' },
+      { label: 'Rediseño', text: 'Convierte la tarea en una situación con contexto, rol y propósito.' },
+      { label: 'Rúbrica', text: 'Define criterios de proceso, producto, argumentación y uso de IA.' },
+      { label: 'Retroalimentación', text: 'Planea momentos de mejora antes de la entrega final.' },
+      { label: 'Checklist', text: 'Verifica si la evaluación está lista para aplicarse.' },
     ],
   },
   {
     id: '04',
-    kind: 'checklist',
     title: 'Checklist final',
-    subtitle: 'Verifica si tu evaluación está lista.',
+    subtitle: 'Una revisión rápida antes de publicar la actividad.',
     icon: 'solar:checklist-minimalistic-linear',
-    path: '/herramientas/checklist-final',
+    tone: 'checklist',
     items: [
-      { label: 'Aprendizaje', text: 'El aprendizaje esperado está definido y la tarea exige pensamiento, no solo reproducción.' },
-      { label: 'Diseño', text: 'La evaluación tiene contexto, rol y propósito.' },
-      { label: 'IA', text: 'Está definido el papel de la IA y se distinguen procesos autónomos y asistidos.' },
-      { label: 'Proceso', text: 'La actividad permite ver el proceso del estudiante e incluye evidencias como borradores, bitácoras o justificaciones.' },
-      { label: 'Retroalimentación', text: 'La retroalimentación ocurre antes de la entrega final y los criterios son claros.' },
+      { label: 'Aprendizaje', text: 'El objetivo está claro y exige pensamiento.' },
+      { label: 'Diseño', text: 'La tarea tiene contexto, rol y propósito.' },
+      { label: 'IA', text: 'El uso permitido está definido y se declara.' },
+      { label: 'Proceso', text: 'Hay borradores, bitácoras, sustentación o justificación.' },
+      { label: 'Retroalimentación', text: 'Existe mejora antes del producto final.' },
     ],
   },
 ];
 
-type ToolboxItem = (typeof toolboxItems)[number];
-
-function downloadText(title: string, text: string) {
-  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `${title.toLowerCase().replaceAll(' ', '-')}.txt`;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
 export default function Toolbox() {
   const location = useLocation();
   const showIntro = location.search !== '?view=explorar';
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = toolboxItems[selectedIndex];
 
   if (showIntro) {
     return (
@@ -121,165 +109,51 @@ export default function Toolbox() {
 
   return (
     <>
-      <section className="toolbox-screen">
+      <section className="toolbox-screen toolbox-overview-screen">
         <header className="toolbox-header compact">
           <div>
             <span className="eyebrow">Caja de herramientas</span>
             <h1>Herramientas para tomar decisiones</h1>
+            <p>Todo queda visible en una sola pantalla para consultar, comparar y aplicar sin abrir páginas adicionales.</p>
           </div>
 
           <span className="toolbox-header-icon">
-            <AppIcon name="solar:case-round-linear" size={34} />
+            <AppIcon name="solar:case-round-linear" size={32} />
           </span>
         </header>
 
-        <nav className="toolbox-tabs" aria-label="Herramientas">
-          {toolboxItems.map((tool, index) => (
-            <button
-              key={tool.id}
-              className={selectedIndex === index ? 'is-active' : ''}
-              onClick={() => setSelectedIndex(index)}
-            >
-              <span>{tool.id}</span>
-              <p>{tool.title}</p>
-            </button>
+        <div className="toolbox-overview-grid">
+          {toolboxSections.map((section) => (
+            <article key={section.id} className={`toolbox-overview-card is-${section.tone}`}>
+              <div className="toolbox-overview-head">
+                <span className="toolbox-number">{section.id}</span>
+                <span className="toolbox-card-icon">
+                  <AppIcon name={section.icon} size={22} />
+                </span>
+
+                <div>
+                  <h2>{section.title}</h2>
+                  <p>{section.subtitle}</p>
+                </div>
+              </div>
+
+              <div className="toolbox-overview-list">
+                {section.items.map((item) => (
+                  <div key={item.label}>
+                    <strong>{item.label}</strong>
+                    <p>{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
           ))}
-        </nav>
-
-        <article className={`toolbox-feature-card is-${selected.kind}`}>
-          <div className="toolbox-feature-top">
-            <span>
-              <AppIcon name={selected.icon} size={32} />
-            </span>
-
-            <div>
-              <h2>{selected.title}</h2>
-              <p>{selected.subtitle}</p>
-            </div>
-          </div>
-
-          {selected.intro && <p className="toolbox-feature-intro">{selected.intro}</p>}
-
-          <ToolVisual tool={selected} />
-        </article>
+        </div>
       </section>
 
       <div className="page-actions">
         <ButtonLink to="/herramientas" variant="ghost">Anterior</ButtonLink>
-        <ButtonLink to={selected.path}>Abrir {selected.title}</ButtonLink>
+        <ButtonLink to="/cierre">Finalizar</ButtonLink>
       </div>
     </>
-  );
-}
-
-function ToolVisual({ tool }: { tool: ToolboxItem }) {
-  const [checkedItems, setCheckedItems] = useState<string[]>([]);
-  const checkedCount = checkedItems.length;
-
-  if (tool.kind === 'traffic') {
-    return (
-      <div className="traffic-tool">
-        <div className="traffic-light" aria-hidden="true">
-          <span className="light green" />
-          <span className="light yellow" />
-          <span className="light red" />
-        </div>
-
-        <div className="traffic-info-list">
-          {tool.items.map((item, index) => (
-            <div key={item.label} className={`traffic-info-card tone-${index}`}>
-              <span>{item.label}</span>
-              <p>{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (tool.kind === 'scale') {
-    return (
-      <div className="aias-thermometer-wrap">
-        <div className="aias-thermometer" aria-hidden="true">
-          <div className="thermo-track">
-            {tool.items.map((item, index) => (
-              <span key={item.label} className={`thermo-dot dot-${index}`}>{index + 1}</span>
-            ))}
-          </div>
-          <strong>Integración de IA</strong>
-        </div>
-
-        <div className="aias-thermo-levels">
-          {tool.items.map((item, index) => (
-            <div key={item.label}>
-              <span>Nivel {index + 1}</span>
-              <strong>{item.label.replace('Nivel ', '')}</strong>
-              <p>{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (tool.kind === 'templates') {
-    return (
-      <div className="template-stack">
-        {tool.items.map((item) => (
-          <div key={item.label}>
-            <span>
-              <AppIcon name="solar:document-text-linear" size={20} />
-            </span>
-            <article>
-              <strong>{item.label}</strong>
-              <p>{item.text}</p>
-            </article>
-            <button
-              type="button"
-              className="template-download-btn"
-              onClick={() => downloadText(item.label, `${item.label}\n\n${item.text}\n\nCompleta esta plantilla con la información de tu actividad evaluativa.`)}
-            >
-              Descargar
-            </button>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="checklist-tool">
-      <div className="checklist-status">
-        <strong>{checkedCount} de {tool.items.length}</strong>
-        <span>criterios marcados</span>
-      </div>
-
-      <div className="checklist-preview functional">
-        {tool.items.map((item) => {
-          const checked = checkedItems.includes(item.label);
-
-          return (
-            <label key={item.label} className={checked ? 'is-checked' : ''}>
-              <input
-                type="checkbox"
-                checked={checked}
-                onChange={() => {
-                  setCheckedItems((current) =>
-                    checked
-                      ? current.filter((label) => label !== item.label)
-                      : [...current, item.label],
-                  );
-                }}
-              />
-              <span />
-              <p>
-                <strong>{item.label}</strong>
-                {item.text}
-              </p>
-            </label>
-          );
-        })}
-      </div>
-    </div>
   );
 }
