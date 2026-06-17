@@ -1,0 +1,67 @@
+.toolbox-link-card {
+  min-height: 210px;
+  display: grid;
+  grid-template-rows: 54px auto minmax(0, 1fr);
+  gap: 12px;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 28px rgba(7,11,52,.05);
+}
+
+.toolbox-link-card > span {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--white);
+  background: var(--blue);
+}
+
+.toolbox-link-card strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--blue-dark);
+  font-size: 17px;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.toolbox-link-card p {
+  margin: 0;
+  color: var(--gray-1);
+  font-size: 13px;
+  line-height: 1.36;
+}
+
+.toolbox-link-actions {
+  display: grid;
+  gap: 8px;
+  align-content: end;
+}
+
+.toolbox-link-actions a,
+.toolbox-link-actions .is-pending {
+  display: grid;
+  place-items: center;
+  min-height: 34px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+}
+
+.toolbox-link-actions a {
+  color: var(--white);
+  background: var(--blue);
+}
+
+.toolbox-link-actions .is-pending {
+  color: var(--blue);
+  background: var(--blue-soft);
+  border: 1px dashed rgba(84,84,233,.35);
+}
