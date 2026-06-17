@@ -2,7 +2,13 @@
 
 .hero-card h1,
 .toolbox-intro-title h1,
-.closing-main-card h1 {
+.closing-main-card h1,
+.principles-screen h1,
+.pedagogical-keys-screen h1,
+.redesign-route-screen h1,
+.route-intro-card h1,
+.principles-intro-card h1,
+.pedagogical-intro-card h1 {
   font-size: clamp(34px, 4.8vw, 62px) !important;
   line-height: 0.96 !important;
   letter-spacing: -0.06em !important;
@@ -10,7 +16,13 @@
 
 .hero-card h2,
 .toolbox-intro-title h2,
-.closing-main-card h2 {
+.closing-main-card h2,
+.principles-screen h2,
+.pedagogical-keys-screen h2,
+.redesign-route-screen h2,
+.route-intro-card h2,
+.principles-intro-card h2,
+.pedagogical-intro-card h2 {
   font-size: clamp(19px, 2.1vw, 28px) !important;
   line-height: 1.15 !important;
   letter-spacing: -0.035em !important;
@@ -19,20 +31,22 @@
 .hero-card p,
 .hero-body,
 .toolbox-intro-copy > p,
-.closing-main-card p {
+.closing-main-card p,
+.principles-screen > p,
+.pedagogical-keys-screen > p,
+.redesign-route-screen > p,
+.route-intro-card p,
+.principles-intro-card p,
+.pedagogical-intro-card p {
   font-size: clamp(16px, 1.35vw, 19px) !important;
   line-height: 1.5 !important;
 }
 
-/* No afectar páginas internas ni tarjetas pequeñas */
+/* Mantener páginas internas/interactivas más compactas */
 .toolbox-step-screen .toolbox-header h1,
 .toolbox-step-screen .toolbox-detail-header h2,
 .step-page h1,
-.step-page h2,
-.principles-screen h1,
-.principles-screen h2,
-.pedagogical-keys-screen h1,
-.pedagogical-keys-screen h2 {
+.step-page h2 {
   font-size: revert-layer;
 }
 
@@ -50,14 +64,26 @@
 @media (max-width: 1100px) {
   .hero-card h1,
   .toolbox-intro-title h1,
-  .closing-main-card h1 {
+  .closing-main-card h1,
+  .principles-screen h1,
+  .pedagogical-keys-screen h1,
+  .redesign-route-screen h1,
+  .route-intro-card h1,
+  .principles-intro-card h1,
+  .pedagogical-intro-card h1 {
     font-size: clamp(30px, 7vw, 42px) !important;
   }
 
   .hero-card p,
   .hero-body,
   .toolbox-intro-copy > p,
-  .closing-main-card p {
+  .closing-main-card p,
+  .principles-screen > p,
+  .pedagogical-keys-screen > p,
+  .redesign-route-screen > p,
+  .route-intro-card p,
+  .principles-intro-card p,
+  .pedagogical-intro-card p {
     font-size: 14px !important;
   }
 }
