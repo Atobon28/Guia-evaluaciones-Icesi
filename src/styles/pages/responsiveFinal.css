@@ -1,3 +1,6 @@
+@import './mobileMenuPanel.css';
+@import './mobileMenuTopbar.css';
+
 /* =========================================================
    RESPONSIVE FINAL — PC / TABLET / MOBILE
    Prioridad: que ningún texto se corte.
