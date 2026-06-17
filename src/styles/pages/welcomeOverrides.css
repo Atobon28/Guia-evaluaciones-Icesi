@@ -294,6 +294,37 @@
   line-height: 1.3 !important;
 }
 
+/* Ajuste enlaces de interés */
+.is-links .toolbox-action-row {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
+.toolbox-link-card {
+  min-height: 245px !important;
+  grid-template-rows: 52px auto 1fr !important;
+}
+
+.toolbox-link-actions {
+  align-self: end !important;
+}
+
+.toolbox-link-actions a,
+.toolbox-link-actions .is-pending {
+  width: 100% !important;
+  min-height: 38px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 12px !important;
+  line-height: 1.15 !important;
+}
+
 @media (max-width: 1100px) {
   .page-wrap h1,
   .hero-card h1,
