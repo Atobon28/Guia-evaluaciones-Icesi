@@ -152,8 +152,8 @@
 }
 
 .toolbox-step-tabs span {
-  width: 34px;
-  height: 34px;
+  min-width: 0;
+  min-height: 34px;
   display: grid;
   place-items: center;
   border-radius: 13px;
@@ -161,6 +161,9 @@
   color: var(--blue);
   font-size: 13px;
   font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  padding: 0 14px;
 }
 
 .toolbox-step-tabs button.is-active span {
@@ -201,8 +204,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 26px 30px;
+  gap: 13px;
+  padding: 24px 30px;
   border-radius: 30px;
   background: radial-gradient(circle at 90% 8%, rgba(84, 84, 233, 0.12), transparent 28%), linear-gradient(180deg, var(--white), var(--blue-soft));
   border: 1px solid var(--line);
@@ -344,19 +347,191 @@
   text-align: center;
 }
 
+/* Semáforo IA clicable */
+.toolbox-traffic-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.toolbox-traffic-light {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+  justify-items: center;
+  padding: 18px 16px;
+  border-radius: 34px;
+  background: var(--blue-dark);
+  box-shadow: 0 18px 40px rgba(7, 11, 52, 0.18);
+}
+
+.traffic-bulb {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  opacity: 0.58;
+  transition: 0.18s ease;
+}
+
+.traffic-bulb:hover,
+.traffic-bulb.is-active {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.traffic-bulb span {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.18), 0 0 0 8px rgba(255, 255, 255, 0.08);
+}
+
+.traffic-bulb.green span { background: #63bd7a; }
+.traffic-bulb.yellow span { background: #f2c15f; }
+.traffic-bulb.red span { background: #ef6b6b; }
+
+.traffic-bulb.is-active span {
+  box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.16), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 24px currentColor;
+}
+
+.traffic-bulb strong {
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.traffic-full-info {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--line);
+}
+
+.traffic-full-header small {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.traffic-full-header h3 {
+  margin: 0 0 7px;
+  color: var(--blue-dark);
+  font-size: 20px;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.traffic-full-header p,
+.traffic-recommendation-full p,
+.traffic-signals-full p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 12.8px;
+  line-height: 1.38;
+}
+
+.traffic-signals-full {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+.traffic-signals-full > strong {
+  grid-column: 1 / -1;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.traffic-signals-full p {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  padding: 8px;
+  border-radius: 14px;
+  background: #f7f8ff;
+  border: 1px solid rgba(225, 229, 241, 0.9);
+}
+
+.traffic-signals-full span {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.traffic-recommendation-full {
+  display: grid;
+  gap: 5px;
+  padding: 11px 13px;
+  border-radius: 16px;
+  background: var(--green-soft);
+  border: 1px solid rgba(76, 185, 121, 0.35);
+  color: #2f8a4b;
+}
+
+.traffic-recommendation-full strong {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.traffic-recommendation-full p {
+  color: #2f8a4b;
+}
+
+.traffic-full-info.is-yellow .traffic-recommendation-full {
+  background: #fff7df;
+  border-color: rgba(242, 193, 95, 0.55);
+  color: #9a6b11;
+}
+
+.traffic-full-info.is-yellow .traffic-recommendation-full p { color: #9a6b11; }
+
+.traffic-full-info.is-red .traffic-recommendation-full {
+  background: #ffeaea;
+  border-color: rgba(239, 107, 107, 0.45);
+  color: #ac3434;
+}
+
+.traffic-full-info.is-red .traffic-recommendation-full p { color: #ac3434; }
+
 @media (max-width: 1100px) {
   .toolbox-intro-title,
   .toolbox-header,
   .toolbox-detail-header,
   .toolbox-action-row,
-  .toolbox-action-row > div {
+  .toolbox-action-row > div,
+  .toolbox-traffic-layout {
     grid-template-columns: 1fr;
   }
 
   .toolbox-step-tabs,
   .toolbox-detail-list,
   .toolbox-detail-list.count-5,
-  .toolbox-detail-list.count-6 {
+  .toolbox-detail-list.count-6,
+  .traffic-signals-full {
     grid-template-columns: 1fr;
   }
 
