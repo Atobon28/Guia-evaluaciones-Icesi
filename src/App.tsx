@@ -1,6 +1,6 @@
-
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import WelcomeDownloadInjector from './components/WelcomeDownloadInjector';
 import GenericIntro from './pages/GenericIntro';
 import Principles from './pages/Principles';
 import PedagogicalKeys from './pages/PedagogicalKeys';
@@ -12,11 +12,20 @@ import AIASSelector from './pages/AIASSelector';
 import Templates from './pages/Templates';
 import Closing from './pages/Closing';
 
+function WelcomePage() {
+  return (
+    <>
+      <GenericIntro />
+      <WelcomeDownloadInjector />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<GenericIntro />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="/por-que-redisenar" element={<GenericIntro />} />
         <Route path="/organizacion" element={<GenericIntro />} />
         <Route path="/principios" element={<Principles />} />
