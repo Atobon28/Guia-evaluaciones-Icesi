@@ -1,0 +1,4 @@
+.nav-item::before{
+  left:28px !important;
+  transform:translateX(-1px);
+}
