@@ -3,51 +3,32 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 import AIASMiniSelector from '../components/AIASMiniSelector';
+import LinksMiniSelector from '../components/LinksMiniSelector';
+import ChecklistMiniSelector from '../components/ChecklistMiniSelector';
 
 const trafficLevels = [
   {
     status: 'Potencia',
-    title: 'La IA apoya el aprendizaje',
     intro: 'La actividad sigue exigiendo pensamiento propio, toma de decisiones, análisis, argumentación o reflexión. La IA puede ayudar, pero no resuelve lo esencial.',
     color: 'green',
     icon: 'solar:check-circle-linear',
-    points: [
-      'El estudiante debe justificar sus decisiones.',
-      'La tarea tiene contexto específico.',
-      'Hay evidencias del proceso.',
-      'El uso de IA se declara y se analiza.',
-      'La respuesta requiere criterio propio.',
-    ],
+    points: ['El estudiante debe justificar sus decisiones.', 'La tarea tiene contexto específico.', 'Hay evidencias del proceso.', 'El uso de IA se declara y se analiza.', 'La respuesta requiere criterio propio.'],
     recommendation: 'Puedes permitir IA con orientaciones claras.',
   },
   {
     status: 'Revisar',
-    title: 'La IA puede afectar la evidencia de aprendizaje',
     intro: 'La actividad tiene valor pedagógico, pero algunas partes pueden ser resueltas fácilmente por IA. Se necesita ajustar el diseño o pedir evidencias adicionales.',
     color: 'yellow',
     icon: 'solar:danger-circle-linear',
-    points: [
-      'La tarea es parcialmente genérica.',
-      'El producto final pesa demasiado.',
-      'No hay suficientes evidencias del proceso.',
-      'El papel de la IA no está claro.',
-      'La retroalimentación aparece solo al final.',
-    ],
+    points: ['La tarea es parcialmente genérica.', 'El producto final pesa demasiado.', 'No hay suficientes evidencias del proceso.', 'El papel de la IA no está claro.', 'La retroalimentación aparece solo al final.'],
     recommendation: 'Rediseña la actividad antes de aplicarla.',
   },
   {
     status: 'Sustituye',
-    title: 'La IA puede resolver la tarea completa',
     intro: 'La actividad puede ser realizada por IA sin que el estudiante demuestre comprensión, pensamiento, criterio o aprendizaje propio.',
     color: 'red',
     icon: 'solar:danger-triangle-linear',
-    points: [
-      'La tarea pide solo resumir, definir o describir.',
-      'No hay contexto específico.',
-      'No se exige argumentación propia.',
-      'No se pide proceso.',
-      'No hay reflexión sobre el uso de IA.',
-    ],
+    points: ['La tarea pide solo resumir, definir o describir.', 'No hay contexto específico.', 'No se exige argumentación propia.', 'No se pide proceso.', 'No hay reflexión sobre el uso de IA.'],
     recommendation: 'No apliques la actividad así. Rediseña la situación y las evidencias, teniendo en cuenta qué tipos de pensamiento quieres movilizar en el estudiante.',
   },
 ];
@@ -62,7 +43,7 @@ const toolboxSections = [
     tone: 'traffic',
     question: '¿La IA potencia, exige revisión o sustituye el aprendizaje?',
     action: 'Haz clic en cada luz del semáforo para revisar la información completa de cada nivel.',
-    items: trafficLevels.map((level) => ({ label: level.status, text: level.intro })),
+    items: [],
   },
   {
     id: '02',
@@ -83,50 +64,19 @@ const toolboxSections = [
     icon: 'solar:link-round-angle-linear',
     tone: 'links',
     question: 'Selecciona el recurso que quieres consultar.',
-    action: 'Los recursos faltantes quedan marcados como pendiente hasta que tengamos el enlace final.',
-    items: [
-      {
-        label: 'Syllabus v5.0',
-        text: 'Documento base para estructurar y actualizar el syllabus.',
-        links: [
-          { label: 'Abrir Syllabus v5.0', href: 'https://icesiedu-my.sharepoint.com/:w:/g/personal/31573444_icesi_edu_co/IQC5N9vLZ9Y9RqDWihV48gY8ASkhdmEQuxsNbj1yRIFkIFM?e=kzFN4x' },
-        ],
-      },
-      {
-        label: 'Asistentes de IA para la evaluación',
-        text: 'EVA, Asistente pedagógico de evaluación en Salud y GTP AIAS.',
-        links: [
-          { label: 'EVA', href: 'https://chatgpt.com/g/g-18PRQ2wq6-eva' },
-          { label: 'Asistente pedagógico en Salud', href: 'https://chatgpt.com/g/g-6a315f963ca8819196735268b19aa5de-asistente-pedagogico-en-evaluacion-en-salud' },
-          { label: 'GTP AIAS', href: null },
-        ],
-      },
-      {
-        label: 'Recursos',
-        text: 'Ruta metodológica evaluación+IA e infografía.',
-        links: [
-          { label: 'Ruta metodológica evaluación+IA', href: null },
-          { label: 'Infografía', href: 'https://view.genially.com/69e7c89f581a46a528d45129' },
-        ],
-      },
-    ],
+    action: '',
+    items: [],
   },
   {
     id: '04',
     tabLabel: 'Checklist final',
     title: 'Checklist final',
-    subtitle: 'Una revisión rápida antes de publicar la actividad.',
+    subtitle: 'Antes de publicar tu actividad, revisa si está lista.',
     icon: 'solar:checklist-minimalistic-linear',
     tone: 'checklist',
-    question: '¿La evaluación ya está lista para implementarse?',
-    action: 'Verifica estos criterios antes de publicar la consigna o iniciar la actividad.',
-    items: [
-      { label: 'Aprendizaje', text: 'El objetivo está claro y exige pensamiento.' },
-      { label: 'Diseño', text: 'La tarea tiene contexto, rol y propósito.' },
-      { label: 'IA', text: 'El uso permitido está definido y se declara.' },
-      { label: 'Proceso', text: 'Hay borradores, bitácoras, sustentación o justificación.' },
-      { label: 'Retroalimentación', text: 'Existe mejora antes del producto final.' },
-    ],
+    question: 'Checklist final de evaluación.',
+    action: 'Marca cada punto y revisa el reporte final.',
+    items: [],
   },
 ];
 
@@ -266,76 +216,10 @@ export default function Toolbox() {
             ) : selected.tone === 'aias' ? (
               <AIASMiniSelector />
             ) : selected.tone === 'links' ? (
-              <>
-                <p className="toolbox-detail-intro">{selected.question}</p>
-
-                <div className="toolbox-links-grid">
-                  {selected.items.map((item) => (
-                    <div className="toolbox-link-card" key={item.label}>
-                      <span>
-                        <AppIcon name="solar:link-round-angle-linear" size={24} />
-                      </span>
-                      <div>
-                        <strong>{item.label}</strong>
-                        <p>{item.text}</p>
-                      </div>
-
-                      <div className="toolbox-link-actions">
-                        {item.links?.map((link) => (
-                          link.href ? (
-                            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-                              {link.label}
-                            </a>
-                          ) : (
-                            <span key={link.label} className="is-pending">
-                              {link.label} · Pendiente
-                            </span>
-                          )
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="toolbox-action-row">
-                  <div className="is-green">
-                    <span>
-                      <AppIcon name="solar:check-circle-linear" size={24} />
-                    </span>
-                    <p>{selected.action}</p>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <p className="toolbox-detail-intro">{selected.question}</p>
-
-                <div className={`toolbox-detail-list count-${selected.items.length}`}>
-                  {selected.items.map((item) => (
-                    <div key={item.label}>
-                      <strong>{item.label}</strong>
-                      <p>{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="toolbox-action-row">
-                  <div>
-                    <span>
-                      <AppIcon name="solar:info-circle-linear" size={24} />
-                    </span>
-                    <p>{selected.question}</p>
-                  </div>
-
-                  <div className="is-green">
-                    <span>
-                      <AppIcon name="solar:check-circle-linear" size={24} />
-                    </span>
-                    <p>{selected.action}</p>
-                  </div>
-                </div>
-              </>
-            )}
+              <LinksMiniSelector />
+            ) : selected.tone === 'checklist' ? (
+              <ChecklistMiniSelector />
+            ) : null}
           </article>
 
           <button type="button" className="toolbox-arrow right" onClick={goToNext} aria-label="Siguiente herramienta">
