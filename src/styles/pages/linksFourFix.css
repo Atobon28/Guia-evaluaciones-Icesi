@@ -1,0 +1,27 @@
+.toolbox-links-grid-four{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+
+.toolbox-links-grid-four .toolbox-link-card{
+  min-height:230px !important;
+  padding:18px !important;
+}
+
+.toolbox-links-grid-four .toolbox-link-card strong{
+  font-size:15.5px !important;
+}
+
+.toolbox-links-grid-four .toolbox-link-card p{
+  font-size:12.2px !important;
+}
+
+.toolbox-links-grid-four .toolbox-link-actions a,
+.toolbox-links-grid-four .toolbox-link-actions .is-pending{
+  font-size:11.2px !important;
+  min-height:34px !important;
+}
+
+@media(max-width:1100px){
+  .toolbox-links-grid-four{grid-template-columns:1fr !important;}
+}
