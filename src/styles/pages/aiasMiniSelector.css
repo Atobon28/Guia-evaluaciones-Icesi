@@ -1,0 +1,121 @@
+.aias-mini-selector {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 12px;
+}
+
+.aias-mini-intro {
+  max-width: 980px;
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.aias-mini-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.aias-mini-tabs button {
+  min-height: 86px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--blue-dark);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.aias-mini-tabs button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(84, 84, 233, 0.45);
+  box-shadow: 0 12px 28px rgba(84, 84, 233, 0.12);
+}
+
+.aias-mini-tabs button.is-active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: 0 14px 34px rgba(84, 84, 233, 0.2);
+}
+
+.aias-mini-tabs strong {
+  color: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.aias-mini-tabs span {
+  color: inherit;
+  font-size: 12.2px;
+  line-height: 1.22;
+}
+
+.aias-mini-detail {
+  min-height: 0;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 26px rgba(7, 11, 52, 0.045);
+}
+
+.aias-mini-detail-head {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.aias-mini-detail-head > span {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--blue);
+  color: var(--white);
+}
+
+.aias-mini-detail-head small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.aias-mini-detail-head h3 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.aias-mini-detail > p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .aias-mini-tabs,
+  .aias-mini-detail-head {
+    grid-template-columns: 1fr;
+  }
+}
