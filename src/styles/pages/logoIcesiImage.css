@@ -1,0 +1,33 @@
+.brand{
+  align-items:center !important;
+}
+
+.brand-symbol{
+  width:112px !important;
+  height:58px !important;
+  border-radius:0 !important;
+  background:url('/logo-icesi.png') center/contain no-repeat !important;
+  box-shadow:none !important;
+  flex:0 0 auto !important;
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  display:none !important;
+}
+
+.brand-text{
+  display:none !important;
+}
+
+.mobile-brand .brand-symbol{
+  width:104px !important;
+  height:44px !important;
+}
+
+@media(max-width:760px){
+  .brand-symbol{
+    width:104px !important;
+    height:44px !important;
+  }
+}
