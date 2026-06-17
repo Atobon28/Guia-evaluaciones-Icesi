@@ -5,6 +5,7 @@ import App from './App';
 import './styles/index.css';
 import './styles/pages/welcomeOverrides.css';
 import './styles/pages/introTypographyMatch.css';
+import './styles/pages/navLineFix.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
