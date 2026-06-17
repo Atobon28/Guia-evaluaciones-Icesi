@@ -1,0 +1,413 @@
+/* =========================================================
+   RESPONSIVE FINAL — PC / TABLET / MOBILE
+   Prioridad: que ningún texto se corte.
+========================================================= */
+
+* {
+  min-width: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* PC: conserva la experiencia de pantalla, pero permite scroll si la altura no alcanza */
+@media (min-width: 1181px) {
+  .main-area,
+  .page-wrap {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .page-wrap {
+    max-width: 1320px !important;
+  }
+
+  .hero-card,
+  .welcome-intro-card,
+  .toolbox-intro-card,
+  .closing-main-card,
+  .why-page-card,
+  .toolbox-detail-card {
+    max-height: none !important;
+  }
+}
+
+/* PC con poca altura: compacta sin cortar */
+@media (min-width: 1181px) and (max-height: 780px) {
+  .page-wrap {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    gap: 12px !important;
+  }
+
+  .welcome-intro-card,
+  .toolbox-intro-card,
+  .closing-main-card,
+  .hero-card {
+    padding: 30px !important;
+  }
+
+  .page-actions {
+    padding-top: 0 !important;
+  }
+
+  .sidebar {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .side-nav {
+    gap: 7px !important;
+    margin-top: 18px !important;
+  }
+
+  .nav-item {
+    min-height: 48px !important;
+  }
+
+  .progress-card {
+    margin-top: 14px !important;
+    padding: 12px !important;
+  }
+
+  .sidebar-credits {
+    font-size: 9.8px !important;
+  }
+}
+
+/* TABLET */
+@media (max-width: 1180px) {
+  html,
+  body,
+  #root,
+  .app-shell,
+  .main-area,
+  .page-wrap {
+    height: auto !important;
+    min-height: 100dvh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .app-shell {
+    grid-template-columns: 280px minmax(0, 1fr) !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    padding: 18px 14px !important;
+    overflow: visible !important;
+  }
+
+  .brand-text strong {
+    font-size: 28px !important;
+  }
+
+  .side-nav {
+    gap: 8px !important;
+    margin-top: 20px !important;
+  }
+
+  .nav-item {
+    grid-template-columns: 34px 26px 1fr 8px !important;
+    min-height: 48px !important;
+    padding: 8px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .nav-number {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 12px !important;
+  }
+
+  .nav-label {
+    font-size: 12.5px !important;
+    line-height: 1.15 !important;
+  }
+
+  .progress-card {
+    padding: 12px !important;
+  }
+
+  .sidebar-credits {
+    font-size: 9.6px !important;
+  }
+
+  .page-wrap {
+    max-width: none !important;
+    padding: 18px !important;
+    gap: 14px !important;
+  }
+
+  .hero-card,
+  .welcome-intro-card,
+  .toolbox-intro-card,
+  .closing-main-card,
+  .why-page-card,
+  .toolbox-detail-card {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .split-layout,
+  .closing-screen,
+  .toolbox-detail-wrap,
+  .toolbox-traffic-layout,
+  .checklist-mini-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .toolbox-arrow {
+    display: none !important;
+  }
+
+  .toolbox-step-tabs,
+  .aias-mini-tabs,
+  .templates-mini-tabs,
+  .toolbox-links-grid,
+  .toolbox-links-grid-four,
+  .checklist-mini-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .toolbox-header h1 {
+    font-size: clamp(26px, 4vw, 38px) !important;
+  }
+
+  .page-actions {
+    margin-top: 0 !important;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+  .app-shell {
+    display: block !important;
+  }
+
+  .sidebar {
+    min-height: auto !important;
+    padding: 16px 14px !important;
+    border-radius: 0 0 26px 26px;
+  }
+
+  .brand-symbol {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .brand-text strong {
+    font-size: 25px !important;
+  }
+
+  .side-nav {
+    grid-template-columns: 1fr !important;
+    gap: 7px !important;
+    margin-top: 16px !important;
+  }
+
+  .nav-item {
+    min-height: 44px !important;
+    grid-template-columns: 30px 24px 1fr 8px !important;
+    gap: 8px !important;
+    padding: 7px 9px !important;
+  }
+
+  .nav-number {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .nav-icon svg {
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  .progress-card {
+    margin-top: 14px !important;
+  }
+
+  .sidebar-credits {
+    margin-top: 14px !important;
+    padding-top: 12px !important;
+  }
+
+  .main-area,
+  .page-wrap {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .page-wrap {
+    padding: 14px !important;
+    gap: 12px !important;
+  }
+
+  .welcome-progress-line {
+    padding: 6px 8px 12px !important;
+  }
+
+  .welcome-progress-line::before {
+    left: 18% !important;
+    right: 18% !important;
+  }
+
+  .welcome-progress-line p {
+    font-size: 10.5px !important;
+  }
+
+  .welcome-intro-card,
+  .toolbox-intro-card,
+  .closing-main-card,
+  .hero-card,
+  .why-page-card,
+  .toolbox-detail-card {
+    padding: 20px !important;
+    border-radius: 24px !important;
+  }
+
+  .welcome-intro-title,
+  .toolbox-intro-title,
+  .hero-title-row,
+  .why-title-row,
+  .toolbox-detail-header,
+  .closing-main-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .welcome-intro-title h1,
+  .toolbox-intro-title h1,
+  .hero-card h1,
+  .closing-main-card h1,
+  .why-title-row h1 {
+    font-size: clamp(30px, 10vw, 42px) !important;
+    line-height: 1 !important;
+  }
+
+  .welcome-intro-title h2,
+  .toolbox-intro-title h2,
+  .hero-card h2,
+  .closing-main-card h2,
+  .why-title-row h2 {
+    font-size: clamp(18px, 5.6vw, 24px) !important;
+    line-height: 1.18 !important;
+  }
+
+  .page-wrap p,
+  .page-wrap li,
+  .hero-body,
+  .welcome-intro-copy > p:not(.hero-note),
+  .closing-main-card p {
+    font-size: 14px !important;
+    line-height: 1.48 !important;
+  }
+
+  .why-paragraph-grid,
+  .intro-moments-layout,
+  .intro-moments-tabs,
+  .toolbox-step-tabs,
+  .aias-mini-tabs,
+  .toolbox-links-grid,
+  .toolbox-links-grid-four,
+  .checklist-mini-groups,
+  .checklist-mini-score,
+  .traffic-signals-full,
+  .toolbox-detail-list,
+  .checklist-compact-grid,
+  .rubric-compact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .toolbox-header {
+    grid-template-columns: 1fr !important;
+    padding: 16px !important;
+  }
+
+  .toolbox-header-icon {
+    display: none !important;
+  }
+
+  .toolbox-detail-card {
+    padding: 18px !important;
+  }
+
+  .toolbox-traffic-light {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    display: grid !important;
+    padding: 16px !important;
+  }
+
+  .traffic-bulb span {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .traffic-bulb strong {
+    font-size: 12px !important;
+  }
+
+  .aias-mini-tabs button,
+  .templates-mini-tabs button,
+  .toolbox-link-card,
+  .checklist-mini-group,
+  .checklist-mini-report {
+    min-height: auto !important;
+  }
+
+  .checklist-mini-layout {
+    gap: 10px !important;
+  }
+
+  .checklist-mini-item {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-actions {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 390px) {
+  .page-wrap {
+    padding: 10px !important;
+  }
+
+  .welcome-intro-card,
+  .toolbox-intro-card,
+  .closing-main-card,
+  .hero-card,
+  .why-page-card,
+  .toolbox-detail-card {
+    padding: 16px !important;
+  }
+
+  .welcome-intro-title h1,
+  .toolbox-intro-title h1,
+  .hero-card h1,
+  .closing-main-card h1,
+  .why-title-row h1 {
+    font-size: 30px !important;
+  }
+
+  .toolbox-step-tabs span {
+    font-size: 11px !important;
+  }
+}
