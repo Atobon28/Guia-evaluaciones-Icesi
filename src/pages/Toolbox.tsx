@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 import AIASMiniSelector from '../components/AIASMiniSelector';
-import TemplatesMiniSelector from '../components/TemplatesMiniSelector';
 
 const trafficLevels = [
   {
@@ -80,28 +79,19 @@ const toolboxSections = [
     id: '03',
     tabLabel: 'Enlaces de interés',
     title: 'Enlaces de interés',
-    subtitle: 'Recursos de apoyo para profundizar y acompañar el rediseño.',
+    subtitle: 'Recursos clave para profundizar y acompañar la evaluación con IA.',
     icon: 'solar:link-round-angle-linear',
     tone: 'links',
-    question: 'Aquí ubicaremos los enlaces o recursos externos que quieras compartir.',
-    action: 'Esta sección queda reservada para la información que me vas a pasar después.',
+    question: 'Selecciona el recurso que quieres consultar.',
+    action: 'Cuando me pases los enlaces finales, los conecto directamente a cada tarjeta.',
     items: [
-      { label: 'Pendiente', text: 'Espacio reservado para enlaces, documentos, recursos institucionales o material de apoyo.' },
+      { label: 'Syllabus v5.0', text: 'Documento base para estructurar y actualizar el syllabus.', href: '#' },
+      { label: 'Asistentes de IA para la evaluación', text: 'EVA, Asistente pedagógico de evaluación en Salud y GTP AIAS.', href: '#' },
+      { label: 'Recursos', text: 'Ruta metodológica evaluación+IA e infografía.', href: '#' },
     ],
   },
   {
     id: '04',
-    tabLabel: 'Plantillas',
-    title: 'Plantillas',
-    subtitle: 'Plantillas para rediseñar evaluaciones.',
-    icon: 'solar:document-text-linear',
-    tone: 'plantillas',
-    question: 'Plantillas prácticas para revisar, transformar y fortalecer tus evaluaciones.',
-    action: 'Selecciona una plantilla para ver su estructura y aplicarla en el rediseño.',
-    items: [],
-  },
-  {
-    id: '05',
     tabLabel: 'Checklist final',
     title: 'Checklist final',
     subtitle: 'Una revisión rápida antes de publicar la actividad.',
@@ -254,8 +244,33 @@ export default function Toolbox() {
               </div>
             ) : selected.tone === 'aias' ? (
               <AIASMiniSelector />
-            ) : selected.tone === 'plantillas' ? (
-              <TemplatesMiniSelector />
+            ) : selected.tone === 'links' ? (
+              <>
+                <p className="toolbox-detail-intro">{selected.question}</p>
+
+                <div className="toolbox-links-grid">
+                  {selected.items.map((item) => (
+                    <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
+                      <span>
+                        <AppIcon name="solar:link-round-angle-linear" size={24} />
+                      </span>
+                      <div>
+                        <strong>{item.label}</strong>
+                        <p>{item.text}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                <div className="toolbox-action-row">
+                  <div className="is-green">
+                    <span>
+                      <AppIcon name="solar:check-circle-linear" size={24} />
+                    </span>
+                    <p>{selected.action}</p>
+                  </div>
+                </div>
+              </>
             ) : (
               <>
                 <p className="toolbox-detail-intro">{selected.question}</p>
