@@ -1,0 +1,4 @@
+.is-links .toolbox-action-row{display:none;}
+.toolbox-link-card{min-height:245px;grid-template-rows:52px auto 1fr;}
+.toolbox-link-actions{align-self:end;display:grid;gap:8px;}
+.toolbox-link-actions a,.toolbox-link-actions .is-pending{width:100%;min-height:38px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding:8px 12px;line-height:1.15;}
