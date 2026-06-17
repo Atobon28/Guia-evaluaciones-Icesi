@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
 import AIASMiniSelector from '../components/AIASMiniSelector';
+import TemplatesMiniSelector from '../components/TemplatesMiniSelector';
 
 const trafficLevels = [
   {
@@ -81,20 +82,26 @@ const toolboxSections = [
     title: 'Enlaces de interés',
     subtitle: 'Recursos de apoyo para profundizar y acompañar el rediseño.',
     icon: 'solar:link-round-angle-linear',
-    tone: 'templates',
-    question: '¿Qué recurso puede ayudarte a tomar una mejor decisión pedagógica?',
-    action: 'Usa estos enlaces como apoyo complementario durante el proceso de rediseño.',
+    tone: 'links',
+    question: 'Aquí ubicaremos los enlaces o recursos externos que quieras compartir.',
+    action: 'Esta sección queda reservada para la información que me vas a pasar después.',
     items: [
-      { label: 'Diagnóstico', text: 'Revisa qué evidencia realmente tu evaluación actual.' },
-      { label: 'Ruta cognitiva', text: 'Identifica qué debe pensar el estudiante.' },
-      { label: 'Rediseño', text: 'Convierte la tarea en una situación con contexto, rol y propósito.' },
-      { label: 'Rúbrica', text: 'Define criterios de proceso, producto, argumentación y uso de IA.' },
-      { label: 'Retroalimentación', text: 'Planea momentos de mejora antes de la entrega final.' },
-      { label: 'Checklist', text: 'Verifica si la evaluación está lista para aplicarse.' },
+      { label: 'Pendiente', text: 'Espacio reservado para enlaces, documentos, recursos institucionales o material de apoyo.' },
     ],
   },
   {
     id: '04',
+    tabLabel: 'Plantillas',
+    title: 'Plantillas',
+    subtitle: 'Plantillas para rediseñar evaluaciones.',
+    icon: 'solar:document-text-linear',
+    tone: 'plantillas',
+    question: 'Plantillas prácticas para revisar, transformar y fortalecer tus evaluaciones.',
+    action: 'Selecciona una plantilla para ver su estructura y aplicarla en el rediseño.',
+    items: [],
+  },
+  {
+    id: '05',
     tabLabel: 'Checklist final',
     title: 'Checklist final',
     subtitle: 'Una revisión rápida antes de publicar la actividad.',
@@ -247,6 +254,8 @@ export default function Toolbox() {
               </div>
             ) : selected.tone === 'aias' ? (
               <AIASMiniSelector />
+            ) : selected.tone === 'plantillas' ? (
+              <TemplatesMiniSelector />
             ) : (
               <>
                 <p className="toolbox-detail-intro">{selected.question}</p>
