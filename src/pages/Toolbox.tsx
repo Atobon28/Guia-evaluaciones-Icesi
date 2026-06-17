@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ButtonLink } from '../components/Ui';
 import AppIcon from '../components/AppIcon';
+import AIASMiniSelector from '../components/AIASMiniSelector';
 
 const trafficLevels = [
   {
@@ -67,18 +68,12 @@ const toolboxSections = [
     id: '02',
     tabLabel: 'Selector AIAS',
     title: 'Selector AIAS',
-    subtitle: 'Define con claridad qué nivel de uso de IA está permitido.',
+    subtitle: 'Define el nivel de uso de IA permitido en tu evaluación.',
     icon: 'solar:settings-minimalistic-linear',
     tone: 'aias',
-    question: '¿Qué nivel de integración de IA tiene sentido para esta evaluación?',
-    action: 'Comunica el nivel elegido en la consigna y aclara qué debe declarar el estudiante.',
-    items: [
-      { label: 'Nivel 1', text: 'Sin uso de IA.' },
-      { label: 'Nivel 2', text: 'Ideación o planificación asistida.' },
-      { label: 'Nivel 3', text: 'Colaboración con IA y revisión crítica.' },
-      { label: 'Nivel 4', text: 'Uso amplio, estratégico y declarado.' },
-      { label: 'Nivel 5', text: 'Exploración e innovación con IA.' },
-    ],
+    question: 'No todas las evaluaciones requieren el mismo nivel de integración de IA.',
+    action: 'Usa esta escala para comunicar con claridad qué está permitido, qué no y qué debe declarar el estudiante.',
+    items: [],
   },
   {
     id: '03',
@@ -250,6 +245,8 @@ export default function Toolbox() {
                   </div>
                 </div>
               </div>
+            ) : selected.tone === 'aias' ? (
+              <AIASMiniSelector />
             ) : (
               <>
                 <p className="toolbox-detail-intro">{selected.question}</p>
