@@ -2,6 +2,13 @@ import AppIcon from './AppIcon';
 
 const links = [
   {
+    label: 'Guía completa',
+    text: 'Descarga el documento PDF completo de la guía para consultarlo o compartirlo.',
+    items: [
+      { label: 'Descarga Guía Completa', href: '/guia-evaluacion-ia-v2.pdf' },
+    ],
+  },
+  {
     label: 'Syllabus v5.0',
     text: 'Documento base para estructurar y actualizar el syllabus.',
     items: [
@@ -32,7 +39,7 @@ export default function LinksMiniSelector() {
     <>
       <p className="toolbox-detail-intro">Selecciona el recurso que quieres consultar.</p>
 
-      <div className="toolbox-links-grid">
+      <div className="toolbox-links-grid toolbox-links-grid-four">
         {links.map((group) => (
           <div className="toolbox-link-card" key={group.label}>
             <span>
