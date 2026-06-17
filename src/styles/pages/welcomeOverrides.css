@@ -181,3 +181,173 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   AJUSTE GLOBAL DE TIPOGRAFÍA
+   - Títulos un poco más contenidos
+   - Textos de lectura más grandes y consistentes
+   - Bienvenida / momentos con textos apenas más destacados
+========================================================= */
+
+.page-wrap h1 {
+  font-size: clamp(36px, 4.4vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.page-wrap h2 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: 1.18;
+}
+
+.page-wrap h3 {
+  font-size: 19px;
+  line-height: 1.22;
+}
+
+.page-wrap p,
+.page-wrap li,
+.hero-body,
+.notice p,
+.field-card p,
+.mini-question p,
+.right-panel p,
+.example-panel p,
+.stack-panel p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.hero-card h1 {
+  font-size: clamp(32px, 3.7vw, 50px);
+  line-height: 1;
+}
+
+.hero-card h2 {
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.2;
+}
+
+.hero-body {
+  max-width: 780px;
+}
+
+.hero-note {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.interactive-card h3 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.interactive-card p,
+.interactive-card strong {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.notice p {
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+
+.field-card h3 {
+  font-size: 17px;
+}
+
+.field-card p {
+  font-size: 15px;
+}
+
+.welcome-intro-title h1 {
+  font-size: clamp(46px, 6.2vw, 84px);
+  line-height: 0.92;
+}
+
+.welcome-intro-title h2 {
+  font-size: clamp(24px, 2.7vw, 38px);
+  line-height: 1.1;
+}
+
+.welcome-intro-copy > p:not(.hero-note) {
+  font-size: clamp(20px, 1.75vw, 25px);
+  line-height: 1.55;
+}
+
+.welcome-progress-line p {
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+.why-title-row h1 {
+  font-size: clamp(32px, 3.6vw, 50px);
+  line-height: 1;
+}
+
+.why-title-row h2 {
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.18;
+}
+
+.why-text-card p {
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.58;
+}
+
+.why-focus-card p {
+  font-size: clamp(20px, 1.9vw, 27px);
+  line-height: 1.15;
+}
+
+.intro-moment-header h2 {
+  font-size: clamp(31px, 3.6vw, 52px);
+  line-height: 1;
+}
+
+.intro-moment-detail > p {
+  font-size: clamp(19px, 1.55vw, 23px);
+  line-height: 1.58;
+}
+
+.intro-moment-tab strong,
+.intro-moment-tab p,
+.intro-progress-list p {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.intro-side-preview h2 {
+  font-size: 22px;
+}
+
+.right-panel h2,
+.example-panel h2,
+.stack-panel h2 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.stepper-item small,
+.progress-card p,
+.nav-label {
+  font-size: 14px;
+}
+
+@media (max-width: 1100px) {
+  .page-wrap h1,
+  .hero-card h1,
+  .why-title-row h1,
+  .intro-moment-header h2 {
+    font-size: clamp(32px, 9vw, 46px);
+  }
+
+  .page-wrap p,
+  .page-wrap li,
+  .hero-body,
+  .intro-moment-detail > p,
+  .welcome-intro-copy > p:not(.hero-note) {
+    font-size: 16px;
+  }
+}
