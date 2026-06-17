@@ -229,8 +229,6 @@ export default function Toolbox() {
 
                 <div className={`traffic-full-info is-${selectedTraffic.color}`}>
                   <div className="traffic-full-header">
-                    <small>{selectedTraffic.status}</small>
-                    <h3>{selectedTraffic.title}</h3>
                     <p>{selectedTraffic.intro}</p>
                   </div>
 
