@@ -83,11 +83,32 @@ const toolboxSections = [
     icon: 'solar:link-round-angle-linear',
     tone: 'links',
     question: 'Selecciona el recurso que quieres consultar.',
-    action: 'Cuando me pases los enlaces finales, los conecto directamente a cada tarjeta.',
+    action: 'Los recursos faltantes quedan marcados como pendiente hasta que tengamos el enlace final.',
     items: [
-      { label: 'Syllabus v5.0', text: 'Documento base para estructurar y actualizar el syllabus.', href: '#' },
-      { label: 'Asistentes de IA para la evaluación', text: 'EVA, Asistente pedagógico de evaluación en Salud y GTP AIAS.', href: '#' },
-      { label: 'Recursos', text: 'Ruta metodológica evaluación+IA e infografía.', href: '#' },
+      {
+        label: 'Syllabus v5.0',
+        text: 'Documento base para estructurar y actualizar el syllabus.',
+        links: [
+          { label: 'Abrir Syllabus v5.0', href: 'https://icesiedu-my.sharepoint.com/:w:/g/personal/31573444_icesi_edu_co/IQC5N9vLZ9Y9RqDWihV48gY8ASkhdmEQuxsNbj1yRIFkIFM?e=kzFN4x' },
+        ],
+      },
+      {
+        label: 'Asistentes de IA para la evaluación',
+        text: 'EVA, Asistente pedagógico de evaluación en Salud y GTP AIAS.',
+        links: [
+          { label: 'EVA', href: 'https://chatgpt.com/g/g-18PRQ2wq6-eva' },
+          { label: 'Asistente pedagógico en Salud', href: 'https://chatgpt.com/g/g-6a315f963ca8819196735268b19aa5de-asistente-pedagogico-en-evaluacion-en-salud' },
+          { label: 'GTP AIAS', href: null },
+        ],
+      },
+      {
+        label: 'Recursos',
+        text: 'Ruta metodológica evaluación+IA e infografía.',
+        links: [
+          { label: 'Ruta metodológica evaluación+IA', href: null },
+          { label: 'Infografía', href: 'https://view.genially.com/69e7c89f581a46a528d45129' },
+        ],
+      },
     ],
   },
   {
@@ -250,7 +271,7 @@ export default function Toolbox() {
 
                 <div className="toolbox-links-grid">
                   {selected.items.map((item) => (
-                    <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
+                    <div className="toolbox-link-card" key={item.label}>
                       <span>
                         <AppIcon name="solar:link-round-angle-linear" size={24} />
                       </span>
@@ -258,7 +279,21 @@ export default function Toolbox() {
                         <strong>{item.label}</strong>
                         <p>{item.text}</p>
                       </div>
-                    </a>
+
+                      <div className="toolbox-link-actions">
+                        {item.links?.map((link) => (
+                          link.href ? (
+                            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+                              {link.label}
+                            </a>
+                          ) : (
+                            <span key={link.label} className="is-pending">
+                              {link.label} · Pendiente
+                            </span>
+                          )
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
 
