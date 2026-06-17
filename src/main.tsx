@@ -8,6 +8,7 @@ import './styles/pages/introTypographyMatch.css';
 import './styles/pages/navLineFix.css';
 import './styles/pages/linksFourFix.css';
 import './styles/pages/responsiveFinal.css';
+import './styles/pages/logoIcesiImage.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
