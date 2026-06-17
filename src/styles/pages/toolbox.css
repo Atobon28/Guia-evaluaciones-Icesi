@@ -1,5 +1,5 @@
 /* =========================================================
-   CAJA DE HERRAMIENTAS — inicio + exploración sin scroll
+   CAJA DE HERRAMIENTAS — intro + vista única organizada
 ========================================================= */
 
 .toolbox-intro-card {
@@ -8,7 +8,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 42px;
+  padding: 38px;
   border-radius: var(--radius);
   background: var(--white);
   border: 1px solid var(--line);
@@ -16,10 +16,13 @@
   overflow: hidden;
 }
 
-.toolbox-intro-card::after,
-.toolbox-feature-card::after {
+.toolbox-intro-card::after {
   content: '';
   position: absolute;
+  right: -95px;
+  bottom: -120px;
+  width: 330px;
+  height: 330px;
   border-radius: 50%;
   background: repeating-conic-gradient(
     from 0deg,
@@ -27,13 +30,6 @@
     transparent 10deg 22deg
   );
   opacity: 0.75;
-}
-
-.toolbox-intro-card::after {
-  right: -95px;
-  bottom: -120px;
-  width: 330px;
-  height: 330px;
 }
 
 .toolbox-intro-copy {
@@ -44,17 +40,17 @@
 
 .toolbox-intro-title {
   display: grid;
-  grid-template-columns: 78px minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 20px;
   align-items: start;
 }
 
 .toolbox-intro-title > span {
-  width: 72px;
-  height: 72px;
+  width: 66px;
+  height: 66px;
   display: grid;
   place-items: center;
-  border-radius: 24px;
+  border-radius: 22px;
   background: var(--blue-soft);
   color: var(--blue);
 }
@@ -62,489 +58,230 @@
 .toolbox-intro-title h1 {
   margin: 0;
   color: var(--blue-dark);
-  font-size: clamp(52px, 7vw, 96px);
-  line-height: 0.9;
-  letter-spacing: -0.07em;
+  font-size: clamp(34px, 4.8vw, 62px);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
 }
 
 .toolbox-intro-title h2 {
   max-width: 900px;
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   color: var(--blue);
-  font-size: clamp(25px, 3vw, 42px);
-  line-height: 1.08;
-  letter-spacing: -0.05em;
+  font-size: clamp(19px, 2.1vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
 }
 
 .toolbox-intro-copy > p {
-  max-width: 970px;
+  max-width: 900px;
   margin: 0;
   color: var(--blue-dark);
-  font-size: clamp(18px, 1.55vw, 23px);
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .toolbox-screen {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
-  gap: 14px;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
 }
 
 .toolbox-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 82px;
+  grid-template-columns: minmax(0, 1fr) 64px;
   align-items: center;
-  gap: 18px;
-  padding: 18px 24px;
-  border-radius: 26px;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: 22px;
   background:
-    radial-gradient(circle at 94% 20%, rgba(84, 84, 233, 0.14), transparent 25%),
+    radial-gradient(circle at 94% 20%, rgba(84, 84, 233, 0.12), transparent 25%),
     var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
 
 .toolbox-header .eyebrow {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .toolbox-header h1 {
   margin: 0;
   color: var(--blue-dark);
-  font-size: clamp(32px, 3.8vw, 48px);
-  line-height: 0.95;
-  letter-spacing: -0.055em;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.toolbox-header p {
+  max-width: 850px;
+  margin: 6px 0 0;
+  color: var(--gray-1);
+  font-size: 13px;
+  line-height: 1.42;
 }
 
 .toolbox-header-icon {
-  width: 76px;
-  height: 76px;
+  width: 58px;
+  height: 58px;
   display: grid;
   place-items: center;
-  border-radius: 24px;
+  border-radius: 20px;
   background: var(--blue);
   color: var(--white);
 }
 
-.toolbox-tabs {
+.toolbox-overview-grid {
+  min-height: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.toolbox-tabs button {
-  min-height: 64px;
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  align-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
+}
+
+.toolbox-overview-card {
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 24px;
   background: var(--white);
-  color: var(--blue-dark);
-  cursor: pointer;
-  text-align: left;
-  transition: 0.2s ease;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(7, 11, 52, 0.055);
+  overflow: hidden;
 }
 
-.toolbox-tabs button:hover {
-  transform: translateY(-2px);
-  border-color: rgba(84, 84, 233, 0.45);
-  box-shadow: 0 12px 28px rgba(84, 84, 233, 0.12);
+.toolbox-overview-card::after {
+  content: '';
+  position: absolute;
+  right: -44px;
+  bottom: -54px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  opacity: 0.7;
 }
 
-.toolbox-tabs button.is-active {
-  background: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
+.toolbox-overview-card.is-traffic::after { background: #edf8f1; }
+.toolbox-overview-card.is-aias::after { background: #eef0ff; }
+.toolbox-overview-card.is-templates::after { background: #f3f6ff; }
+.toolbox-overview-card.is-checklist::after { background: #ecf8f2; }
+
+.toolbox-overview-head,
+.toolbox-overview-list {
+  position: relative;
+  z-index: 1;
 }
 
-.toolbox-tabs span {
+.toolbox-overview-head {
+  display: grid;
+  grid-template-columns: 38px 42px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.toolbox-number {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.toolbox-card-icon {
   width: 38px;
   height: 38px;
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: var(--blue-soft);
-  color: var(--blue);
-  font-size: 13px;
-  font-weight: 900;
+  color: var(--white);
+  background: var(--blue);
 }
 
-.toolbox-tabs button.is-active span {
-  color: var(--blue);
-  background: var(--white);
+.toolbox-overview-head h2 {
+  margin: 0 0 3px;
+  color: var(--blue-dark);
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
-.toolbox-tabs p {
+.toolbox-overview-head p {
   margin: 0;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.15;
+  color: var(--gray-1);
+  font-size: 12.5px;
+  line-height: 1.3;
 }
 
-.toolbox-feature-card {
-  position: relative;
+.toolbox-overview-list {
+  flex: 1;
   min-height: 0;
-  padding: 28px;
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at 92% 12%, rgba(84, 84, 233, 0.12), transparent 28%),
-    linear-gradient(180deg, var(--white), var(--blue-soft));
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.toolbox-feature-card::after {
-  right: -115px;
-  bottom: -125px;
-  width: 320px;
-  height: 320px;
-}
-
-.toolbox-feature-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.toolbox-feature-top {
   display: grid;
-  grid-template-columns: 76px 1fr;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 18px;
-}
-
-.toolbox-feature-top > span {
-  width: 70px;
-  height: 70px;
-  display: grid;
-  place-items: center;
-  border-radius: 24px;
-  background: var(--blue);
-  color: var(--white);
-}
-
-.toolbox-feature-top h2 {
-  max-width: 900px;
-  margin: 0 0 8px;
-  color: var(--blue-dark);
-  font-size: clamp(30px, 3.6vw, 48px);
-  line-height: 1;
-  letter-spacing: -0.055em;
-}
-
-.toolbox-feature-top p,
-.toolbox-feature-intro {
-  max-width: 920px;
-  margin: 0;
-  color: var(--blue-dark);
-  font-size: 15px;
-  line-height: 1.45;
-}
-
-.toolbox-feature-intro { margin-bottom: 14px; }
-
-.traffic-tool {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 22px;
-  align-items: stretch;
-}
-
-.traffic-light {
-  display: grid;
-  gap: 14px;
-  justify-items: center;
-  align-content: center;
-  padding: 22px;
-  border-radius: 34px;
-  background: var(--blue-dark);
-  box-shadow: 0 18px 40px rgba(7, 11, 52, 0.18);
-}
-
-.traffic-light .light {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.18), 0 0 0 8px rgba(255, 255, 255, 0.08);
-}
-
-.traffic-light .green { background: #63bd7a; }
-.traffic-light .yellow { background: #f2c15f; }
-.traffic-light .red { background: #ef6b6b; }
-
-.traffic-info-list { display: grid; gap: 12px; }
-
-.traffic-info-card {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 14px;
-  align-items: center;
-  padding: 16px;
-  border-radius: 20px;
-  background: var(--white);
-  border: 1px solid var(--line);
-}
-
-.traffic-info-card span {
-  display: grid;
-  place-items: center;
-  min-height: 40px;
-  border-radius: 999px;
-  font-weight: 900;
-}
-
-.traffic-info-card.tone-0 span { background: #e7f7ed; color: #2f8a4b; }
-.traffic-info-card.tone-1 span { background: #fff4d8; color: #9a6b11; }
-.traffic-info-card.tone-2 span { background: #ffe7e7; color: #ac3434; }
-
-.traffic-info-card p,
-.aias-thermo-levels p,
-.template-stack p,
-.checklist-preview p {
-  margin: 0;
-  color: var(--blue-dark);
-  font-size: 13px;
-  line-height: 1.35;
-}
-
-.aias-thermometer-wrap {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: 20px;
-  align-items: stretch;
-}
-
-.aias-thermometer {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  gap: 12px;
-  padding: 18px;
-  border-radius: 28px;
-  background: var(--white);
-  border: 1px solid var(--line);
-}
-
-.thermo-track {
-  position: relative;
-  width: 34px;
-  height: 230px;
-  display: grid;
-  align-content: space-between;
-  justify-items: center;
-  padding: 10px 0;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #5454e9 0%, #7778ee 35%, #9aa2f5 68%, #dfe4ff 100%);
-  box-shadow: inset 0 -10px 18px rgba(7, 11, 52, 0.16);
-}
-
-.thermo-dot {
-  width: 26px;
-  height: 26px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--white);
-  color: var(--blue);
-  font-size: 11px;
-  font-weight: 900;
-  box-shadow: 0 4px 10px rgba(7, 11, 52, 0.16);
-}
-
-.aias-thermometer strong {
-  color: var(--blue);
-  font-size: 12px;
-  text-align: center;
-  line-height: 1.15;
-}
-
-.aias-thermo-levels {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.aias-thermo-levels div {
-  display: grid;
+  gap: 7px;
   align-content: start;
-  gap: 8px;
-  min-height: 170px;
-  padding: 16px;
-  border-radius: 22px;
-  background: var(--white);
-  border: 1px solid var(--line);
 }
 
-.aias-thermo-levels span,
-.aias-thermo-levels strong,
-.template-stack strong,
-.checklist-preview strong {
-  display: block;
-  color: var(--blue);
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.15;
-}
-
-.template-stack {
+.toolbox-overview-list div {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.template-stack > div {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: 10px;
-  min-height: 190px;
-  padding: 15px;
-  border-radius: 18px 18px 28px 18px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  box-shadow: 0 10px 22px rgba(7, 11, 52, 0.05);
-}
-
-.template-stack > div::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 18px 0 0 0;
-  background: var(--blue-soft);
-}
-
-.template-stack span {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+  padding: 8px 10px;
   border-radius: 14px;
-  background: var(--blue-soft);
-  color: var(--blue);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(225, 229, 241, 0.85);
 }
 
-.template-stack article { display: grid; gap: 7px; }
-
-.template-download-btn {
-  position: relative;
-  z-index: 1;
-  justify-self: start;
-  min-height: 34px;
-  padding: 0 13px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--blue);
-  color: var(--white);
+.toolbox-overview-list strong {
+  color: var(--blue);
   font-size: 12px;
   font-weight: 900;
-  cursor: pointer;
+  line-height: 1.2;
 }
 
-.template-download-btn:hover { transform: translateY(-1px); }
-
-.checklist-tool {
-  display: grid;
-  gap: 12px;
-}
-
-.checklist-status {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: var(--white);
-  border: 1px solid var(--line);
+.toolbox-overview-list p {
+  margin: 0;
   color: var(--blue-dark);
+  font-size: 12.2px;
+  line-height: 1.32;
 }
 
-.checklist-status strong { color: var(--blue); }
-.checklist-status span { font-size: 13px; font-weight: 800; }
-
-.checklist-preview {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
+.toolbox-overview-card.is-templates .toolbox-overview-list,
+.toolbox-overview-card.is-checklist .toolbox-overview-list {
+  gap: 6px;
 }
 
-.checklist-preview label {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: 10px;
-  align-items: start;
-  min-height: 155px;
-  padding: 16px;
-  border-radius: 20px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  cursor: pointer;
-  transition: 0.18s ease;
+.toolbox-overview-card.is-templates .toolbox-overview-list div,
+.toolbox-overview-card.is-checklist .toolbox-overview-list div {
+  grid-template-columns: 92px minmax(0, 1fr);
+  padding: 7px 9px;
 }
 
-.checklist-preview label.is-checked {
-  background: #f4f7ff;
-  border-color: rgba(84, 84, 233, 0.35);
-  box-shadow: 0 12px 28px rgba(84, 84, 233, 0.1);
+.toolbox-overview-card.is-templates .toolbox-overview-list p,
+.toolbox-overview-card.is-checklist .toolbox-overview-list p {
+  font-size: 11.8px;
+  line-height: 1.28;
 }
-
-.checklist-preview input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.checklist-preview label > span {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  border: 2px solid var(--blue);
-  background: var(--white);
-}
-
-.checklist-preview label > span::after {
-  content: '✓';
-  color: var(--blue);
-  font-weight: 900;
-  opacity: 0;
-}
-
-.checklist-preview label.is-checked > span {
-  background: var(--blue);
-}
-
-.checklist-preview label.is-checked > span::after {
-  color: var(--white);
-  opacity: 1;
-}
-
-.checklist-preview p { display: grid; gap: 7px; }
 
 @media (max-width: 1100px) {
   .toolbox-intro-title,
   .toolbox-header,
-  .toolbox-feature-top,
-  .toolbox-tabs,
-  .traffic-tool,
-  .aias-thermometer-wrap,
-  .aias-thermo-levels,
-  .template-stack,
-  .checklist-preview {
+  .toolbox-overview-grid,
+  .toolbox-overview-head,
+  .toolbox-overview-list div {
     grid-template-columns: 1fr;
   }
 
-  .traffic-light {
-    grid-template-columns: repeat(3, 1fr);
+  .toolbox-screen,
+  .toolbox-overview-grid {
+    grid-template-rows: auto;
   }
 }
