@@ -1,4 +1,3 @@
-
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { navSections } from '../data/content';
 import AppIcon from './AppIcon';
@@ -41,6 +40,22 @@ export default function Layout() {
           <div className="progress-title"><span>Tu progreso</span><strong>{progress} de 5</strong></div>
           <div className="progress-track"><span style={{ width: `${(progress / 5) * 100}%` }} /></div>
           <p>{progress === 5 ? '¡Excelente! Has completado la guía.' : 'Estás avanzando muy bien.'}</p>
+        </section>
+
+        <section className="sidebar-credits" aria-label="Créditos">
+          <div>
+            <strong>Beatriz Grisales Herrera</strong>
+            <span>Innovación curricular y evaluación</span>
+            <a href="mailto:begrisales@icesi.edu.co">begrisales@icesi.edu.co</a>
+          </div>
+
+          <div>
+            <strong>Henry Arley Taquez Quenguan</strong>
+            <span>IA+TIC para la educación</span>
+            <a href="mailto:hataquez@icesi.edu.co">hataquez@icesi.edu.co</a>
+          </div>
+
+          <p>Decanatura de Innovación Educativa y Fortalecimiento del PEI</p>
         </section>
       </aside>
 
