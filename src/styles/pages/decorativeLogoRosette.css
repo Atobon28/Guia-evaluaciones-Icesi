@@ -16,6 +16,80 @@
   background: transparent !important;
 }
 
+.hero-card,
+.welcome-intro-card,
+.why-page-card,
+.principles-intro-card,
+.pedagogical-intro-card,
+.route-intro-card,
+.step-focus-card,
+.toolbox-intro-card,
+.toolbox-detail-card,
+.aias-detail-panel,
+.closing-main-card,
+.principle-feature-card,
+.pedagogical-feature-card,
+.intro-moments-tabs,
+.intro-moment-detail,
+.toolbox-link-card,
+.interactive-card,
+.notice,
+.neutral-card,
+.step-neutral-note,
+.step-question-box,
+.field-card,
+.progress-card {
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.btn,
+.page-actions a,
+.step-moment-tabs button,
+.principles-tabs button,
+.pedagogical-tabs button,
+.intro-moment-tab,
+.toolbox-link-actions a,
+.toolbox-link-actions .is-pending,
+.welcome-progress-line,
+.welcome-progress-line div {
+  border-radius: var(--radius) !important;
+}
+
+.eyebrow,
+.hero-icon,
+.card-icon,
+.nav-number,
+.nav-dot,
+.progress-track,
+.progress-track span,
+.green-line,
+.stepper-item span,
+.card-tag,
+.notice > span,
+.field-number,
+.toolbox-link-card > span,
+.principles-header-icon,
+.pedagogical-header-icon,
+.intro-moment-header > span,
+.principle-feature-top > span,
+.pedagogical-feature-top > span,
+.why-title-row > span,
+.welcome-intro-title > span,
+.route-intro-title > span {
+  border-radius: 0 !important;
+}
+
+.btn-primary {
+  background: var(--blue) !important;
+  box-shadow: none !important;
+}
+
+.btn-ghost {
+  background: var(--white) !important;
+  box-shadow: none !important;
+}
+
 .brand-symbol {
   background: url('/logo-roseta.png') center / contain no-repeat !important;
   border-radius: 0 !important;
