@@ -16,10 +16,10 @@ function getStepFromPath(pathname: string) {
 }
 
 function getMoments(step: RedesignStepContent): StepMoment[] {
-  if (step.number === 1) {
+  if ([1, 2, 4, 5, 6].includes(step.number)) {
     return [
       { label: 'Comprender', title: 'Pregunta y sentido', kind: 'understand' },
-      { label: 'Diseñar y aplicar', title: 'Decisión y ejemplo', kind: 'decide-apply' },
+      { label: 'Diseñar y aplicar', title: step.number === 6 ? 'Retroalimentación aplicada' : 'Decisión y ejemplo', kind: 'decide-apply' },
     ];
   }
 
