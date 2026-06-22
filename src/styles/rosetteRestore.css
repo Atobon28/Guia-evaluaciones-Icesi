@@ -1,0 +1,19 @@
+.hero-card::after,
+.welcome-intro-card::after,
+.why-page-card::after,
+.principles-intro-card::after,
+.pedagogical-intro-card::after,
+.route-intro-card::after,
+.step-focus-card::after,
+.toolbox-intro-card::after,
+.toolbox-detail-card::after,
+.aias-detail-panel::after,
+.closing-main-card::after,
+.principle-feature-card::after,
+.pedagogical-feature-card::after {
+  background-image: url('/logo-roseta.png') !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  opacity: 0.18 !important;
+}
