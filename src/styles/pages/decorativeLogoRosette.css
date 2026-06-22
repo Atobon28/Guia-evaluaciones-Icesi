@@ -12,7 +12,6 @@
 .toolbox-detail-card,
 .toolbox-detail-list div,
 .toolbox-action-row > div,
-.toolbox-traffic-light,
 .aias-detail-panel,
 .closing-main-card,
 .principle-feature-card,
@@ -32,8 +31,14 @@
 .stack-panel,
 .template-card,
 .checklist-card,
-.traffic-card,
+.checklist-mini-card,
+.checklist-mini-item,
+.checklist-mini-panel,
 .aias-card,
+.aias-selector-card,
+.aias-mini-card,
+.aias-mini-panel,
+.aias-option-card,
 .why-focus-card,
 .why-text-card,
 .intro-side-preview {
@@ -57,7 +62,12 @@
 .step-mini-cards div,
 .step-visual-list li,
 .example-before,
-.example-after {
+.example-after,
+.checklist-mini-selector button,
+.checklist-mini-actions button,
+.aias-mini-selector button,
+.aias-option-button,
+.aias-card button {
   border-radius: var(--radius) !important;
 }
 
@@ -79,7 +89,6 @@
 .toolbox-detail-header > span,
 .toolbox-action-row span,
 .toolbox-step-tabs span,
-.traffic-bulb span,
 .principles-header-icon,
 .pedagogical-header-icon,
 .intro-moment-header > span,
@@ -92,21 +101,30 @@
 .step-label-row span,
 .step-moment-tabs span,
 .principles-tabs span,
-.pedagogical-tabs span {
+.pedagogical-tabs span,
+.checklist-mini-card > span,
+.checklist-mini-item > span,
+.aias-card > span,
+.aias-mini-card > span,
+.aias-option-card > span {
   border-radius: 0 !important;
 }
 
 .toolbox-header,
-.toolbox-detail-card {
+.toolbox-detail-card,
+.aias-card,
+.aias-mini-card,
+.aias-detail-panel,
+.checklist-card,
+.checklist-mini-card,
+.checklist-mini-panel {
   background: var(--white) !important;
 }
 
 .toolbox-step-tabs button:hover,
 .toolbox-step-tabs button.is-active,
 .toolbox-arrow,
-.toolbox-arrow:hover,
-.traffic-bulb span,
-.traffic-bulb.is-active span {
+.toolbox-arrow:hover {
   box-shadow: var(--shadow) !important;
 }
 
