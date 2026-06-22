@@ -5,25 +5,26 @@
 :root {
   --blue: #5454e9;
   --blue-dark: #070b34;
-  --blue-soft: #edf0ff;
+  --blue-soft: #f4f4ff;
 
   --green: #4cb979;
-  --green-soft: #ecf8f0;
+  --green-soft: #eef8f2;
 
   --yellow: #e4eb60;
   --orange: #e9683b;
+  --purple: #865cf0;
 
-  --red: #e94235;
-  --red-soft: #fff1ef;
+  --red: #e9683b;
+  --red-soft: #fff3ef;
 
   --gray-1: #88898c;
   --gray-2: #cecfd4;
 
-  --bg: #f6f7fb;
+  --bg: #f7f7f8;
   --white: #ffffff;
 
-  --line: #dfe3fb;
-  --radius: 28px;
+  --line: #cecfd4;
+  --radius: 4px;
 
-  --shadow: 0 24px 60px rgba(7, 11, 52, 0.1);
+  --shadow: 0 8px 18px rgba(7, 11, 52, 0.06);
 }
