@@ -26,9 +26,9 @@ const links = [
   },
   {
     label: 'Recursos',
-    text: 'Ruta metodológica evaluación+IA e infografía.',
+    text: 'Marco metodológico para evaluar en contextos de IAG e infografía.',
     items: [
-      { label: 'Ruta metodológica evaluación+IA', href: null },
+      { label: 'Marco metodológico para evaluar en contextos de IAG', href: 'https://marcoevaluacioniag.vercel.app/' },
       { label: 'Infografía', href: 'https://view.genially.com/69e7c89f581a46a528d45129' },
     ],
   },
