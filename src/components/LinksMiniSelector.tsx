@@ -17,11 +17,11 @@ const links = [
   },
   {
     label: 'Asistentes de IA para la evaluación',
-    text: 'EVA, Asistente pedagógico de evaluación en Salud y GTP AIAS.',
+    text: 'EVA, Asistente pedagógico de evaluación en Salud y GPT AIAS.',
     items: [
       { label: 'EVA', href: 'https://chatgpt.com/g/g-18PRQ2wq6-eva' },
       { label: 'Asistente pedagógico en Salud', href: 'https://chatgpt.com/g/g-6a315f963ca8819196735268b19aa5de-asistente-pedagogico-en-evaluacion-en-salud' },
-      { label: 'GTP AIAS', href: null },
+      { label: 'GPT AIAS', href: 'https://chatgpt.com/g/g-m39Sn0uZq-the-ai-assessment-scale-aias' },
     ],
   },
   {
