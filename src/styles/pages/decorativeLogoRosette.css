@@ -1,20 +1,4 @@
-.hero-card::after,
-.welcome-intro-card::after,
-.why-page-card::after,
-.principles-intro-card::after,
-.pedagogical-intro-card::after,
-.route-intro-card::after,
-.step-focus-card::after,
-.toolbox-intro-card::after,
-.toolbox-detail-card::after,
-.aias-detail-panel::after,
-.closing-main-card::after,
-.principle-feature-card::after,
-.pedagogical-feature-card::after,
-.intro-moment-detail::after {
-  opacity: 0 !important;
-  background: transparent !important;
-}
+@import '../rosetteRestore.css';
 
 .hero-card,
 .welcome-intro-card,
