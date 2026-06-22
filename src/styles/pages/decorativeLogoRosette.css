@@ -22,7 +22,17 @@
 .step-neutral-note,
 .step-question-box,
 .field-card,
-.progress-card {
+.progress-card,
+.right-panel,
+.example-panel,
+.stack-panel,
+.template-card,
+.checklist-card,
+.traffic-card,
+.aias-card,
+.why-focus-card,
+.why-text-card,
+.intro-side-preview {
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
 }
@@ -36,7 +46,12 @@
 .toolbox-link-actions a,
 .toolbox-link-actions .is-pending,
 .welcome-progress-line,
-.welcome-progress-line div {
+.welcome-progress-line div,
+.route-flow-strip div,
+.step-mini-cards div,
+.step-visual-list li,
+.example-before,
+.example-after {
   border-radius: var(--radius) !important;
 }
 
@@ -60,7 +75,12 @@
 .pedagogical-feature-top > span,
 .why-title-row > span,
 .welcome-intro-title > span,
-.route-intro-title > span {
+.route-intro-title > span,
+.route-flow-strip span,
+.step-label-row span,
+.step-moment-tabs span,
+.principles-tabs span,
+.pedagogical-tabs span {
   border-radius: 0 !important;
 }
 
