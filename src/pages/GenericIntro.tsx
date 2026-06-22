@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ButtonLink, Hero, Notice } from '../components/Ui';
+import { useLocation } from 'react-router-dom';
+import { ButtonLink, Hero } from '../components/Ui';
 import { guidePages, modules } from '../data/content';
 import AppIcon from '../components/AppIcon';
 
@@ -142,7 +142,8 @@ export default function GenericIntro() {
             ))}
           </div>
 
-          <article className="intro-moment-detail wide">
+          <article className="intro-moment-detail wide no-secondary-rosette">
+            <style>{'.no-secondary-rosette::after{content:none!important}'}</style>
             <div className="intro-moment-header">
               <span>
                 <AppIcon name={selected.icon} size={34} />
