@@ -121,6 +121,46 @@
   background: var(--white) !important;
 }
 
+.toolbox-detail-list div,
+.toolbox-action-row > div,
+.step-mini-cards div,
+.step-visual-list li,
+.example-before,
+.example-after,
+.neutral-card,
+.step-neutral-note,
+.step-question-box,
+.notice,
+.why-text-card,
+.why-focus-card,
+.field-card,
+.checklist-mini-item,
+.aias-option-card {
+  background: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--blue-dark) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+
+.toolbox-detail-list p,
+.toolbox-action-row p,
+.step-mini-cards p,
+.step-visual-list li,
+.example-before p,
+.example-after p,
+.neutral-card p,
+.step-neutral-note p,
+.step-question-box h2,
+.notice p,
+.why-text-card p,
+.why-focus-card p,
+.checklist-mini-item p,
+.aias-option-card p {
+  color: var(--blue-dark) !important;
+  text-align: left !important;
+}
+
 .toolbox-step-tabs button:hover,
 .toolbox-step-tabs button.is-active,
 .toolbox-arrow,
