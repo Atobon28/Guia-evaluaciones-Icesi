@@ -14,12 +14,15 @@
 .toolbox-intro-card::after,
 .toolbox-detail-card::after,
 .aias-detail-panel::after,
-.closing-main-card::after {
+.closing-main-card::after,
+.principle-feature-card::after,
+.pedagogical-feature-card::after {
   background: url('/logo-roseta.png') center / contain no-repeat !important;
   opacity: 0.22 !important;
   transform: rotate(-18deg);
   filter: saturate(0.9);
   pointer-events: none;
+  border-radius: 0 !important;
 }
 
 .hero-card::after {
@@ -42,7 +45,9 @@
 
 .why-page-card::after,
 .step-focus-card::after,
-.toolbox-detail-card::after {
+.toolbox-detail-card::after,
+.principle-feature-card::after,
+.pedagogical-feature-card::after {
   right: -125px;
   bottom: -135px;
   width: 360px;
