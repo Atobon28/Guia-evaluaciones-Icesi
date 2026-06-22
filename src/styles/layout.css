@@ -12,7 +12,7 @@
 .sidebar {
   height: 100dvh;
   padding: 24px 20px;
-  background: radial-gradient(circle at 30% 0%, #6f6fff 0%, var(--blue) 38%, #263ed6 100%);
+  background: var(--blue);
   color: var(--white);
   overflow: hidden;
   display: flex;
@@ -35,7 +35,7 @@
 .brand-symbol {
   width: 42px;
   height: 42px;
-  border-radius: 50%;
+  border-radius: 0;
   background:
     repeating-conic-gradient(from 0deg, var(--white) 0 8deg, transparent 8deg 16deg);
   position: relative;
@@ -45,7 +45,7 @@
   content: '';
   position: absolute;
   inset: 14px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--blue);
 }
 
@@ -62,7 +62,7 @@
 
 .brand-text strong {
   font-size: 34px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.04em;
 }
 
 .side-nav {
@@ -81,7 +81,7 @@
   min-height: 54px;
   padding: 8px 12px;
   border: 0;
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: transparent;
   color: var(--white);
   cursor: pointer;
@@ -107,14 +107,14 @@
 .nav-item.is-active {
   background: var(--white);
   color: var(--blue);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .nav-number {
   width: 34px;
   height: 34px;
   border: 2px solid currentColor;
-  border-radius: 50%;
+  border-radius: 0;
   display: grid;
   place-items: center;
   font-weight: 800;
@@ -134,15 +134,15 @@
   width: 10px;
   height: 10px;
   background: var(--green);
-  border-radius: 50%;
+  border-radius: 0;
 }
 
 .progress-card {
   flex: 0 0 auto;
   margin-top: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
   padding: 16px;
   color: var(--white);
 }
@@ -156,7 +156,7 @@
 .progress-track {
   height: 12px;
   background: rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
+  border-radius: 0;
   margin: 18px 0 12px;
   overflow: hidden;
 }
@@ -165,7 +165,7 @@
   display: block;
   height: 100%;
   background: var(--green);
-  border-radius: inherit;
+  border-radius: 0;
 }
 
 .progress-card p {
