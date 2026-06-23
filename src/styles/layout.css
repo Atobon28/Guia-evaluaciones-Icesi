@@ -75,7 +75,7 @@
 .nav-item {
   position: relative;
   display: grid;
-  grid-template-columns: 40px 30px 1fr 10px;
+  grid-template-columns: 40px 30px minmax(0, 1fr) 10px;
   align-items: center;
   gap: 10px;
   min-height: 54px;
@@ -126,8 +126,11 @@
 }
 
 .nav-label {
+  min-width: 0;
   font-weight: 700;
   font-size: 14px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .nav-dot {
@@ -309,14 +312,34 @@
     position: relative;
     height: auto;
     overflow: visible;
+    padding: 22px;
   }
 
   .side-nav {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .nav-item {
+    width: 100%;
+    grid-template-columns: 40px 30px minmax(0, 1fr) 12px;
+    min-height: 52px;
+    padding: 8px 10px;
   }
 
   .nav-item::before {
     display: none;
+  }
+
+  .nav-label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+  }
+
+  .progress-card {
+    margin-top: 18px;
   }
 
   .sidebar-credits {
