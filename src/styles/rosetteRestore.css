@@ -1,3 +1,21 @@
+.hero-card,
+.welcome-intro-card,
+.why-page-card,
+.principles-intro-card,
+.pedagogical-intro-card,
+.route-intro-card,
+.step-focus-card,
+.toolbox-intro-card,
+.toolbox-detail-card,
+.aias-detail-panel,
+.closing-main-card,
+.principle-feature-card,
+.pedagogical-feature-card {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
 .hero-card::after,
 .welcome-intro-card::after,
 .why-page-card::after,
@@ -11,30 +29,42 @@
 .closing-main-card::after,
 .principle-feature-card::after,
 .pedagogical-feature-card::after {
-  width: 360px !important;
-  height: 360px !important;
-  min-width: 360px !important;
-  min-height: 360px !important;
+  width: 300px !important;
+  height: 300px !important;
+  min-width: 300px !important;
+  min-height: 300px !important;
   max-width: none !important;
   max-height: none !important;
   aspect-ratio: 1 / 1 !important;
-  right: -145px !important;
-  bottom: -150px !important;
+  right: -130px !important;
+  bottom: -132px !important;
+  left: auto !important;
   top: auto !important;
   background-image: url('/logo-roseta.png') !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: contain !important;
-  opacity: 0.16 !important;
+  opacity: 0.14 !important;
   transform: rotate(-18deg) !important;
   pointer-events: none !important;
+  z-index: 0 !important;
 }
 
-.hero-card::after,
-.aias-detail-panel::after {
-  top: auto !important;
-  right: -145px !important;
-  bottom: -150px !important;
+.hero-card > *,
+.welcome-intro-card > *,
+.why-page-card > *,
+.principles-intro-card > *,
+.pedagogical-intro-card > *,
+.route-intro-card > *,
+.step-focus-card > *,
+.toolbox-intro-card > *,
+.toolbox-detail-card > *,
+.aias-detail-panel > *,
+.closing-main-card > *,
+.principle-feature-card > *,
+.pedagogical-feature-card > * {
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 @media (max-width: 1100px) {
@@ -51,15 +81,15 @@
   .closing-main-card::after,
   .principle-feature-card::after,
   .pedagogical-feature-card::after {
-    width: 320px !important;
-    height: 320px !important;
-    min-width: 320px !important;
-    min-height: 320px !important;
-    right: -185px !important;
-    bottom: -185px !important;
+    width: 260px !important;
+    height: 260px !important;
+    min-width: 260px !important;
+    min-height: 260px !important;
+    right: -135px !important;
+    bottom: -138px !important;
+    left: auto !important;
     top: auto !important;
-    background-size: contain !important;
-    transform: rotate(-18deg) !important;
+    opacity: 0.12 !important;
   }
 }
 
@@ -77,12 +107,12 @@
   .closing-main-card::after,
   .principle-feature-card::after,
   .pedagogical-feature-card::after {
-    width: 280px !important;
-    height: 280px !important;
-    min-width: 280px !important;
-    min-height: 280px !important;
-    right: -175px !important;
-    bottom: -175px !important;
-    opacity: 0.12 !important;
+    width: 220px !important;
+    height: 220px !important;
+    min-width: 220px !important;
+    min-height: 220px !important;
+    right: -120px !important;
+    bottom: -122px !important;
+    opacity: 0.1 !important;
   }
 }
