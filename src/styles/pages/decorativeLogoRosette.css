@@ -1,5 +1,9 @@
 @import '../rosetteRestore.css';
 
+* {
+  border-radius: 0 !important;
+}
+
 .hero-card,
 .welcome-intro-card,
 .why-page-card,
@@ -42,72 +46,7 @@
 .why-focus-card,
 .why-text-card,
 .intro-side-preview {
-  border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
-}
-
-.btn,
-.page-actions a,
-.step-moment-tabs button,
-.principles-tabs button,
-.pedagogical-tabs button,
-.intro-moment-tab,
-.toolbox-step-tabs button,
-.toolbox-arrow,
-.toolbox-link-actions a,
-.toolbox-link-actions .is-pending,
-.welcome-progress-line,
-.welcome-progress-line div,
-.route-flow-strip div,
-.step-mini-cards div,
-.step-visual-list li,
-.example-before,
-.example-after,
-.checklist-mini-selector button,
-.checklist-mini-actions button,
-.aias-mini-selector button,
-.aias-option-button,
-.aias-card button {
-  border-radius: var(--radius) !important;
-}
-
-.eyebrow,
-.hero-icon,
-.card-icon,
-.nav-number,
-.nav-dot,
-.progress-track,
-.progress-track span,
-.green-line,
-.stepper-item span,
-.card-tag,
-.notice > span,
-.field-number,
-.toolbox-link-card > span,
-.toolbox-header-icon,
-.toolbox-intro-title > span,
-.toolbox-detail-header > span,
-.toolbox-action-row span,
-.toolbox-step-tabs span,
-.principles-header-icon,
-.pedagogical-header-icon,
-.intro-moment-header > span,
-.principle-feature-top > span,
-.pedagogical-feature-top > span,
-.why-title-row > span,
-.welcome-intro-title > span,
-.route-intro-title > span,
-.route-flow-strip span,
-.step-label-row span,
-.step-moment-tabs span,
-.principles-tabs span,
-.pedagogical-tabs span,
-.checklist-mini-card > span,
-.checklist-mini-item > span,
-.aias-card > span,
-.aias-mini-card > span,
-.aias-option-card > span {
-  border-radius: 0 !important;
 }
 
 .toolbox-header,
@@ -139,7 +78,6 @@
   background: var(--white) !important;
   border: 1px solid var(--line) !important;
   color: var(--blue-dark) !important;
-  border-radius: var(--radius) !important;
   box-shadow: none !important;
 }
 
@@ -161,21 +99,15 @@
   text-align: left !important;
 }
 
-.toolbox-step-tabs button:hover,
-.toolbox-step-tabs button.is-active,
-.toolbox-arrow,
-.toolbox-arrow:hover {
-  box-shadow: var(--shadow) !important;
+.traffic-bulb span,
+.traffic-light-bulb,
+.semaphore-light,
+.semaforo-light {
+  border-radius: 50% !important;
 }
 
-.btn-primary {
-  background: var(--blue) !important;
-  box-shadow: none !important;
-}
-
-.btn-ghost {
-  background: var(--white) !important;
-  box-shadow: none !important;
+.toolbox-traffic-light {
+  border-radius: 34px !important;
 }
 
 .brand-symbol {
