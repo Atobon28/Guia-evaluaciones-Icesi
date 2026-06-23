@@ -118,3 +118,218 @@
 .brand-symbol::after {
   display: none !important;
 }
+
+@media (max-height: 850px) and (min-width: 900px) {
+  .page-wrap {
+    padding: 14px 22px !important;
+    gap: 10px !important;
+  }
+
+  .sidebar {
+    padding: 16px 18px !important;
+  }
+
+  .brand-symbol {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .brand-text strong {
+    font-size: 28px !important;
+  }
+
+  .side-nav {
+    gap: 6px !important;
+    margin-top: 18px !important;
+  }
+
+  .nav-item {
+    min-height: 46px !important;
+    padding: 6px 10px !important;
+  }
+
+  .nav-number {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .progress-card {
+    margin-top: 14px !important;
+    padding: 12px !important;
+  }
+
+  .progress-track {
+    height: 8px !important;
+    margin: 12px 0 8px !important;
+  }
+
+  .sidebar-credits {
+    padding-top: 10px !important;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+  }
+
+  .sidebar-credits div {
+    margin-bottom: 6px !important;
+  }
+
+  .sidebar-credits strong,
+  .sidebar-credits span,
+  .sidebar-credits a,
+  .sidebar-credits p {
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+  }
+
+  .welcome-progress-line,
+  .route-stepper {
+    margin: 4px 0 8px !important;
+  }
+
+  .hero-card,
+  .welcome-intro-card,
+  .why-page-card,
+  .principles-intro-card,
+  .pedagogical-intro-card,
+  .route-intro-card,
+  .step-focus-card,
+  .toolbox-intro-card,
+  .toolbox-header,
+  .toolbox-detail-card,
+  .aias-detail-panel,
+  .closing-main-card,
+  .principle-feature-card,
+  .pedagogical-feature-card,
+  .interactive-card {
+    padding: 16px 20px !important;
+  }
+
+  h1,
+  .hero-card h1,
+  .welcome-intro-title h1,
+  .why-title-row h1,
+  .toolbox-intro-title h1,
+  .toolbox-header h1 {
+    font-size: clamp(28px, 3.4vw, 46px) !important;
+    line-height: 0.98 !important;
+  }
+
+  h2,
+  .hero-card h2,
+  .welcome-intro-title h2,
+  .why-title-row h2,
+  .toolbox-intro-title h2 {
+    font-size: clamp(17px, 1.7vw, 22px) !important;
+    line-height: 1.15 !important;
+  }
+
+  p,
+  li,
+  small {
+    font-size: 92% !important;
+    line-height: 1.35 !important;
+  }
+
+  .eyebrow {
+    padding: 6px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .green-line {
+    height: 3px !important;
+    margin: 10px 0 14px !important;
+  }
+
+  .intro-moments-layout,
+  .toolbox-screen,
+  .learning-step-screen,
+  .split-layout {
+    gap: 10px !important;
+  }
+
+  .intro-moments-tabs,
+  .intro-moment-detail,
+  .toolbox-detail-list div,
+  .toolbox-action-row > div,
+  .step-mini-cards div,
+  .step-visual-list li,
+  .notice,
+  .neutral-card,
+  .step-neutral-note,
+  .step-question-box,
+  .checklist-mini-item,
+  .aias-option-card {
+    padding: 10px 12px !important;
+  }
+
+  .page-actions {
+    gap: 10px !important;
+    padding-top: 0 !important;
+  }
+
+  .btn {
+    min-height: 38px !important;
+    padding: 0 16px !important;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 900px) {
+  .page-wrap {
+    padding: 10px 18px !important;
+    gap: 8px !important;
+  }
+
+  .sidebar {
+    padding: 12px 16px !important;
+  }
+
+  .nav-item {
+    min-height: 40px !important;
+  }
+
+  .nav-label {
+    font-size: 12.5px !important;
+  }
+
+  .sidebar-credits {
+    display: none !important;
+  }
+
+  .hero-card,
+  .welcome-intro-card,
+  .why-page-card,
+  .principles-intro-card,
+  .pedagogical-intro-card,
+  .route-intro-card,
+  .step-focus-card,
+  .toolbox-intro-card,
+  .toolbox-header,
+  .toolbox-detail-card,
+  .aias-detail-panel,
+  .closing-main-card,
+  .principle-feature-card,
+  .pedagogical-feature-card,
+  .interactive-card {
+    padding: 12px 16px !important;
+  }
+
+  h1,
+  .hero-card h1,
+  .welcome-intro-title h1,
+  .why-title-row h1,
+  .toolbox-intro-title h1,
+  .toolbox-header h1 {
+    font-size: clamp(24px, 3vw, 40px) !important;
+  }
+
+  .hero-icon,
+  .card-icon,
+  .toolbox-header-icon,
+  .toolbox-intro-title > span,
+  .toolbox-detail-header > span,
+  .welcome-intro-title > span,
+  .why-title-row > span {
+    width: 46px !important;
+    height: 46px !important;
+  }
+}
